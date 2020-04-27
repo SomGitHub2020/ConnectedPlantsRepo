@@ -15,7 +15,6 @@
  */
 package connectedplants.connectedplants;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +27,7 @@ public class HomeController {
       return "redirect:/welcome";
     }
 	
-	@GetMapping("/login")
+	@GetMapping("/welcome")
 	  public String loginForm(Model model) {
 	    model.addAttribute("login", new Login());
 	    return "welcome";
