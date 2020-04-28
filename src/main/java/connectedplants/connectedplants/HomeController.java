@@ -37,7 +37,7 @@ public class HomeController {
 	    return "welcome";
 	  }
 	
-	  @PostMapping("/welcome")
+	  @PostMapping("/welcomeProd")
 	  public String prodForm() {
 
 		  return "production";
