@@ -38,10 +38,14 @@ public class HomeController {
 	  }
 	
 	  @PostMapping("/welcome")
-	  public String loginSubmit(@ModelAttribute Login login) {
-		  
+	  public String prodForm(@ModelAttribute Login login) {
 
-		  
 		  return "production";
+	  }
+	  
+	  @PostMapping("/production")
+	  public String prodSubmit(@ModelAttribute Login login) {
+
+		  return "prod_analysis";
 	  }
 }
