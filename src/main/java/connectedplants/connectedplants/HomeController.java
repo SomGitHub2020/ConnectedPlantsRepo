@@ -32,19 +32,19 @@ public class HomeController {
     }
 	
 	@GetMapping("/welcome")
-	  public String loginForm(Model model) {
+	  public String welcomeForm(Model model) {
 	    model.addAttribute("login", new Login());
 	    return "welcome";
 	  }
 	
 	  @PostMapping("/welcome")
-	  public String prodForm(@ModelAttribute Login login) {
+	  public String prodForm() {
 
 		  return "production";
 	  }
 	  
 	  @PostMapping("/production")
-	  public String prodSubmit(@ModelAttribute Login login) {
+	  public String prodSubmit() {
 
 		  return "prod_analysis";
 	  }
