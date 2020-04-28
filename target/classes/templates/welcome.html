@@ -1,11 +1,52 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-     
-	   <style>
+	<title>Getting Started: Handling Form Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+	<style>
+		.flip-card {
+		  background-color: transparent;
+		  width: 300px;
+		  height: 300px;
+		  perspective: 1000px;
+		}
+		
+		.flip-card-inner {
+		  position: relative;
+		  width: 100%;
+		  height: 100%;
+		  text-align: center;
+		  transition: transform 0.6s;
+		  transform-style: preserve-3d;
+		  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		}
+		
+		.flip-card:hover .flip-card-inner {
+		  transform: rotateY(180deg);
+		}
+		
+		.flip-card-front, .flip-card-back {
+		  position: absolute;
+		  width: 100%;
+		  height: 100%;
+		  -webkit-backface-visibility: hidden;
+		  backface-visibility: hidden;
+		}
+		
+		.flip-card-front {
+		  background-color: #bbb;
+		  color: black;
+		}
+		
+		.flip-card-back {
+		  background-color: #2980b9;
+		  color: white;
+		  transform: rotateY(180deg);
+		}
 		.card {
 		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 		  max-width: 300px;
@@ -46,11 +87,34 @@
 </head>
 <body bgcolor="#99ebff">
 <div class="" style="width:100%" align="center"> 
-	<h2 style="text-align:center">Please Choose Any One</h2>
+	<!-- <h2 style="text-align:center">Please Choose Any One</h2> -->
 		<table>
 			<tr>
 				<td>
-					<div class="card" style="background-color: #ffb3b3">
+					<div class="flip-card">
+						<div class="flip-card-inner">
+							<div class="flip-card-front" style="background-color: #ffb3b3">
+								<img src="" alt=""
+									style="width: 300px; height: 300px;">
+							</div>
+							<div class="flip-card-back" style="background-color: #ffb3b3">
+								<h1>Production Analysis</h1>
+								<p class="title">View and Compare Order Performance</p>
+								<p>Global Manufacturing</p>
+								<div style="margin: 24px 0;">
+									<a href="#"><i class="fa fa-dribbble"></i></a>
+								</div>
+
+								<form action="#" th:action="@{/welcomeProd}" method="post">
+									<p>
+										<!-- <input type="submit" value="Open"/> -->
+										<button type="submit">Open</button>
+									</p>
+								</form>
+							</div>
+						</div>
+					</div>
+<!-- 					<div class="card" style="background-color: #ffb3b3">
 						<h1>Production Analysis</h1>
 						<p class="title">View and Compare Order Performance</p>
 						<p>Global Manufacturing</p>
@@ -60,11 +124,11 @@
 
 						<form action="#" th:action="@{/welcomeProd}" method="post">
 							<p>
-								<!-- <input type="submit" value="Open"/> -->
+								<input type="submit" value="Open"/>
 								<button type="submit">Open</button>
 							</p>
 						</form>
-					</div>
+					</div> -->
 				</td>
 				<td>
 					<div class="card" style="background-color: #00ffff">
