@@ -43,9 +43,21 @@ public class HomeController {
 		  return "production";
 	  }
 	  
+	  @PostMapping("/welcomeRes")
+	  public String resForm() {
+
+		  return "resource";
+	  }
+	  
 	  @PostMapping("/production")
 	  public String prodSubmit() {
 
 		  return "prod_analysis";
+	  }
+	  
+	  @PostMapping("/resource")
+	  public String resSubmit() {
+
+		  return "res_analysis";
 	  }
 }

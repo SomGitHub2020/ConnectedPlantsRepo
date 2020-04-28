@@ -13,8 +13,17 @@
 	        <p>User: <input type="text" th:field="*{user}" /></p>
 	        <p>Password: <input type="text" th:field="*{password}" /></p> -->
      
-        <p><input type="submit" value="Production Analysis" /> <input type="reset" value="Reset" /></p>
+        <p><input type="submit" value="Production Order Analysis" /> <input type="reset" value="Reset" /></p>
     </form>
+    
+    <form action="#" th:action="@{/welcomeRes}" method="post">
+  		<!-- <p>IP: <input type="text" th:field="*{ip}" /></p>
+      <p>Port: <input type="text" th:field="*{port}" /></p>
+      <p>User: <input type="text" th:field="*{user}" /></p>
+      <p>Password: <input type="text" th:field="*{password}" /></p> -->
+  
+     <p><input type="submit" value="Resource Predictive Analysis" /> <input type="reset" value="Reset" /></p>
+ 	</form>
    </div>
 </body>
 </html>
