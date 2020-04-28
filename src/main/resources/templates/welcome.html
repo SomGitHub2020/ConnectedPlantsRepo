@@ -47,46 +47,45 @@
 <body bgcolor="#99ebff">
 <div class="" style="width:100%" align="center"> 
 	<h2 style="text-align:center">Please Choose Any One</h2>
-	
-		<div class="card" style="background-color: #ffb3b3">
-			<h1>Production Analysis</h1>
-			<p class="title">View and Compare Order Performance</p>
-			<p> Global Manufacturing </p>
-			<div style="margin: 24px 0;">
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-			</div>
+		<table>
+			<tr>
+				<td>
+					<div class="card" style="background-color: #ffb3b3">
+						<h1>Production Analysis</h1>
+						<p class="title">View and Compare Order Performance</p>
+						<p>Global Manufacturing</p>
+						<div style="margin: 24px 0;">
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+						</div>
 
-			<form action="#" th:action="@{/welcomeProd}" method="post">
-				<p>
-					<!-- <input type="submit" value="Open"/> -->
-					<button type="submit">Open</button>
-				</p>
-			</form>
-		</div>
-    
-    	<div class="card" style="background-color: #ffb3b3">
-			<h1>Resource Analysis</h1>
-			<p class="title">Manufacturing Predictive Maintenance</p>
-			<p> Global Manufacturing </p>
-			<div style="margin: 24px 0;">
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-			</div>
+						<form action="#" th:action="@{/welcomeProd}" method="post">
+							<p>
+								<!-- <input type="submit" value="Open"/> -->
+								<button type="submit">Open</button>
+							</p>
+						</form>
+					</div>
+				</td>
+				<td>
+					<div class="card" style="background-color: #00ffff">
+						<h1>Resource Analysis</h1>
+						<p class="title">Manufacturing Predictive Maintenance</p>
+						<p>Global Manufacturing</p>
+						<div style="margin: 24px 0;">
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+						</div>
 
-			<form action="#" th:action="@{/welcomeRes}" method="post">
-				<p>
-					<!-- <input type="submit" value="Open"/> -->
-					<button type="submit">Open</button>
-				</p>
-			</form>
-		</div>
- <!--    <form action="#" th:action="@{/welcomeRes}" method="post">
-  		<p>IP: <input type="text" th:field="*{ip}" /></p>
-      <p>Port: <input type="text" th:field="*{port}" /></p>
-      <p>User: <input type="text" th:field="*{user}" /></p>
-      <p>Password: <input type="text" th:field="*{password}" /></p>
-  
-     <p><input type="submit" value="Resource Predictive Analysis" /> <input type="reset" value="Reset" /></p>
- 	</form> -->
-   </div>
+						<form action="#" th:action="@{/welcomeRes}" method="post">
+							<p>
+								<!-- <input type="submit" value="Open"/> -->
+								<button type="submit">Open</button>
+							</p>
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</div>
 </body>
 </html>
