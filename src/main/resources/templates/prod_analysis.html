@@ -2,16 +2,84 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Production Analysis - View</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	   <meta charset="utf-8"/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	   
+	 <style>
+     table, th, td {
+         border: 1px solid black;
+     }
+	</style>
+	
+		<script type="text/javascript">
+		
+		</script>
+	   
+	   
 </head>
 <body align="center" bgcolor="#00bfff">
-	<h1>View Production Analysis</h1>
-    <!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
-    <br>
-    
-    
-    <!-- <p><a href="/display">Please view MII Scheduler Job List</a></p> -->
-    
+	<h2>Global Manufacturing Production Performance</h2>
+	 <div class="" align="center">
+         <div class="" align="center">
+	     <div class="" align="center" style="background-color:#ffe680">
 
+				
+			</div>
+				
+	             <table style="width:100%">
+                 <tr>
+                     <td>
+
+                     <div class="" align="center" style="background-color:#66ffff">SITE 1 : PPME</div>
+
+                         <table id="QtyTable" class="table" style="width:100%">
+                             <thead>
+                                 <tr>
+                                     <th align="center">Actual Qty</th>
+                                     <th align="center">Target Qty</th>
+
+                                </tr>
+                             </thead>
+          <!--                    <tbody>
+                                 <tr th:each="orderqty, rowStat: ${orderqtys}"
+                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+
+                                    <td th:text="${orderqty.actual}">Jack</td>
+                                     <td th:text="${orderqty.target}">23</td>
+                                 </tr>
+                             </tbody> -->
+                         </table>
+                     </td>
+
+                    <td>
+                     <div class="" align="center" style="background-color:#99ff99">SITE 2 : EXID</div>
+                         <table id="OEETable" class="table" style="width:100%">
+                             <thead>
+                                 <tr>
+                                     <th align="center">Availability</th>
+                                     <th align="center">Quality</th>
+                                     <th align="center">Performance</th>
+
+                                </tr>
+                             </thead>
+<!--                              <tbody>
+                                 <tr th:each="oee, rowStat: ${oees}"
+                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: red;'">
+
+                                    <td th:text="${oee.avail}">Jack</td>
+                                     <td th:text="${oee.qual}">23</td>
+                                     <td th:text="${oee.perf}">23</td>
+                                 </tr>
+                             </tbody> -->
+                         </table>
+                     </td>
+                 </tr>
+             </table>
+         </div>
+ </div>
 </body>
 </html>
