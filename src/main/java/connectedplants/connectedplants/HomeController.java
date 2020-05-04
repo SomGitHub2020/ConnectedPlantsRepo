@@ -39,10 +39,10 @@ public class HomeController {
 	    return "welcome";
 	  }
 	
-	@GetMapping("/production")
+	@GetMapping("/welcomeProd")
 	  public String prodInput(Model model) {
 	    model.addAttribute("login", new Login());
-	    return "production";
+	    return "welcomeProd";
 	  }
 	
 	  @PostMapping("/welcomeProd")
