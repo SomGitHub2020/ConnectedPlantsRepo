@@ -79,15 +79,18 @@
 
                                 </tr>
                              </thead>
-<!--                              <tbody>
-                                 <tr th:each="oee, rowStat: ${oees}"
-                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: red;'">
+                             <tbody>
+                                 <tr th:each="siteorder_b, rowStat: ${siteorder_bs}"
+                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 
-                                    <td th:text="${oee.avail}">Jack</td>
-                                     <td th:text="${oee.qual}">23</td>
-                                     <td th:text="${oee.perf}">23</td>
+                                    <td th:text="${siteorder_b.site}">Jack</td>
+                                     <td th:text="${siteorder_b.order}">23</td>
+                                     <td th:text="${siteorder_b.material}">Jack</td>
+                                     <td th:text="${siteorder_b.buildqty}">23</td>
+                                     <td th:text="${siteorder_b.yieldqty}">Jack</td>
+                                     <td th:text="${siteorder_b.scrappedqty}">23</td>
                                  </tr>
-                             </tbody> -->
+                             </tbody>
                          </table>
                      </td>
                  </tr>

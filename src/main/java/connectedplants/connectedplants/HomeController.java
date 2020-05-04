@@ -55,20 +55,23 @@ public class HomeController {
 	  public String prodSubmit(Model model) {
 		  
 		  List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
-		 // List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
+		  List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
 		  
 		  String siteAInput = "PPME";
+		  String siteBInput = "PPME";
           
           ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
           
           try {
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput);
+			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
           model.addAttribute("siteorder_as", listSiteOrderAs);
+          model.addAttribute("siteorder_bs", listSiteOrderBs);
           
 		  return "prod_analysis";
 	  }
