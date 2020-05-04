@@ -50,14 +50,18 @@
 
                                 </tr>
                              </thead>
-          <!--                    <tbody>
-                                 <tr th:each="orderqty, rowStat: ${orderqtys}"
+                             <tbody>
+                                 <tr th:each="siteorder_a, rowStat: ${siteorder_as}"
                                      th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 
-                                    <td th:text="${orderqty.actual}">Jack</td>
-                                     <td th:text="${orderqty.target}">23</td>
+                                    <td th:text="${siteorder_a.site}">Jack</td>
+                                     <td th:text="${siteorder_a.order}">23</td>
+                                     <td th:text="${siteorder_a.material}">Jack</td>
+                                     <td th:text="${siteorder_a.buildqty}">23</td>
+                                     <td th:text="${siteorder_a.yieldqty}">Jack</td>
+                                     <td th:text="${siteorder_a.scrappedqty}">23</td>
                                  </tr>
-                             </tbody> -->
+                             </tbody>
                          </table>
                      </td>
 

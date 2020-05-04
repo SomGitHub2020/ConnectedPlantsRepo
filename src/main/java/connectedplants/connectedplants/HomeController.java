@@ -16,6 +16,8 @@
 package connectedplants.connectedplants;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,8 +52,24 @@ public class HomeController {
 	  }
 	  
 	  @PostMapping("/production")
-	  public String prodSubmit() {
+	  public String prodSubmit(Model model) {
+		  
+		  List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
+		 // List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
+		  
+		  String siteAInput = "PPME";
+          
+          ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
+          
+          try {
+			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+          model.addAttribute("siteorder_as", listSiteOrderAs);
+          
 		  return "prod_analysis";
 	  }
 	  
