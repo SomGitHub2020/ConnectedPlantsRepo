@@ -58,7 +58,7 @@ public class HomeController {
 		  List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
 		  
 		  String siteAInput = "PPME";
-		  String siteBInput = "PPME";
+		  String siteBInput = "EXID";
           
           ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
           
