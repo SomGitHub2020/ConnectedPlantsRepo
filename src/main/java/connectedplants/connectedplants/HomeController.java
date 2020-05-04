@@ -41,7 +41,7 @@ public class HomeController {
 	
 	@GetMapping("/welcomeProd")
 	  public String prodInput(Model model) {
-		model.addAttribute("login", new Login());
+		
 	    return "welcomeProd";
 	  }
 	
