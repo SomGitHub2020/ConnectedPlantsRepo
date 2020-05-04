@@ -52,19 +52,21 @@ public class HomeController {
 	  }
 	  
 	  @PostMapping("/production")
-	  public String prodSubmit(Model model) {
+	  public String prodSubmit(Model model, @ModelAttribute Login login) {
 		  
 		  List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
 		  List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
 		  
 		  String siteAInput = "PPME";
 		  String siteBInput = "EXID";
+		  
+		  String fromDt = login.getFromdate();
           
           ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
           
           try {
-			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput);
-			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput);
+			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDt);
+			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDt);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

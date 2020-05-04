@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ShowProdAnalysisDetails {
 	
-	public String displaySiteOrder(List<SiteOrder> listSiteOrder, String siteInput) throws IOException{
+	public String displaySiteOrder(List<SiteOrder> listSiteOrder, String siteInput, String fromDt) throws IOException{
         String result="";
         try{  
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("SELECT * FROM `SHOP_ORDER` WHERE SITE ='"+siteInput+"'");  
+            ResultSet rs=stmt.executeQuery("SELECT * FROM `SHOP_ORDER` WHERE SITE ='"+siteInput+"' AND MODIFIED_DATE_TIME > '"+fromDt+"'");  
             while(rs.next()){  
                
                 String site = rs.getString(1);
