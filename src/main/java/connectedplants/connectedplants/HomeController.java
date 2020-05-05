@@ -42,24 +42,27 @@ public class HomeController {
 		return "welcome";
 	  }
 	
-	@GetMapping("/production")
-	  public String prodForm(Model model) {
-	   
-	    
-	    production.setFromdate("TEST");
-	    model.addAttribute("production", production);
-	    
-		return "production";
-	  }
-	
 		/*
-		 * @GetMapping("/welcomeProd") public String prodwlcForm(Model model) {
-		 * model.addAttribute("production", new Production());
+		 * @GetMapping("/production") public String prodForm(Model model) {
 		 * 
-		 * production.setFromdate("TEST");
+		 * 
+		 * production.setFromdate("TEST"); model.addAttribute("production", production);
 		 * 
 		 * return "production"; }
 		 */
+	
+		
+		  @GetMapping("/welcomeProd") 
+		  
+		  public String prodwlcForm(Model model) {
+			  production.setFromdate("TEST");
+			    model.addAttribute("production", production);
+			    
+				return "production";
+		  
+		  
+		  }
+		 
 	
 	
 	  @PostMapping("/welcomeProd")
