@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
 	Production production = new Production();
+	//production.
+	
 		
 	@GetMapping
     public String index() {
@@ -63,14 +65,12 @@ public class HomeController {
 		  
 		  }
 		 
-	
-	
-	  @PostMapping("/welcomeProd")
-	  public String prodWelcomeForm() {
-
-		  return "production";
-	  }
-	  
+			/*
+			 * @PostMapping("/welcomeProd") public String prodWelcomeForm() {
+			 * 
+			 * return "production"; }
+			 */
+		  
 	  @PostMapping("/welcomeRes")
 	  public String resWelcomeForm() {
 
