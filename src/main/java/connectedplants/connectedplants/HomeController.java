@@ -38,6 +38,10 @@ public class HomeController {
 	@GetMapping("/welcome")
 	  public String welcomeForm(Model model) {
 	    
+	    model.addAttribute("production", new Production());
+	    
+	    production.setFromdate("TEST");
+		
 		return "welcome";
 	  }
 	
@@ -50,6 +54,14 @@ public class HomeController {
 		return "production";
 	  }
 	
+	@GetMapping("/welcomeProd")
+	  public String prodwlcForm(Model model) {
+	    model.addAttribute("production", new Production());
+	    
+	    production.setFromdate("TEST");
+	    
+		return "production";
+	  }
 	
 	
 	  @PostMapping("/welcomeProd")
