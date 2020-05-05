@@ -54,22 +54,28 @@ public class HomeController {
 		 */
 	
 		
-		  @GetMapping("/welcomeProd") 
-		  
-		  public String prodwlcForm(Model model) {
-			  production.setFromdate("TEST");
-			    model.addAttribute("production", production);
-			    
-				return "production";
-		  
-		  
-		  }
+		/*
+		 * @GetMapping("/welcomeProd")
+		 * 
+		 * public String prodwlcForm(Model model) {
+		 * 
+		 * 
+		 * return "production";
+		 * 
+		 * 
+		 * }
+		 */
 		 
-			/*
-			 * @PostMapping("/welcomeProd") public String prodWelcomeForm() {
-			 * 
-			 * return "production"; }
-			 */
+			
+			  @PostMapping("/welcomeProd") 
+			  public String prodWelcomeForm(Model model) {
+			  
+				  production.setFromdate("TEST");
+				    model.addAttribute("production", production);
+				  
+			  return "production"; 
+			  }
+			 
 		  
 	  @PostMapping("/welcomeRes")
 	  public String resWelcomeForm() {
