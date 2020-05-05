@@ -35,15 +35,11 @@ public class HomeController {
 	
 	@GetMapping("/welcome")
 	  public String welcomeForm(Model model) {
-		model.addAttribute("login", new Login());
-	    return "welcome";
+	    
+		return "welcome";
 	  }
 	
-	@GetMapping("/welcomeProd")
-	  public String prodInput(Model model) {
-		
-	    return "welcomeProd";
-	  }
+
 	
 	  @PostMapping("/welcomeProd")
 	  public String prodForm() {
