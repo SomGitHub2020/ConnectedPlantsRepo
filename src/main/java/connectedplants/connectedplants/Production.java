@@ -1,9 +1,9 @@
 package connectedplants.connectedplants;
 
-public class Login {
+public class Production {
 	public String fromdate;
 
-	public Login() {
+	public Production() {
 		super();
 		
 	}

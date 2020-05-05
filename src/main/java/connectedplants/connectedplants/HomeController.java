@@ -42,26 +42,26 @@ public class HomeController {
 	
 	@GetMapping("/production")
 	  public String prodForm(Model model) {
-	    model.addAttribute("login", new Login());
+	    model.addAttribute("production", new Production());
 		return "production";
 	  }
 	
 	
 	
 	  @PostMapping("/welcomeProd")
-	  public String prodForm() {
+	  public String prodWelcomeForm() {
 
 		  return "production";
 	  }
 	  
 	  @PostMapping("/welcomeRes")
-	  public String resForm() {
+	  public String resWelcomeForm() {
 
 		  return "resource";
 	  }
 	  
 	  @PostMapping("/production")
-	  public String prodSubmit(Model model, @ModelAttribute Login login) {
+	  public String prodSubmit(Model model, @ModelAttribute Production production) {
 		  
 		  List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
 		  List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
@@ -69,7 +69,7 @@ public class HomeController {
 		  String siteAInput = "PPME";
 		  String siteBInput = "EXID";
 		  
-		  String fromDt = login.getFromdate();
+		  String fromDt = production.getFromdate();
           
           ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
           
