@@ -3,6 +3,11 @@ package connectedplants.connectedplants;
 public class Login {
 	public String fromdate;
 
+	public Login() {
+		super();
+		
+	}
+
 	public String getFromdate() {
 		return fromdate;
 	}

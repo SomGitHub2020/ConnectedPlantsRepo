@@ -11,7 +11,7 @@
 	<h1>Enter your details</h1>
     <form action="#" th:action="@{/production}" th:object="${login}" method="post">
 	    <!-- <p>From Date: <input type="text" th:field="*{fromdate}" /></p> -->
-	    <p>From Date: <input type="text" th:text="*{fromdate}" /></p>
+	    <p>From Date: <input type="text" th:field="*{fromdate}" /></p>
 
         <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
     </form>
