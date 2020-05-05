@@ -3,11 +3,6 @@ package connectedplants.connectedplants;
 public class Production {
 	public String fromdate;
 
-	public Production() {
-		super();
-		
-	}
-
 	public String getFromdate() {
 		return fromdate;
 	}
