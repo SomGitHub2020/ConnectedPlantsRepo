@@ -69,7 +69,8 @@ public class HomeController {
 		  String siteAInput = "PPME";
 		  String siteBInput = "EXID";
 		  
-		  String fromDt = production.getFromdate();
+		  //String fromDt = production.getFromdate();
+		  String fromDt = "2019-04-26T07:00:00";
           
           ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
           
