@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+	Production production;
 		
 	@GetMapping
     public String index() {
@@ -43,6 +44,9 @@ public class HomeController {
 	@GetMapping("/production")
 	  public String prodForm(Model model) {
 	    model.addAttribute("production", new Production());
+	    
+	    production.setFromdate("TEST");
+	    
 		return "production";
 	  }
 	

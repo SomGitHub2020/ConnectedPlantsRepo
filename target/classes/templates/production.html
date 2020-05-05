@@ -12,6 +12,7 @@
     <form action="#" th:action="@{/production}" th:object="${production}" method="post">
 	  
 	    <!-- <p>From Date: <input type="text" th:field="*{fromdate}" /></p> -->
+	    <p>From Date: <input type="text" th:text="${production.fromdate}" /></p>
 
         <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
     </form>
