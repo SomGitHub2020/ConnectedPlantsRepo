@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+		
 	@GetMapping
     public String index() {
       return "redirect:/welcome";
@@ -39,7 +40,13 @@ public class HomeController {
 		return "welcome";
 	  }
 	
-
+	@GetMapping("/production")
+	  public String prodForm(Model model) {
+	    model.addAttribute("login", new Login());
+		return "production";
+	  }
+	
+	
 	
 	  @PostMapping("/welcomeProd")
 	  public String prodForm() {
