@@ -38,10 +38,7 @@ public class HomeController {
 	@GetMapping("/welcome")
 	  public String welcomeForm(Model model) {
 	    
-	    model.addAttribute("production", new Production());
-	    
-	    production.setFromdate("TEST");
-		
+	
 		return "welcome";
 	  }
 	
