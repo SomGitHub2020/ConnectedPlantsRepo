@@ -34,7 +34,7 @@ public class HomeController {
 
 	Production production = new Production();
 
-	DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'00:00:00"); //2019-04-26T07:00:00
+	DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //2019-04-26T07:00:00
 	Date date = new Date();
 		
 	@GetMapping
