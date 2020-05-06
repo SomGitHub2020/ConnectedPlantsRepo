@@ -89,6 +89,11 @@ public class HomeController {
 		
 		String selectedOrderA = "1009505";
 		String selectedOrderB = "1000486";
+		
+		/*
+		 * String prefixShopOrderBO_A = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
+		 * String prefixShopOrderBO_B = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
+		 */
 
 		String fromDt = production.getFromdate();
 		String fromHours = production.getFromHH();
@@ -105,8 +110,8 @@ public class HomeController {
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDateTime);
 			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDateTime);
 			
-			showprodanalysisdata.displayOrderSFC(listOrderSfcAs, siteAInput,fromDateTime, selectedOrderA);
-			showprodanalysisdata.displayOrderSFC(listOrderSfcBs, siteBInput,fromDateTime, selectedOrderB);
+			showprodanalysisdata.displayOrderSFC(listOrderSfcAs, siteAInput, selectedOrderA);
+			showprodanalysisdata.displayOrderSFC(listOrderSfcBs, siteBInput, selectedOrderB);
 						
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

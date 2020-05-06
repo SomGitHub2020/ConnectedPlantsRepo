@@ -48,7 +48,7 @@ public class ShowProdAnalysisDetails {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("SELECT * FROM `SFC` WHERE SITE ='"+siteInput+"' AND MODIFIED_DATE_TIME > '"+fromDateTime+"' AND SHOP_ORDER = '"+selectedOrder+"'");  
+            ResultSet rs=stmt.executeQuery("SELECT * FROM `SFC` WHERE SITE ='"+siteInput+"' AND MODIFIED_DATE_TIME > '"+fromDateTime+"' AND SHOP_ORDER LIKE '%"+selectedOrder+"'");  
             while(rs.next()){  
                
                 String site = rs.getString(1);
