@@ -3,6 +3,28 @@
 <head>
     <title>Production Analysis - Give Details</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!-- Changes for Calendar Input Date - START -->
+    
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+
+	<script>
+	    $('.input-group.date').datepicker({
+	        autoclose: true,
+	        todayHighlight: true
+	    });
+	</script>
+	
+	<!-- Changes for Calendar Input Date - END -->
+    
 </head>
 <body align="center" bgcolor="#00bfff">
 	<!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
@@ -11,7 +33,7 @@
 	<h1>Enter your details</h1>
     <form action="#" th:action="@{/production}" th:object="${production}" method="post">
 	  
-	    <p>From Date: <input type="text" th:field="*{fromdate}" /></p>
+	    <p>From Date (yyyy-MM-dd'T'HH:mm:ss): <input type="text" th:field="*{fromdate}" /></p>
 	    <!-- <p>From Date: <input type="text" th:text="${production.fromdate}" /></p> -->
 	    
 
@@ -19,6 +41,27 @@
     </form>
    </div>
     
+    <!-- Changes for Calendar Input Date START -->
+    
+    <div class="container">
+	    <form method="post" th:object="${user}">
+	        <div class="form-group row">
+	            <div class="col-md-4 mt-5">
+	                <label for="birthdate">Date of birth</label>
+	                <div class="input-group date">
+	                    <!-- <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{birtdate}"/> -->
+	                    <input type="text" class="form-control" id="birthdate" autocomplete="off"/>
+	                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	
+	        <button class="btn btn-primary" type="submit">Submit form</button>
+	    </form>
+	</div>
+	
+	<!-- Changes for Calendar Input Date END -->
 
 </body>
 </html>

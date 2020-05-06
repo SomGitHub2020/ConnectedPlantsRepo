@@ -17,6 +17,16 @@
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    
+    <!-- Changes for Input Dates START -->
+    
+    <bootstrap.version>4.0.0-2</bootstrap.version>
+        <webjars-locator.version>0.30</webjars-locator.version>
+        <font-awesome.version>5.11.2</font-awesome.version>
+        <lombok.version>1.18.2</lombok.version>
+        
+    <!-- Changes for Input Dates END -->
+    
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -93,11 +103,35 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter</artifactId>
 	</dependency>
+	
+	<!-- Changes for Input Dates START -->
+	
+	<dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
+        </dependency>
 
-<!-- 	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-data-jpa</artifactId>
-	</dependency> -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+            <version>${webjars-locator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>${font-awesome.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+	<!-- Changes for Input Dates END -->
 	
 <!-- change end -->
     <!-- testing -->
