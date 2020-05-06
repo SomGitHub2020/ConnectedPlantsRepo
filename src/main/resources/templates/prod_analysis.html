@@ -87,6 +87,13 @@
 			    alert(selectedOrder);
 			}
 
+		    function changeColor(o){
+	        
+		        if(o.style.backgroundColor=='ffffcc')
+		        o.style.backgroundColor='';
+		        else
+		        o.style.backgroundColor='ffffcc';
+		    }
 		</script>
 	   
 	   
@@ -122,7 +129,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this);"
+											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this); changeColor(this);"
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_a.site}">Jack</td>
@@ -185,7 +192,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}" onclick="selectOrder(this);
+											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}" onclick="selectOrder(this); changeColor(this);"
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_b.site}">Jack</td>
