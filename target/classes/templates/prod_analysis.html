@@ -10,28 +10,50 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		
 		<style>
-		table, th, td {
-			border: 1px solid black;
-			
-		}
-		
-		th {
-			background: white;
-			position: sticky;
-			top: 0;
-		}
-		
-		.siteorderlist {
-			margin: auto;
-			height: 250px;
-			overflow-y: auto; /* This changed */
-		}
-		
-		.ordersfclist {
-			margin: auto;
-			height: 250px;
-			overflow-y: auto; /* This changed */
-		}
+				#SiteOrderTableA {
+					font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+					border-collapse: collapse;
+					width: 100%;
+				}
+				
+				#SiteOrderTableA td, #SiteOrderTableA th {
+					border: 1px solid #ddd;
+					padding: 8px;
+				}
+				
+				#SiteOrderTableA tr:nth-child(even) {
+					background-color: #f2f2f2;
+				}
+				
+				#SiteOrderTableA tr:hover {
+					background-color: #ddd;
+				}
+				
+				#SiteOrderTableA th {
+					padding-top: 12px;
+					padding-bottom: 12px;
+					text-align: left;
+					background-color: #4CAF50;
+					color: white;
+				}
+								
+				th {
+					background: white;
+					position: sticky;
+					top: 0;
+				}
+				
+				.siteorderlist {
+					margin: auto;
+					height: 250px;
+					overflow-y: auto; /* This changed */
+				}
+				
+				.ordersfclist {
+					margin: auto;
+					height: 250px;
+					overflow-y: auto; /* This changed */
+				}
 		</style>
 		
 		<script type="text/javascript">
