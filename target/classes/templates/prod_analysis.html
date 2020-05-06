@@ -122,8 +122,8 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this);">
-												<!-- th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'" -->
+											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this);"
+												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_a.site}">Jack</td>
 												<td th:text="${siteorder_a.order}">23</td>
@@ -152,7 +152,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="ordersfc_a, rowStat: ${ordersfc_as}"
+											<tr th:each="ordersfc_a, rowStat: ${ordersfc_as}" 
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${ordersfc_a.site}">Jack</td>
@@ -185,7 +185,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}"
+											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}" onclick="selectOrder(this);
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_b.site}">Jack</td>
