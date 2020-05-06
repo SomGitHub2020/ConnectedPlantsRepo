@@ -79,6 +79,36 @@
 									</table>
 								</font>
 							</div>
+							
+							<div class="ordersfclist">
+								<font size="2" face="Arial Narrow" >
+									<table id="OrderSFCTableA" class="table" style="width: 100%">
+										<thead>
+											<tr>
+												<th align="center">Site</th>
+												<th align="center">SFC</th>
+												<th align="center">Qty</th>
+												<th align="center">Qty Done</th>
+												<th align="center">Qty Scrapped</th>
+												<th align="center">Status</th>
+	
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="ordersfc_a, rowStat: ${ordersfc_as}"
+												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+	
+												<td th:text="${ordersfc_a.site}">Jack</td>
+												<td th:text="${ordersfc_a.sfc}">23</td>
+												<td th:text="${ordersfc_a.qty}">Jack</td>
+												<td th:text="${ordersfc_a.qtydone}">23</td>
+												<td th:text="${ordersfc_a.qtyscrapped}">Jack</td>
+												<td th:text="${ordersfc_a.status}">23</td>
+											</tr>
+										</tbody>
+									</table>
+								</font>
+							</div>
 						</td>
 
                     <td>
@@ -107,6 +137,36 @@
 												<td th:text="${siteorder_b.buildqty}">23</td>
 												<td th:text="${siteorder_b.yieldqty}">Jack</td>
 												<td th:text="${siteorder_b.scrappedqty}">23</td>
+											</tr>
+										</tbody>
+									</table>
+								</font>
+							</div>
+							
+							<div class="ordersfclist">
+								<font size="2" face="Arial Narrow" >
+									<table id="OrderSFCTableB" class="table" style="width: 100%">
+										<thead>
+											<tr>
+												<th align="center">Site</th>
+												<th align="center">SFC</th>
+												<th align="center">Qty</th>
+												<th align="center">Qty Done</th>
+												<th align="center">Qty Scrapped</th>
+												<th align="center">Status</th>
+	
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="ordersfc_b, rowStat: ${ordersfc_bs}"
+												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+	
+												<td th:text="${ordersfc_b.site}">Jack</td>
+												<td th:text="${ordersfc_b.sfc}">23</td>
+												<td th:text="${ordersfc_b.qty}">Jack</td>
+												<td th:text="${ordersfc_b.qtydone}">23</td>
+												<td th:text="${ordersfc_b.qtyscrapped}">Jack</td>
+												<td th:text="${ordersfc_b.status}">23</td>
 											</tr>
 										</tbody>
 									</table>

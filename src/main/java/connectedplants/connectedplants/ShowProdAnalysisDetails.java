@@ -40,5 +40,39 @@ public class ShowProdAnalysisDetails {
         return result;
 
    }
+
+	public String displayOrderSFC(List<OrderSFC> listOrderSfc, String siteInput, String fromDateTime, String selectedOrder) throws IOException {
+		
+        String result="";
+        try{  
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
+            Statement stmt=con.createStatement();  
+            ResultSet rs=stmt.executeQuery("SELECT * FROM `SFC` WHERE SITE ='"+siteInput+"' AND MODIFIED_DATE_TIME > '"+fromDateTime+"' AND SHOP_ORDER = '"+selectedOrder+"'");  
+            while(rs.next()){  
+               
+                String site = rs.getString(1);
+                String sfc = rs.getString(2);
+                String order = rs.getString(3);
+                String qty = rs.getString(4);
+                String qty_done = rs.getString(5);
+                String qty_scrapped = rs.getString(6);
+                String status = rs.getString(7);
+                String modified_dt = rs.getString(8);
+                
+                listOrderSfc.add(new OrderSFC(site, sfc, order, qty, qty_done, qty_scrapped, status, modified_dt));
+            }
+            result = "SUCCESS";
+            con.close();
+            //return result;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            result = "ERROR";
+        }
+		
+		return result;
+		
+	}
 	
 }

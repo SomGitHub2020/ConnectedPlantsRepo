@@ -80,9 +80,15 @@ public class HomeController {
 
 		List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
 		List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
+		
+		List<OrderSFC> listOrderSfcAs = new ArrayList<OrderSFC>();
+		List<OrderSFC> listOrderSfcBs = new ArrayList<OrderSFC>();
 
 		String siteAInput = "PPME";
 		String siteBInput = "EXID";
+		
+		String selectedOrderA = "1009505";
+		String selectedOrderB = "1000486";
 
 		String fromDt = production.getFromdate();
 		String fromHours = production.getFromHH();
@@ -98,6 +104,10 @@ public class HomeController {
 		try {
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDateTime);
 			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDateTime);
+			
+			showprodanalysisdata.displayOrderSFC(listOrderSfcAs, siteAInput,fromDateTime, selectedOrderA);
+			showprodanalysisdata.displayOrderSFC(listOrderSfcBs, siteBInput,fromDateTime, selectedOrderB);
+						
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,6 +115,9 @@ public class HomeController {
 
 		model.addAttribute("siteorder_as", listSiteOrderAs);
 		model.addAttribute("siteorder_bs", listSiteOrderBs);
+		
+		model.addAttribute("ordersfc_as", listOrderSfcAs);
+		model.addAttribute("ordersfc_bs", listOrderSfcBs);
 
 		return "prod_analysis";
 	}
