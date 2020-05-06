@@ -123,8 +123,8 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_a, rowStat: ${siteorder_as}"
-												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+											<tr th:each="siteorder_a, rowStat: ${siteorder_as}">
+												<!-- th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'" -->
 	
 												<td th:text="${siteorder_a.site}">Jack</td>
 												<td onclick="selectOrder(this);" th:text="${siteorder_a.order}"><a href="#">23</a></td>
