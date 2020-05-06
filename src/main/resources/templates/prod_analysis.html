@@ -82,9 +82,8 @@
 		
 		<script type="text/javascript">
 		
-			function selectOrder(cell){
-			    var cellContent = cell.innerHTML;
-			    var selectedOrder = cellContent.replace("<a href=\"#\">","").replace("</a>","");
+			function selectOrder(r){
+			    var selectedOrder = r.cells[1].innerHTML;
 			    alert(selectedOrder);
 			}
 
@@ -108,7 +107,7 @@
 
                      <div class="" align="center" style="background-color:#66ffff">SITE A : PPME</div>
 							<div class="siteorderlist">
-								<!-- <font size="2"> -->
+								<font size="2">
 									<table id="SiteOrderTableA" class="" style="width: 100%">
 										<thead>
 											<tr>
@@ -123,11 +122,11 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_a, rowStat: ${siteorder_as}">
+											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this);">
 												<!-- th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'" -->
 	
 												<td th:text="${siteorder_a.site}">Jack</td>
-												<td onclick="selectOrder(this);" th:text="${siteorder_a.order}"><a href="#">23</a></td>
+												<td th:text="${siteorder_a.order}">23</td>
 												<td th:text="${siteorder_a.material}">Jack</td>
 												<td th:text="${siteorder_a.buildqty}">23</td>
 												<td th:text="${siteorder_a.yieldqty}">Jack</td>
@@ -135,12 +134,12 @@
 											</tr>
 										</tbody>
 									</table>
-								<!-- </font> -->
+								</font>
 							</div>
 							
 							<div class="ordersfclist">
 								<font size="2">
-									<table id="OrderSFCTableA" class="table" style="width: 100%">
+									<table id="OrderSFCTableA" class="" style="width: 100%">
 										<thead>
 											<tr>
 												<th align="center">Site</th>
@@ -173,7 +172,7 @@
                      <div class="" align="center" style="background-color:#99ff99">SITE B : EXID</div>
 							<div class="siteorderlist">
 								<font size="2">
-									<table id="SiteOrderTableB" class="table" style="width: 100%">
+									<table id="SiteOrderTableB" class="" style="width: 100%">
 										<thead>
 											<tr>
 												<th align="center">Site</th>
@@ -203,7 +202,7 @@
 							
 							<div class="ordersfclist">
 								<font size="2">
-									<table id="OrderSFCTableB" class="table" style="width: 100%">
+									<table id="OrderSFCTableB" class="" style="width: 100%">
 										<thead>
 											<tr>
 												<th align="center">Site</th>
