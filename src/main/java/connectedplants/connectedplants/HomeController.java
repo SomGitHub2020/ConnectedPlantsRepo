@@ -60,6 +60,10 @@ public class HomeController {
 	    Date prevdate = c.getTime();
 		
 		production.setFromdate(sdf.format(prevdate));
+		production.setFromHH("00");
+		production.setFromMM("00");
+		production.setFromSS("00");
+		
 		model.addAttribute("production", production);
 
 		return "production"; 
@@ -81,13 +85,19 @@ public class HomeController {
 		String siteBInput = "EXID";
 
 		String fromDt = production.getFromdate();
-		//String fromDt = "2019-04-26T07:00:00";
+		String fromHours = production.getFromHH();
+		String fromMins = production.getFromMM();
+		String fromSeconds = production.getFromSS();
+		
+		String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
+		
+		//String fromDateTime = "2019-04-26T07:00:00";
 
 		ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
 
 		try {
-			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDt);
-			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDt);
+			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDateTime);
+			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDateTime);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
