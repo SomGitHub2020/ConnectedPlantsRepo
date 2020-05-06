@@ -6,7 +6,7 @@
     
     <!-- Changes for Calendar Input Date - START -->
     
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+<!--     <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
     <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
@@ -14,14 +14,25 @@
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	<script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script> -->
+	
+	  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
 
-	<script>
+<!-- 	<script>
 	    $('.input-group.date').datepicker({
 	        autoclose: true,
 	        todayHighlight: true
 	    });
-	</script>
+	</script> -->
+	
+	  <!-- Javascript -->  
+      <script>  
+         $(function() {  
+            $( "#datepicker-1" ).datepicker();  
+         });  
+      </script> 
 	
 	<!-- Changes for Calendar Input Date - END -->
     
@@ -43,14 +54,14 @@
     
     <!-- Changes for Calendar Input Date START -->
     
-  
+<!--   
     <div class="container">
 	    <form method="post" th:object="${user}">
 	        <div class="form-group row">
 	            <div class="col-md-4 mt-5">
 	                <label for="birthdate">Date of birth</label>
 	                <div class="input-group date">
-	                    <!-- <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{birtdate}"/> -->
+	                    <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{birtdate}"/>
 	                    <input type="text" class="form-control" id="birthdate" autocomplete="off"/>
 	                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
 	                    </div>
@@ -60,7 +71,10 @@
 	
 	        <button class="btn btn-primary" type="submit">Submit form</button>
 	    </form>
-	</div>
+	</div> -->
+	
+	 <!-- HTML -->   
+      <p>Enter Date: <input type="text" id="datepicker-1"></p> 
 	
 	<!-- Changes for Calendar Input Date END -->
 
