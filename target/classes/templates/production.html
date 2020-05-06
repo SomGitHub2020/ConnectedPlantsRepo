@@ -12,9 +12,21 @@
 	
 	  <!-- Javascript -->  
       <script>  
+         
          $(function() {  
-            $( "#datepicker-1" ).datepicker();  
-         });  
+             $( "#datepicker-1" ).datepicker({  
+                appendText:"(yy-mm-dd)",  
+                dateFormat:"yy-mm-dd",  
+             });  
+          }); 
+         
+         $(function() {  
+             $( "#birthday" ).datepicker({  
+                appendText:"(yy-mm-dd)",  
+                dateFormat:"yy-mm-dd",  
+ 
+             });  
+          }); 
       </script> 
 	
 	<!-- Changes for Calendar Input Date - END -->
@@ -39,7 +51,8 @@
     
 	
 	 <!-- HTML -->   
-      <p>Enter Date: <input type="text" id="datepicker-1"></p> 
+      <p>Enter Date: <input type="text" id="datepicker-1" size="10"> 
+      <input type="text" id="time-HH" maxlength="2" size="2">:<input type="text" id="time-mm" maxlength="2" size="2">:<input type="text" id="time-ss" maxlength="2" size="2"></p> 
       
       <p>Alternate <input type="date" id="birthday" name="birthday"></p>
 	
