@@ -10,33 +10,57 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		
 		<style>
-				#SiteOrderTableA {
+				#SiteOrderTableA, #SiteOrderTableB, #OrderSFCTableA, #OrderSFCTableB {
 					font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 					border-collapse: collapse;
 					width: 100%;
 				}
 				
-				#SiteOrderTableA td, #SiteOrderTableA th {
+				#SiteOrderTableA td, #SiteOrderTableA th, #SiteOrderTableB td, #SiteOrderTableB th, #OrderSFCTableA td, #OrderSFCTableA th, #OrderSFCTableB td, #OrderSFCTableB th {
 					border: 1px solid #ddd;
 					padding: 8px;
 				}
 				
-				#SiteOrderTableA tr:nth-child(even) {
+				#SiteOrderTableA tr:nth-child(even), #SiteOrderTableB tr:nth-child(odd), #OrderSFCTableA tr:nth-child(even), #OrderSFCTableB tr:nth-child(odd) {
 					background-color: #f2f2f2;
 				}
 				
-				#SiteOrderTableA tr:hover {
+				#SiteOrderTableA tr:hover, #SiteOrderTableB tr:hover, #OrderSFCTableA tr:hover, #OrderSFCTableB tr:hover{
 					background-color: #ddd;
 				}
 				
 				#SiteOrderTableA th {
 					padding-top: 12px;
 					padding-bottom: 12px;
-					text-align: left;
+					text-align: Center;
 					background-color: #4CAF50;
 					color: white;
 				}
 								
+				#SiteOrderTableB th {
+					padding-top: 12px;
+					padding-bottom: 12px;
+					text-align: Center;
+					background-color: #3366ff;
+					color: white;
+				}
+				
+				#OrderSFCTableA th {
+					padding-top: 12px;
+					padding-bottom: 12px;
+					text-align: Center;
+					background-color: #ff6666;
+					color: white;
+				}
+								
+				#OrderSFCTableB th {
+					padding-top: 12px;
+					padding-bottom: 12px;
+					text-align: Center;
+					background-color: #999966;
+					color: white;
+				}
+				
 				th {
 					background: white;
 					position: sticky;
