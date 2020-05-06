@@ -110,8 +110,8 @@ public class HomeController {
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDateTime);
 			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDateTime);
 			
-			showprodanalysisdata.displayOrderSFC(listOrderSfcAs, siteAInput, selectedOrderA);
-			showprodanalysisdata.displayOrderSFC(listOrderSfcBs, siteBInput, selectedOrderB);
+			showprodanalysisdata.displayOrderSFC(listOrderSfcAs, siteAInput, fromDateTime, selectedOrderA);
+			showprodanalysisdata.displayOrderSFC(listOrderSfcBs, siteBInput, fromDateTime, selectedOrderB);
 						
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
