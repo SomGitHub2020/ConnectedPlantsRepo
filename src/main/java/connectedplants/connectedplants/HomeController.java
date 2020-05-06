@@ -16,7 +16,10 @@
 package connectedplants.connectedplants;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -29,75 +32,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
 	Production production = new Production();
-	//production.
-	
+
+	DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
 		
 	@GetMapping
-    public String index() {
-      return "redirect:/welcome";
-    }
-	
-	@GetMapping("/welcome")
-	  public String welcomeForm(Model model) {
-	    
-	
-		return "welcome";
-	  }
-	
-		/*
-		 * @GetMapping("/production") public String prodForm(Model model) {
-		 * 
-		 * 
-		 * production.setFromdate("TEST"); model.addAttribute("production", production);
-		 * 
-		 * return "production"; }
-		 */
-	
-		
-		/*
-		 * @GetMapping("/welcomeProd")
-		 * 
-		 * public String prodwlcForm(Model model) {
-		 * 
-		 * 
-		 * return "production";
-		 * 
-		 * 
-		 * }
-		 */
-		 
-			
-			  @PostMapping("/welcomeProd") 
-			  public String prodWelcomeForm(Model model) {
-			  
-				  production.setFromdate("TEST");
-				    model.addAttribute("production", production);
-				  
-			  return "production"; 
-			  }
-			 
-		  
-	  @PostMapping("/welcomeRes")
-	  public String resWelcomeForm() {
+	public String index() {
+		return "redirect:/welcome";
+	}
 
-		  return "resource";
-	  }
-	  
-	  @PostMapping("/production")
-	  public String prodSubmit(Model model, @ModelAttribute Production production) {
-		  
-		  List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
-		  List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
-		  
-		  String siteAInput = "PPME";
-		  String siteBInput = "EXID";
-		  
-		  //String fromDt = production.getFromdate();
-		  String fromDt = "2019-04-26T07:00:00";
-          
-          ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
-          
-          try {
+	@GetMapping("/welcome")
+	public String welcomeForm(Model model) {
+
+
+		return "welcome";
+	}
+
+	@PostMapping("/welcomeProd") 
+	public String prodWelcomeForm(Model model) {
+	
+		production.setFromdate(sdf.format(date));
+		model.addAttribute("production", production);
+
+		return "production"; 
+	}
+
+	@PostMapping("/welcomeRes")
+	public String resWelcomeForm() {
+
+		return "resource";
+	}
+
+	@PostMapping("/production")
+	public String prodSubmit(Model model, @ModelAttribute Production production) {
+
+		List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
+		List<SiteOrder> listSiteOrderBs = new ArrayList<SiteOrder>();
+
+		String siteAInput = "PPME";
+		String siteBInput = "EXID";
+
+		//String fromDt = production.getFromdate();
+		String fromDt = "2019-04-26T07:00:00";
+
+		ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
+
+		try {
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDt);
 			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDt);
 		} catch (IOException e) {
@@ -105,15 +85,15 @@ public class HomeController {
 			e.printStackTrace();
 		}
 
-          model.addAttribute("siteorder_as", listSiteOrderAs);
-          model.addAttribute("siteorder_bs", listSiteOrderBs);
-          
-		  return "prod_analysis";
-	  }
-	  
-	  @PostMapping("/resource")
-	  public String resSubmit() {
+		model.addAttribute("siteorder_as", listSiteOrderAs);
+		model.addAttribute("siteorder_bs", listSiteOrderBs);
 
-		  return "res_analysis";
-	  }
+		return "prod_analysis";
+	}
+
+	@PostMapping("/resource")
+	public String resSubmit() {
+
+		return "res_analysis";
+	}
 }
