@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,8 +34,10 @@ public class HomeController {
 
 	Production production = new Production();
 
-	DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	DateFormat sdf = new SimpleDateFormat("yyyy-MM-ddT00:00:00"); //2019-04-26T07:00:00
 	Date date = new Date();
+	
+
 		
 	@GetMapping
 	public String index() {
@@ -51,7 +54,14 @@ public class HomeController {
 	@PostMapping("/welcomeProd") 
 	public String prodWelcomeForm(Model model) {
 	
-		production.setFromdate(sdf.format(date));
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+	    
+	    c.add(Calendar.DATE, -1);
+	    
+	    Date prevdate = c.getTime();
+		
+		production.setFromdate(sdf.format(prevdate));
 		model.addAttribute("production", production);
 
 		return "production"; 
