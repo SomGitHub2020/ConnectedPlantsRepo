@@ -83,24 +83,24 @@
 		<script type="text/javascript">
 		
 			function selectOrder(r){
+				
+		        if(r.style.backgroundColor=='ffffcc')
+			        r.style.backgroundColor='';
+			    else
+			        r.style.backgroundColor='ffffcc';
+		        
 			    var selectedOrder = r.cells[1].innerHTML;
 			    alert(selectedOrder);
+			    
 			}
 
-		    function changeColor(o){
-	        
-		        if(o.style.backgroundColor=='ffffcc')
-		        o.style.backgroundColor='';
-		        else
-		        o.style.backgroundColor='ffffcc';
-		    }
 		</script>
 	   
 	   
 </head>
 <body>
  <div class="" align="center">
-	<h2>Global Manufacturing Production Performance</h2>
+	<div class="" align="center" style="background-color:#ffffcc"><h3 style="color:blue;">Global Manufacturing Production Performance</h3></div>
 	 <div class="" align="center">
          <div class="" align="center">
 	     <div class="" align="center" style="background-color:#ffe680">
@@ -129,7 +129,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this); changeColor(this);"
+											<tr th:each="siteorder_a, rowStat: ${siteorder_as}" onclick="selectOrder(this);"
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_a.site}">Jack</td>
@@ -192,7 +192,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}" onclick="selectOrder(this); changeColor(this);"
+											<tr th:each="siteorder_b, rowStat: ${siteorder_bs}" onclick="selectOrder(this);"
 												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 	
 												<td th:text="${siteorder_b.site}">Jack</td>
