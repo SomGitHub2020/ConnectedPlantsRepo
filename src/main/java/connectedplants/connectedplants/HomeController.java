@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -128,8 +129,29 @@ public class HomeController {
 	}
 
 	@PostMapping("/resource")
-	public String resSubmit() {
+	public String resSubmit(Model model) {
 
+        //first, add the regional sales
+        Integer northeastSales = 17089;
+        Integer westSales = 10603;
+        Integer midwestSales = 5223;
+        Integer southSales = 10111;
+        
+        model.addAttribute("northeastSales", northeastSales);
+        model.addAttribute("southSales", southSales);
+        model.addAttribute("midwestSales", midwestSales);
+        model.addAttribute("westSales", westSales);
+        
+        //now add sales by lure type
+        List<Integer> inshoreSales = Arrays.asList(4074, 3455, 4112);
+        List<Integer> nearshoreSales = Arrays.asList(3222, 3011, 3788);
+        List<Integer> offshoreSales = Arrays.asList(7811, 7098, 6455);
+        
+        model.addAttribute("inshoreSales", inshoreSales);
+        model.addAttribute("nearshoreSales", nearshoreSales);
+        model.addAttribute("offshoreSales", offshoreSales);
+        
+		
 		return "res_analysis";
 	}
 }
