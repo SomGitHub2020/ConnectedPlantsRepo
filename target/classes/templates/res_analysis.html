@@ -125,12 +125,19 @@
                     tooltip: {
                       	pointFormat: "{point.y:,.0f} Hours"
                     },
+                    xAxis: {
+                    	categories: [[${barChartData.keySet()}]],
+                      },
                     plotOptions: {
                     	pie: {
                     		allowPointSelect: true,
                     		depth: 35,
                     		dataLabels: {
-                                enabled: false
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
                             },
                             showInLegend: true
                     	}
