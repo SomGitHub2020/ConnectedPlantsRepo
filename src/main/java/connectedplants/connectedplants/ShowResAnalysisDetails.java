@@ -19,7 +19,7 @@ public class ShowResAnalysisDetails {
             ResultSet rs=stmt.executeQuery(
             		"SELECT RESOURCE , RAND()*(100) FROM `RESOURCE_TIME_LOG` "
             		+ "WHERE RESOURCE = '"+resource+"' "
-            		+ "ORDER BY START_DATE_TIME desc"
+            		+ "ORDER BY START_DATE_TIME desc "
             		+ "LIMIT 4"
             		);  
             while(rs.next()){  
@@ -39,7 +39,7 @@ public class ShowResAnalysisDetails {
             result = "ERROR";
         }
         //System.out.println(e);
-        return result;
+        return durationlist;
 		
 	}
 
