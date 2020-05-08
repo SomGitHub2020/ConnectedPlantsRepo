@@ -149,10 +149,10 @@ public class HomeController {
 		
 		String arr[] = reasonCodeCSV.split(",");
         //first, add the regional sales
-        Integer northeastSales = Integer.parseInt(arr[0]);
-        Integer westSales = Integer.parseInt(arr[1]);
-        Integer midwestSales = Integer.parseInt(arr[2]);
-        Integer southSales = Integer.parseInt(arr[3]);
+        Integer northeastSales = Integer.parseInt(arr[0].split("\\.")[0]);
+        Integer westSales = Integer.parseInt(arr[1].split("\\.")[0]);
+        Integer midwestSales = Integer.parseInt(arr[2].split("\\.")[0]);
+        Integer southSales = Integer.parseInt(arr[3].split("\\.")[0]);
         
         model.addAttribute("northeastSales", northeastSales);
         model.addAttribute("southSales", southSales);
