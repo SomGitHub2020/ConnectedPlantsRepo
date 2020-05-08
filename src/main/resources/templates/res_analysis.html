@@ -35,7 +35,14 @@
                             <div class="col-md-6" style="margin-top:20px">
                                 <div id="resReasonCodesChartID" style="width:100%; height:400px;">test2</div>
                             </div>
-
+                            <div class="col-md-6" style="margin-top:20px">
+                                <div id="salesByType" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
+                            <div class="col-md-6" style="margin-top:20px">
+                                <div id="resReasonCodesChart_1ID" style="width:100%; height:400px;">test2</div>
+                            </div>
+							
                         </div>                        
                     </div>
                 </div>
@@ -53,6 +60,8 @@
                 });
 
              	drawResReasonCodesChart();
+             	//drawResReasonCodesChart_1();
+             	drawSalesByTypeChart
             });
             
             
@@ -99,6 +108,49 @@
                 });
             }
             
+            function drawResReasonCodesChart_1() {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChart_1ID', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'DownTime By Duration (Dynamic)'
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} Hours"
+                    },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35
+                    	}
+                    },
+                    series: [{
+                        name: 'Reason Codes',
+                        colorByPoint:true,
+                        data: [{
+                            name: 'Reason Code 1',
+                            y: /*[[${northeastSales}]]*/ 0
+                        },{
+                            name: 'Reason Code 2',
+                            y: /*[[${southSales}]]*/ 0
+                        },{
+                            name: 'Reason Code 3',
+                            y: /*[[${midwestSales}]]*/ 0
+                        },{
+                            name: 'Reason Code 4',
+                            y: /*[[${westSales}]]*/ 0
+                        }]
+                	}]
+                });
+            }
+            
             function drawSalesByTypeChart() {
                 var salesByTypeChart = Highcharts.chart('salesByType', {
                     chart: {
@@ -115,7 +167,8 @@
                         text: 'Sales by Lure Type'
                     },
                     xAxis: {
-                        categories: ['May', 'June', 'July']
+                        categories: [[${barChartData.keySet()}]],
+                        crosshair: true
                     },
                     yAxis: {
                         title: {
@@ -134,14 +187,8 @@
                         }
                     },
                     series: [{
-                        name: 'Inshore',
-                        data: /*[[${inshoreSales}]]*/ []
-                    }, {
-                        name: 'Nearshore',
-                        data: /*[[${nearshoreSales}]]*/ []
-                    }, {
-                        name: 'Offshore',
-                        data: /*[[${offshoreSales}]]*/ []
+                        name: 'Nepal',
+                        data: [[${barChartData.values()}]]
                     }]
                 });
             }

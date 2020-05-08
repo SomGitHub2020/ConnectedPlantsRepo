@@ -22,7 +22,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -160,14 +162,16 @@ public class HomeController {
         model.addAttribute("westSales", westSales);
         
         //now add sales by lure type
-        List<Integer> inshoreSales = Arrays.asList(4074, 3455, 4112);
-        List<Integer> nearshoreSales = Arrays.asList(3222, 3011, 3788);
-        List<Integer> offshoreSales = Arrays.asList(7811, 7098, 6455);
+        Map<String,Long> barChartData = new HashMap<>();
         
-        model.addAttribute("inshoreSales", inshoreSales);
-        model.addAttribute("nearshoreSales", nearshoreSales);
-        model.addAttribute("offshoreSales", offshoreSales);
+        barChartData.put("Samsung",5000L);
+        barChartData.put("Iphone",10000L);
+        barChartData.put("MI",2000L);
+        barChartData.put("Lava",4000L);
+        barChartData.put("Oppo",3560L);
+        barChartData.put("HTC",5560L);
         
+        model.addAttribute("barChartData",barChartData);
 		
 		return "res_analysis";
 	}
