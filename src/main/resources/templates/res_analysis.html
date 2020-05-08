@@ -4,13 +4,13 @@
     <head>
         <title>Resource Analysis - View</title>
         <meta content="This demo shows how to use HighCharts with Spring Boot" name="description" />
-        <object th:include="fragments/head :: head" th:remove="tag"></object>
+        <!-- <object th:include="fragments/head :: head" th:remove="tag"></object> -->
         
         <link th:href="@{/assets/pages/css/profile.min.css}" rel="stylesheet" type="text/css" />
     </head>
     
     <body class="page-container-bg-solid">
-       <div th:include="fragments/topmenuheader :: header"></div>
+       <!-- <div th:include="fragments/topmenuheader :: header"></div> -->
         <div class="page-container">
             <div class="page-content-wrapper">
                 <div class="page-head" style="background-color:#eff3f8;padding-top:40px">
@@ -22,17 +22,17 @@
                         </div>
                         <div class="row" style="margin-bottom:30px">
                             <div class="col-md-6" style="margin-top:20px">
-                                <div id="salesByType" style="width:100%; height:400px;"></div>
+                                <div id="salesByType" style="width:100%; height:400px;">test1</div>
                             </div>
                             <div class="col-md-6" style="margin-top:20px">
-                                <div id="salesByRegion" style="width:100%; height:400px;"></div>
+                                <div id="salesByRegion" style="width:100%; height:400px;">test2</div>
                             </div>
                         </div>                        
                     </div>
                 </div>
             </div>
         </div>
-        <div th:include="fragments/homefooter :: footer"></div>
+        <!-- <div th:include="fragments/homefooter :: footer"></div> -->
        <script th:inline="javascript">
         /*<![CDATA[*/
             $(function () { 
