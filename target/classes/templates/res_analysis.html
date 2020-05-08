@@ -60,7 +60,7 @@
                 });
 
              	drawResReasonCodesChart();
-             	//drawResReasonCodesChart_1();
+             	drawResReasonCodesChart_1();
              	drawSalesByTypeChart();
             });
             
@@ -134,19 +134,7 @@
                     series: [{
                         name: 'Reason Codes',
                         colorByPoint:true,
-                        data: [{
-                            name: 'Reason Code 1',
-                            y: /*[[${northeastSales}]]*/ 0
-                        },{
-                            name: 'Reason Code 2',
-                            y: /*[[${southSales}]]*/ 0
-                        },{
-                            name: 'Reason Code 3',
-                            y: /*[[${midwestSales}]]*/ 0
-                        },{
-                            name: 'Reason Code 4',
-                            y: /*[[${westSales}]]*/ 0
-                        }]
+                        data: [[${barChartData.values()}]]
                 	}]
                 });
             }
