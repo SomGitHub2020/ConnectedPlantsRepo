@@ -59,7 +59,7 @@
             
             
             function drawSalesByRegionChart() {
-                var salesByRegionChart = new Highcharts.chart('salesByRegion', {
+                var salesByRegionChart = Highcharts.chart('salesByRegion', {
                     chart: {
                         type: 'pie',
                         margin: 40,
@@ -102,7 +102,7 @@
             }
             
             function drawSalesByTypeChart() {
-                var salesByTypeChart = new Highcharts.chart('salesByType', {
+                var salesByTypeChart = Highcharts.chart('salesByType', {
                     chart: {
                         type: 'column',
                         margin: 75,
