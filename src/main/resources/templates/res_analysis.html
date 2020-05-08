@@ -128,7 +128,11 @@
                     plotOptions: {
                     	pie: {
                     		allowPointSelect: true,
-                    		depth: 35
+                    		depth: 35,
+                    		dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
                     	}
                     },
                     series: [{
@@ -142,7 +146,7 @@
             function drawSalesByTypeChart() {
                 var salesByTypeChart = Highcharts.chart('salesByType', {
                     chart: {
-                        type: 'pie',
+                        type: 'column',
                         margin: 75,
                         options3d: {
    							enabled: true,
