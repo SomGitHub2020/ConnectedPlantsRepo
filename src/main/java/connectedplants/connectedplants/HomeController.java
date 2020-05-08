@@ -131,11 +131,28 @@ public class HomeController {
 	@PostMapping("/resource")
 	public String resSubmit(Model model) {
 
+		String resource = "ResourceBO:EXID,RES1-1";
+		
+		String reasonCodeCSV = "";
+		
+		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
+
+		try {
+			reasonCodeCSV = showresanalysisdata.getReasonCodesDuration(resource);
+			
+
+						
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String arr[] = reasonCodeCSV.split(",");
         //first, add the regional sales
-        Integer northeastSales = 17089;
-        Integer westSales = 10603;
-        Integer midwestSales = 5223;
-        Integer southSales = 10111;
+        Integer northeastSales = Integer.parseInt(arr[0]);
+        Integer westSales = Integer.parseInt(arr[1]);
+        Integer midwestSales = Integer.parseInt(arr[2]);
+        Integer southSales = Integer.parseInt(arr[3]);
         
         model.addAttribute("northeastSales", northeastSales);
         model.addAttribute("southSales", southSales);

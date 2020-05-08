@@ -31,12 +31,11 @@
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:30px">
+
                             <div class="col-md-6" style="margin-top:20px">
-                                <div id="salesByType" style="width:100%; height:400px;">test1</div>
+                                <div id="resReasonCodesChartID" style="width:100%; height:400px;">test2</div>
                             </div>
-                            <div class="col-md-6" style="margin-top:20px">
-                                <div id="salesByRegion" style="width:100%; height:400px;">test2</div>
-                            </div>
+
                         </div>                        
                     </div>
                 </div>
@@ -53,13 +52,12 @@
                     }
                 });
 
-                drawSalesByTypeChart();
-				drawSalesByRegionChart();
+             	drawResReasonCodesChart();
             });
             
             
             function drawSalesByRegionChart() {
-                var salesByRegionChart = Highcharts.chart('salesByRegion', {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID', {
                     chart: {
                         type: 'pie',
                         margin: 40,
@@ -70,7 +68,7 @@
                         }
                     },
                     title: {
-                        text: 'Sales by Region'
+                        text: 'DownTime By Duration'
                     },
                     tooltip: {
                       	pointFormat: "${point.y:,.0f}"
@@ -82,19 +80,19 @@
                     	}
                     },
                     series: [{
-                        name: 'Regions',
+                        name: 'Reason Codes',
                         colorByPoint:true,
                         data: [{
-                            name: 'Northeast',
+                            name: 'Reason Code 1',
                             y: /*[[${northeastSales}]]*/ 0
                         },{
-                            name: 'South',
+                            name: 'Reason Code 2',
                             y: /*[[${southSales}]]*/ 0
                         },{
-                            name: 'Midwest',
+                            name: 'Reason Code 3',
                             y: /*[[${midwestSales}]]*/ 0
                         },{
-                            name: 'West',
+                            name: 'Reason Code 4',
                             y: /*[[${westSales}]]*/ 0
                         }]
                 	}]
