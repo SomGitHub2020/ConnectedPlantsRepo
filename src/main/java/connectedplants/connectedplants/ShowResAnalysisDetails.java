@@ -17,7 +17,7 @@ public class ShowResAnalysisDetails {
             Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery(
-            		"SELECT RESOURCE , RAND()*(100) FROM `RESOURCE_TIME_LOG` "
+            		"SELECT RESOURCE , FLOOR(RAND()*(100)) FROM `RESOURCE_TIME_LOG` "
             		+ "WHERE RESOURCE = '"+resource+"' "
             		+ "ORDER BY START_DATE_TIME desc "
             		+ "LIMIT 4"
