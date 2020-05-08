@@ -9,8 +9,13 @@
         <!-- <link th:href="@{/assets/pages/css/profile.min.css}" rel="stylesheet" type="text/css" /> -->
         <link rel="stylesheet" href="/connectedplants/src/main/resources/static/assets/pages/css/profile.min.css"/>
         
-        <script src="/connectedplants/src/main/resources/static/assets/global/plugins/highcharts/js/highcharts.js"></script>
-        <script src="/connectedplants/src/main/resources/static/assets/global/plugins/highcharts/js/highcharts-3d.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <!-- <script src="https://code.highcharts.com/highcharts-3d.js"></script> -->
         
     </head>
     
@@ -54,7 +59,7 @@
             
             
             function drawSalesByRegionChart() {
-                var salesByRegionChart = Highcharts.chart('salesByRegion', {
+                var salesByRegionChart = new Highcharts.chart('salesByRegion', {
                     chart: {
                         type: 'pie',
                         margin: 40,
@@ -97,7 +102,7 @@
             }
             
             function drawSalesByTypeChart() {
-                var salesByTypeChart = Highcharts.chart('salesByType', {
+                var salesByTypeChart = new Highcharts.chart('salesByType', {
                     chart: {
                         type: 'column',
                         margin: 75,
