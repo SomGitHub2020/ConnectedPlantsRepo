@@ -20,7 +20,7 @@ public class ShowResAnalysisDetails {
             		"SELECT RESOURCE , FLOOR(RAND()*(100)) FROM `RESOURCE_TIME_LOG` "
             		+ "WHERE RESOURCE = '"+resource+"' "
             		+ "ORDER BY START_DATE_TIME desc "
-            		+ "LIMIT 4"
+			/* + "LIMIT 4" */
             		);  
             while(rs.next()){  
                
