@@ -149,24 +149,30 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
-		String arr[] = reasonCodeCSV.split(",");
-        //first, add the regional sales
-        Integer northeastSales = Integer.parseInt(arr[0].split("\\.")[0]);
-        Integer westSales = Integer.parseInt(arr[1].split("\\.")[0]);
-        Integer midwestSales = Integer.parseInt(arr[2].split("\\.")[0]);
-        Integer southSales = Integer.parseInt(arr[3].split("\\.")[0]);
-        
-        model.addAttribute("northeastSales", northeastSales);
-        model.addAttribute("southSales", southSales);
-        model.addAttribute("midwestSales", midwestSales);
-        model.addAttribute("westSales", westSales);
-        
+		/*
+		 * String arr[] = reasonCodeCSV.split(","); //first, add the regional sales
+		 * Integer northeastSales = Integer.parseInt(arr[0].split("\\.")[0]); Integer
+		 * westSales = Integer.parseInt(arr[1].split("\\.")[0]); Integer midwestSales =
+		 * Integer.parseInt(arr[2].split("\\.")[0]); Integer southSales =
+		 * Integer.parseInt(arr[3].split("\\.")[0]);
+		 * 
+		 * model.addAttribute("northeastSales", northeastSales);
+		 * model.addAttribute("southSales", southSales);
+		 * model.addAttribute("midwestSales", midwestSales);
+		 * model.addAttribute("westSales", westSales);
+		 */
         //now add sales by lure type
         Map<String,Integer> barChartData = new HashMap<>();
         
-        for(int i=0; i<arr.length; i++)
+		/*
+		 * for(int i=0; i<arr.length; i++) {
+		 * barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+		 * }
+		 */
+        
+        for(int i=0; i< 4; i++)
         {
-        	barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+        	barChartData.put("Resource_"+(i+1),Integer.parseInt(String.valueOf(Math.floor(Math.random()*100)).split("\\.")[0]));
         }
         
 		/*
