@@ -162,14 +162,18 @@ public class HomeController {
         model.addAttribute("westSales", westSales);
         
         //now add sales by lure type
-        Map<String,Long> barChartData = new HashMap<>();
+        Map<String,Integer> barChartData = new HashMap<>();
         
-        barChartData.put("Samsung",5000L);
-        barChartData.put("Iphone",10000L);
-        barChartData.put("MI",2000L);
-        barChartData.put("Lava",4000L);
-        barChartData.put("Oppo",3560L);
-        barChartData.put("HTC",5560L);
+        for(int i=0; i<arr.length; i++)
+        {
+        	barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+        }
+        
+		/*
+		 * barChartData.put("Samsung",5000L); barChartData.put("Iphone",10000L);
+		 * barChartData.put("MI",2000L); barChartData.put("Lava",4000L);
+		 * barChartData.put("Oppo",3560L); barChartData.put("HTC",5560L);
+		 */
         
         model.addAttribute("barChartData",barChartData);
 		
