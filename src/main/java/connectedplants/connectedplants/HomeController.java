@@ -90,7 +90,7 @@ public class HomeController {
 		String siteAInput = "PPME";
 		String siteBInput = "EXID";
 		
-		String selectedOrderA = "1009505";
+		String selectedOrderA = "PLATETRT005";
 		String selectedOrderB = "1000486";
 		
 		/*
@@ -149,37 +149,22 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
-		/*
-		 * String arr[] = reasonCodeCSV.split(","); //first, add the regional sales
-		 * Integer northeastSales = Integer.parseInt(arr[0].split("\\.")[0]); Integer
-		 * westSales = Integer.parseInt(arr[1].split("\\.")[0]); Integer midwestSales =
-		 * Integer.parseInt(arr[2].split("\\.")[0]); Integer southSales =
-		 * Integer.parseInt(arr[3].split("\\.")[0]);
-		 * 
-		 * model.addAttribute("northeastSales", northeastSales);
-		 * model.addAttribute("southSales", southSales);
-		 * model.addAttribute("midwestSales", midwestSales);
-		 * model.addAttribute("westSales", westSales);
-		 */
-        //now add sales by lure type
+		
+		  String arr[] = reasonCodeCSV.split(","); 
+	
         Map<String,Integer> barChartData = new HashMap<>();
+   		
+		  for(int i=0; i<arr.length; i++) {
+		  barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+		  }
+		 
         
 		/*
-		 * for(int i=0; i<arr.length; i++) {
-		 * barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
-		 * }
+		 * for(int i=0; i< 4; i++) {
+		 * barChartData.put("Resource_"+(i+1),Integer.parseInt(String.valueOf(Math.floor
+		 * (Math.random()*100)).split("\\.")[0])); }
 		 */
-        
-        for(int i=0; i< 4; i++)
-        {
-        	barChartData.put("Resource_"+(i+1),Integer.parseInt(String.valueOf(Math.floor(Math.random()*100)).split("\\.")[0]));
-        }
-        
-		/*
-		 * barChartData.put("Samsung",5000L); barChartData.put("Iphone",10000L);
-		 * barChartData.put("MI",2000L); barChartData.put("Lava",4000L);
-		 * barChartData.put("Oppo",3560L); barChartData.put("HTC",5560L);
-		 */
+   
         
         model.addAttribute("barChartData",barChartData);
 		
