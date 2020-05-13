@@ -90,12 +90,12 @@ public class ShowProdAnalysisDetails {
             		);  
             
                
-                String target_qty = rs.getString(1);
-                String actual_qty = rs.getString(2);
+                int target_qty = rs.getInt(1);
+                int actual_qty = rs.getInt(2);
 
                 orderTargetActualQty = target_qty + "," + actual_qty;
                 
-            
+           
             result = "SUCCESS";
             con.close();
             //return result;
