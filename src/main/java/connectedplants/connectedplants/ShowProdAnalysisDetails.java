@@ -90,8 +90,8 @@ public class ShowProdAnalysisDetails {
             		);  
             
                
-                int target_qty = rs.getInt(1);
-                int actual_qty = rs.getInt(2);
+                int target_qty = 134; //rs.getInt(1);
+                int actual_qty = 100;//rs.getInt(2);
 
                 orderTargetActualQty = target_qty + "," + actual_qty;
                 
