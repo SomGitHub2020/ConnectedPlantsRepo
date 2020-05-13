@@ -79,14 +79,16 @@ public class ShowProdAnalysisDetails {
 		
 		String result="";
 		String orderTargetActualQty = "";
+		String qry = "";
         try{  
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery(
-            		"SELECT SUM(QTY_TO_BUILD) as target_qty, SUM(QTY_DONE) as actual_qty FROM `SHOP_ORDER` "
+             qry = "SELECT SUM(QTY_TO_BUILD) as target_qty, SUM(QTY_DONE) as actual_qty FROM `SHOP_ORDER` "
             		+ "WHERE SITE ='"+siteInput+"' "
-            		+ "AND MODIFIED_DATE_TIME > '"+fromDateTime+"' "
+            		+ "AND MODIFIED_DATE_TIME > '"+fromDateTime+"' ";
+            ResultSet rs=stmt.executeQuery(
+            		qry
             		);  
             
                
@@ -101,7 +103,9 @@ public class ShowProdAnalysisDetails {
             //return result;
         }
         catch(Exception e){
-            e.printStackTrace();
+        	System.out.println("SAP MII "+qry);
+        	
+            //e.printStackTrace();
             result = "ERROR";
         }
 		
