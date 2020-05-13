@@ -161,9 +161,9 @@ public class HomeController {
 		  for(int i=0; i<arr.length; i++) {
 		  barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
 		  }
-		 
-       
+		       
         model.addAttribute("barChartData",barChartData);
+        model.addAttribute("reslogs", listResLogs);
 		
 		return "res_analysis";
 	}
