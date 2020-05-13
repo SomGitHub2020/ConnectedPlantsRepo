@@ -4,20 +4,36 @@
     <head>
         <title>Resource Analysis - View</title>
         <meta content="This demo shows how to use HighCharts with Spring Boot" name="description" />
-        <!-- <object th:include="fragments/head :: head" th:remove="tag"></object> -->
-        
-        <!-- <link th:href="@{/assets/pages/css/profile.min.css}" rel="stylesheet" type="text/css" /> -->
-        <link rel="stylesheet" href="/connectedplants/src/main/resources/static/assets/pages/css/profile.min.css"/>
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <!-- <script src="https://code.highcharts.com/highcharts-3d.js"></script> -->
-        
-    </head>
+			        <!-- <object th:include="fragments/head :: head" th:remove="tag"></object> -->
+			
+			
+			<link rel="stylesheet"
+				href="/connectedplants/src/main/resources/static/assets/pages/css/profile.min.css" />
+			
+			<link rel="stylesheet"
+				href="https://code.highcharts.com/css/highcharts.css" />
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			
+			<link rel="stylesheet"
+				href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+			
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			
+			<script src="https://code.highcharts.com/highcharts.js"></script>
+			
+			<script>
+        	.resLoglist {
+				margin: auto;
+				height: 250px;
+				overflow-y: auto; /* This changed */
+			}
+			</script>
+			
+</head>
     
     <body class="page-container-bg-solid">
        <!-- <div th:include="fragments/topmenuheader :: header"></div> -->
@@ -42,6 +58,37 @@
                             <div class="col-md-6" style="margin-top:20px">
                                 <div id="resReasonCodesChart_1ID" style="width:100%; height:400px;">test2</div>
                             </div>
+							
+							<div class="resLoglist">
+								<font size="2">
+									<table id="ResLogTableID" class="" style="width: 100%">
+										<thead>
+											<tr>
+												<th align="center">Site</th>
+												<th align="center">Resource</th>
+												<th align="center">Description</th>
+												<th align="center">Start Date</th>
+												<th align="center">End Date</th>
+												<th align="center">Status</th>
+	
+	
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="reslog, rowStat: ${reslogs}" 
+												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+	
+												<td th:text="${reslog.site}">Jack</td>
+												<td th:text="${reslog.resource}">23</td>
+												<td th:text="${reslog.desc}">Jack</td>
+												<td th:text="${reslog.startdt}">23</td>
+												<td th:text="${reslog.enddt}">Jack</td>
+												<td th:text="${reslog.status}">23</td>
+											</tr>
+										</tbody>
+									</table>
+								</font>
+							</div>
 							
                         </div>                        
                     </div>
@@ -139,7 +186,7 @@
                     		          return sliceName
                     		        }
                             },
-                            showInLegend: true
+                            showInLegend: false
                     	}
                     },
                     series: [{

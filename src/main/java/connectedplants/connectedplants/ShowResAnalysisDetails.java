@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 public class ShowResAnalysisDetails {
 
@@ -40,6 +41,38 @@ public class ShowResAnalysisDetails {
         }
         //System.out.println(e);
         return durationlist;
+		
+	}
+
+	public String displayResourceLogData(List<ResourceLog> listResLog,String siteInput, String resource) throws IOException {
+		
+		 String result="";
+	        try{  
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	            Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
+	            Statement stmt=con.createStatement();  
+	            ResultSet rs=stmt.executeQuery("SELECT * FROM `RESOURCE_TIME_LOG` WHERE SITE ='"+siteInput+"' AND RESOURCE = '"+resource+"'");  
+	            while(rs.next()){  
+	               
+	                String site = rs.getString(1);
+	                String res = rs.getString(2);
+	                String desc = rs.getString(3);
+	                String startdate = rs.getString(4);
+	                String enddate = rs.getString(5);
+	                String status = rs.getString(7);
+	                
+	                listResLog.add(new ResourceLog(site, res, desc, startdate, enddate, status));
+	            }
+	            result = "SUCCESS";
+	            con.close();
+	            //return result;
+	        }
+	        catch(Exception e){
+	            e.printStackTrace();
+	            result = "ERROR";
+	        }
+	        //System.out.println(e);
+	        return result;
 		
 	}
 

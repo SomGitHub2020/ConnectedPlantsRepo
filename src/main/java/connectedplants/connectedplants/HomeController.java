@@ -135,13 +135,17 @@ public class HomeController {
 
 		String resource = "ResourceBO:EXID,RES1-1";
 		
+		List<ResourceLog> listResLogs = new ArrayList<ResourceLog>();
+		
 		String reasonCodeCSV = "";
+		
+		String siteInput = "EXID";
 		
 		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
 
 		try {
 			reasonCodeCSV = showresanalysisdata.getReasonCodesDuration(resource);
-			
+			showresanalysisdata.displayResourceLogData(listResLogs,siteInput,resource);
 
 						
 		} catch (IOException e) {
@@ -158,14 +162,7 @@ public class HomeController {
 		  barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
 		  }
 		 
-        
-		/*
-		 * for(int i=0; i< 4; i++) {
-		 * barChartData.put("Resource_"+(i+1),Integer.parseInt(String.valueOf(Math.floor
-		 * (Math.random()*100)).split("\\.")[0])); }
-		 */
-   
-        
+       
         model.addAttribute("barChartData",barChartData);
 		
 		return "res_analysis";
