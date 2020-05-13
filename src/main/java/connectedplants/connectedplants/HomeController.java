@@ -93,6 +93,9 @@ public class HomeController {
 		String selectedOrderA = "PLATETRT005";
 		String selectedOrderB = "1000486";
 		
+		String orderQtyCSV_A = "";
+		String orderQtyCSV_B = "";
+		
 		/*
 		 * String prefixShopOrderBO_A = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
 		 * String prefixShopOrderBO_B = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
@@ -110,6 +113,9 @@ public class HomeController {
 		ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
 
 		try {
+			orderQtyCSV_A = showprodanalysisdata.displayOrderQtyData(siteAInput,fromDateTime);
+			orderQtyCSV_B = showprodanalysisdata.displayOrderQtyData(siteBInput,fromDateTime);
+			
 			showprodanalysisdata.displaySiteOrder(listSiteOrderAs, siteAInput,fromDateTime);
 			showprodanalysisdata.displaySiteOrder(listSiteOrderBs, siteBInput,fromDateTime);
 			
@@ -120,7 +126,22 @@ public class HomeController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		String arrA[] = orderQtyCSV_A.split(","); 
+		String arrB[] = orderQtyCSV_B.split(","); 
 
+        Map<String,Integer> barChartData_A = new HashMap<>();
+		Map<String,Integer> barChartData_B = new HashMap<>();
+		
+		barChartData_A.put("Target",Integer.parseInt(arrA[0].split("\\.")[0]));
+		barChartData_A.put("Actual",Integer.parseInt(arrA[1].split("\\.")[0]));
+	
+		barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
+		barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
+		  
+        model.addAttribute("barChartOrderQtyDataA",barChartData_A);
+        model.addAttribute("barChartOrderQtyDataB",barChartData_B);
+		
 		model.addAttribute("siteorder_as", listSiteOrderAs);
 		model.addAttribute("siteorder_bs", listSiteOrderBs);
 		

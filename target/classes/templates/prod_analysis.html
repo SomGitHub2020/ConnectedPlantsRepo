@@ -4,10 +4,13 @@
     <title>Production Analysis - View</title>
 	   <meta charset="utf-8"/>
 	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	   <link rel="stylesheet"
+				href="https://code.highcharts.com/css/highcharts.css" />
 	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
 		
 		<style>
 				#SiteOrderTableA, #SiteOrderTableB, #OrderSFCTableA, #OrderSFCTableB {
@@ -95,6 +98,108 @@
 			}
 
 		</script>
+		
+		       <script th:inline="javascript">
+        /*<![CDATA[*/
+            $(function () { 
+                Highcharts.setOptions({
+                    lang: {
+                        decimalPoint: '.',
+                        thousandsSep: ','
+                    }
+                });
+
+                drawOrderQtyChartA();
+                drawOrderQtyChartB();
+             	
+            });
+            
+          
+            function drawOrderQtyChartA() {
+                var orderQtyChartA = Highcharts.chart('orderQtyChartA', {
+                    chart: {
+                        type: 'column',
+                        margin: 75,
+                        options3d: {
+   							enabled: true,
+                        	alpha: 15,
+                        	beta: 15,
+                        	depth: 110
+                        }
+                    },
+                    title: {
+                        text: 'Actual Vs. Target'
+                    },
+                    xAxis: {
+                        categories: [[${barChartOrderQtyDataA.keySet()}]],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'pcs'
+                        }
+                    },
+                    tooltip: {
+                      	pointFormat: "${point.y:,.0f}"
+                    },
+                    plotOptions: {
+                    	column: {
+                    		depth: 60,
+                      		stacking: true,
+                       		grouping: false,
+                      		groupZPadding: 10
+                        }
+                    },
+                    series: [{
+                        name: 'Order Quantity',
+                        data: [[${barChartOrderQtyDataA.values()}]]
+                    }]
+                });
+            }
+            
+            function drawOrderQtyChartB() {
+                var orderQtyChartB = Highcharts.chart('orderQtyChartB', {
+                    chart: {
+                        type: 'column',
+                        margin: 75,
+                        options3d: {
+   							enabled: true,
+                        	alpha: 15,
+                        	beta: 15,
+                        	depth: 110
+                        }
+                    },
+                    title: {
+                        text: 'Actual Vs. Target'
+                    },
+                    xAxis: {
+                        categories: [[${barChartOrderQtyDataB.keySet()}]],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'pcs'
+                        }
+                    },
+                    tooltip: {
+                      	pointFormat: "${point.y:,.0f}"
+                    },
+                    plotOptions: {
+                    	column: {
+                    		depth: 60,
+                      		stacking: true,
+                       		grouping: false,
+                      		groupZPadding: 10
+                        }
+                    },
+                    series: [{
+                        name: 'Order Quantity',
+                        data: [[${barChartOrderQtyDataB.values()}]]
+                    }]
+                });
+            }
+            /*]]>*/
+        </script>
 	   
 	   
 </head>
@@ -113,6 +218,10 @@
                      <td>
 
                      <div class="" align="center" style="background-color:#66ffff">SITE A : PPME</div>
+                                                 <div class="" style="margin-top:20px">
+                            <div id="orderQtyChartA" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
 							<div class="siteorderlist">
 								<font size="2">
 									<table id="SiteOrderTableA" class="" style="width: 100%">
@@ -177,6 +286,10 @@
 
                     <td>
                      <div class="" align="center" style="background-color:#99ff99">SITE B : EXID</div>
+                     
+                            <div id="orderQtyChartB" style="width:100%; height:400px;">test2</div>
+                            </div>
+                     
 							<div class="siteorderlist">
 								<font size="2">
 									<table id="SiteOrderTableB" class="" style="width: 100%">

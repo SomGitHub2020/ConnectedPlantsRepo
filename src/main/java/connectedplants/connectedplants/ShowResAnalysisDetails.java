@@ -51,7 +51,12 @@ public class ShowResAnalysisDetails {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 	            Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
 	            Statement stmt=con.createStatement();  
-	            ResultSet rs=stmt.executeQuery("SELECT * FROM `RESOURCE_TIME_LOG` WHERE SITE ='"+siteInput+"' AND RESOURCE = '"+resource+"'");  
+	            ResultSet rs=stmt.executeQuery(
+	            		"SELECT * FROM `RESOURCE_TIME_LOG` "
+	            		+ "WHERE SITE ='"+siteInput+"' "
+	            		+ "AND RESOURCE = '"+resource+"' "
+	            		+ "ORDER BY START_DATE_TIME desc "
+	            		);  
 	            while(rs.next()){  
 	               
 	                String site = rs.getString(1);
