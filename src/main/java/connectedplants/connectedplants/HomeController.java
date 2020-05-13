@@ -133,11 +133,11 @@ public class HomeController {
         Map<String,Integer> barChartData_A = new HashMap<>();
 		Map<String,Integer> barChartData_B = new HashMap<>();
 		
-		barChartData_A.put("Target",Integer.parseInt(arrA[0].split("\\.")[0]));
-		barChartData_A.put("Actual",Integer.parseInt(arrA[1].split("\\.")[0]));
+		barChartData_A.put("Target",Integer.parseInt(arrA[0]));
+		barChartData_A.put("Actual",Integer.parseInt(arrA[1]));
 	
-		barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
-		barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
+		barChartData_B.put("Target",Integer.parseInt(arrB[0]));
+		barChartData_B.put("Actual",Integer.parseInt(arrB[1]));
 		  
         model.addAttribute("barChartOrderQtyDataA",barChartData_A);
         model.addAttribute("barChartOrderQtyDataB",barChartData_B);
