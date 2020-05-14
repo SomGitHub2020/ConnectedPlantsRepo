@@ -177,7 +177,7 @@
 			    
 			        chartB = new Highcharts.Chart({
 			            chart: {
-			                renderTo: 'orderQtyChartB',
+			                renderTo: 'container',
 			                type: 'column'
 			            },
 			            title: {
@@ -315,7 +315,7 @@
             }
             
             function drawOrderQtyChartB() {
-                var orderQtyChartB = Highcharts.chart('container', {
+                var orderQtyChartB = Highcharts.chart('orderQtyChartB', {
                     chart: {
                         type: 'column',
                         margin: 75,
