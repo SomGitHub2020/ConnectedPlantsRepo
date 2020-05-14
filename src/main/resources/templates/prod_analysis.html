@@ -17,8 +17,8 @@
 		<style>
 		
 		.tablink {
-		  background-color: #555;
-		  color: white;
+		  background-color: #d9d9d9;
+		  color: black;
 		  float: left;
 		  border: none;
 		  outline: none;
@@ -40,8 +40,8 @@
 		  text-align: center;
 		}
 		
-		#orderqtycontainerA {background-color:#ccff99;}
-		#orderqtycontainerB {background-color:#99ccff;}
+		#orderqtycontainerA {background-color:#66ffff;}
+		#orderqtycontainerB {background-color:#99ff99;}
 		
 		</style>
 		
@@ -151,6 +151,159 @@
 		
 		<script th:inline="javascript">
         /*<![CDATA[*/
+        	
+        		$(function () {
+			    var chartA;
+			    $(document).ready(function() {
+			    
+			        var colors = Highcharts.getOptions().colors,
+			            categories = [[${barChartOrderQtyDataA.keySet()}]],
+			            name = ['Actual Vs. Target'],
+			            data = [{
+			                    y: [[${barChartOrderQtyDataA.get("Target")}]],
+			                    color: colors[0],
+			                    drilldown: {
+			                        categories: [[${eachOrderActualQtyBarChartA.keySet()}]], //['MSIE 6.0', 'MSIE 7.0', 'MSIE 8.0', 'MSIE 9.0'],
+			                        series: [{
+			                            type: 'column',
+			                            name: 'Target',
+			                            data: [[${eachOrderTargetQtyBarChartA.values()}]], //[10.85, 7.35, 33.06, 2.81],
+			                            color: colors[0]
+			                        },{
+			                            type: 'column',
+			                            name: 'Actual',
+			                            data: [[${eachOrderActualQtyBarChartA.values()}]], //[1, 5, 10, 15],
+			                            color: colors[1]
+			                        }]
+			                    }
+			                }, {
+			                    y: [[${barChartOrderQtyDataA.get("Actual")}]],
+			                    color: colors[1],
+			                    drilldown: {
+			                        
+			                        categories: [[${eachOrderActualQtyBarChartA.keySet()}]], //['Firefox 2.0', 'Firefox 3.0', 'Firefox 3.5', 'Firefox 3.6', 'Firefox 4.0'],
+			                        series: [{
+			                            type: 'column',
+			                            name: 'Target',
+			                            data: [[${eachOrderTargetQtyBarChartA.values()}]],
+			                            color: colors[0]
+			                        },{
+			                            type: 'column',
+			                            name: 'Actual',
+			                            data: [[${eachOrderActualQtyBarChartA.values()}]],
+			                            color: colors[1]
+			                        }]
+			                    }
+			                }];
+			    
+			        function setChart(name, categories, data, color, type) {
+			            var len = chartA.series.length;
+			            chartA.xAxis[0].setCategories(categories);
+			            for(var i = 0; i < len; i++){
+			                console.log(chartA.series.length);
+			                chartA.series[0].remove();
+			            }
+			            console.log('a');
+			            if(data.series){
+			                for(var i = 0; i < data.series.length; i ++ ){
+			                	chartA.addSeries({
+			                        name: data.series[i].name,
+			                        data: data.series[i].data,
+			                        type: data.series[i].type,
+			                        color: data.series[i].color || 'white'
+			                    });
+			                }
+			            } else {
+			            		chartA.addSeries({
+			                        name: name,
+			                        data: data,
+			                        type: type,
+			                        color: color || 'white'
+			                    });
+			            }
+			        }
+			    
+			        chartA = new Highcharts.Chart({
+			            chart: {
+			                renderTo: 'orderqtycontainerA',
+			                type: 'column'
+			            },
+			            title: {
+			                text: ''
+			            },
+			            subtitle: {
+			                text: 'Click any column to view order level. Click again to back.'
+			            },
+			            xAxis: {
+			                categories: categories
+			            },
+			            yAxis: {
+			                title: {
+			                    text: 'Quantity'
+			                }
+			            },
+			            plotOptions: {
+			                column: {
+			                    cursor: 'pointer',
+			                    point: {
+			                        events: {
+			                            click: function() {
+			                                var drilldown = this.drilldown;
+			                                if (drilldown) { // drill down
+			                                    setChart(null, drilldown.categories, drilldown, drilldown.type);
+			                                } else { // restore
+			                                    setChart(name, categories, data, 'column');
+			                                }
+			                            }
+			                        }
+			                    },
+			                    dataLabels: {
+			                        enabled: true,
+			                        color: colors[0]
+			                  
+			                    }
+			                },
+			                spline: {
+			                    cursor: 'pointer',
+			                    point: {
+			                        events: {
+			                            click: function() {
+			                                setChart(name, categories, data, 'column');
+			                            }
+			                        }
+			                    },
+			                    dataLabels: {
+			                        enabled: true,
+			                        color: colors[0]
+			                    }
+			                }
+			            },
+			            tooltip: {
+			                formatter: function() {
+			                    var point = this.point,
+			                        s = this.x +':<b>'+ this.y +'</b><br/>';
+			                    if (point.drilldown) {
+			                        s = 'Click to view Order level';
+			                    } else {
+			                        s = 'Click to return back';
+			                    }
+			                    return s;
+			                }
+			            },
+			            series: [{
+			                name: name,
+			                data: data,
+			                color: 'white'
+			            }],
+			            exporting: {
+			                enabled: true
+			            }
+			        });
+			    });
+			    
+			});
+        	
+
         	
         	$(function () {
 			    var chartB;
@@ -421,12 +574,11 @@
 		</div>
 
 
-		<button class="tablink" onclick="openCity('orderqtycontainerA', this, '#ccff99')"
+		<button class="tablink" onclick="openCity('orderqtycontainerA', this, '#66ffff')"
 			id="defaultOpen">PPME</button>
-		<button class="tablink" onclick="openCity('orderqtycontainerB', this, '#99ccff')">EXID</button>
+		<button class="tablink" onclick="openCity('orderqtycontainerB', this, '#99ff99')">EXID</button>
 	
-		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-	
+			
 	 <div class="" align="center">
          <div class="" align="center">
 	     <div class="" align="center" style="background-color:#ffe680">
@@ -438,7 +590,7 @@
                  <tr>
                      <td>
 
-                     <div class="" align="center" style="background-color:#66ffff">SITE A : PPME</div>
+                     
                          <div class="" style="margin-top:20px">
                             <div id="orderQtyChartA" style="width:100%; height:400px;">test2</div>
                             </div>
@@ -506,7 +658,7 @@
 						</td>
 
                     <td>
-                     <div class="" align="center" style="background-color:#99ff99">SITE B : EXID</div>
+                     
                      	<div class="" style="margin-top:20px">
                             <div id="orderQtyChartB" style="width:100%; height:400px;">test2</div>
                             </div>
