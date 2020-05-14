@@ -146,16 +146,25 @@ public class HomeController {
 		barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
 		barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
 		
-		for(int i=0; i<listSiteOrderBs.size(); i++)
+		for(int i=0; i<listSiteOrderAs.size(); i++)
 		{
-			eachOrderActualBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getBuildqty().split("\\.")[0]));
+			eachOrderActualBarData_A.put(listSiteOrderAs.get(i).getOrder(), Integer.parseInt(listSiteOrderAs.get(i).getYieldqty().split("\\.")[0]));
+			eachOrderTargetBarData_A.put(listSiteOrderAs.get(i).getOrder(), Integer.parseInt(listSiteOrderAs.get(i).getBuildqty().split("\\.")[0]));
 		}
 		
-		  
+		for(int i=0; i<listSiteOrderBs.size(); i++)
+		{
+			eachOrderActualBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getYieldqty().split("\\.")[0]));
+			eachOrderTargetBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getBuildqty().split("\\.")[0]));
+		}
+				  
         model.addAttribute("barChartOrderQtyDataA",barChartData_A);
         model.addAttribute("barChartOrderQtyDataB",barChartData_B);
-        
+         
+        model.addAttribute("eachOrderActualQtyBarChartA",eachOrderActualBarData_A);
+        model.addAttribute("eachOrderTargetQtyBarChartA",eachOrderTargetBarData_A);
         model.addAttribute("eachOrderActualQtyBarChartB",eachOrderActualBarData_B);
+        model.addAttribute("eachOrderTargetQtyBarChartB",eachOrderTargetBarData_B);
 		
 		model.addAttribute("siteorder_as", listSiteOrderAs);
 		model.addAttribute("siteorder_bs", listSiteOrderBs);
