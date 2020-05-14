@@ -15,6 +15,37 @@
 		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 		
 		<style>
+		
+		.tablink {
+		  background-color: #555;
+		  color: white;
+		  float: left;
+		  border: none;
+		  outline: none;
+		  cursor: pointer;
+		  padding: 14px 16px;
+		  font-size: 17px;
+		  width: 50%;
+		}
+		
+		.tablink:hover {
+		  background-color: #777;
+		}
+		
+		/* Style the tab content */
+		.tabcontent {
+		  color: white;
+		  display: none;
+		  padding: 50px;
+		  text-align: center;
+		}
+		
+		#London {background-color:#ccff99;}
+		#Paris {background-color:#99ccff;}
+		
+		</style>
+		
+		<style>
 				#SiteOrderTableA, #SiteOrderTableB, #OrderSFCTableA, #OrderSFCTableB {
 					font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 					border-collapse: collapse;
@@ -99,9 +130,26 @@
 			    
 			}
 
+			function openCity(cityName,elmnt,color) {
+				  var i, tabcontent, tablinks;
+				  tabcontent = document.getElementsByClassName("tabcontent");
+				  for (i = 0; i < tabcontent.length; i++) {
+				    tabcontent[i].style.display = "none";
+				  }
+				  tablinks = document.getElementsByClassName("tablink");
+				  for (i = 0; i < tablinks.length; i++) {
+				    tablinks[i].style.backgroundColor = "";
+				  }
+				  document.getElementById(cityName).style.display = "block";
+				  elmnt.style.backgroundColor = color;
+
+				}
+				// Get the element with id="defaultOpen" and click on it
+			document.getElementById("defaultOpen").click();
+			
 		</script>
 		
-		       <script th:inline="javascript">
+		<script th:inline="javascript">
         /*<![CDATA[*/
         	
         	$(function () {
@@ -364,7 +412,22 @@
  <div class="" align="center">
 	<div class="" align="center" style="background-color:#ffffcc"><h4 style="color:blue;">Global Manufacturing Production Performance</h4></div>
 	
-			<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<div id="London" class="tabcontent">
+			<h1>London</h1>
+			<p>London is the capital city of England.</p>
+		</div>
+
+		<div id="Paris" class="tabcontent">
+			<h1>Paris</h1>
+			<p>Paris is the capital of France.</p>
+		</div>
+
+
+		<button class="tablink" onclick="openCity('London', this, '#ccff99')"
+			id="defaultOpen">London</button>
+		<button class="tablink" onclick="openCity('Paris', this, '#99ccff')">Paris</button>
+	
+		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 	
 	 <div class="" align="center">
          <div class="" align="center">
