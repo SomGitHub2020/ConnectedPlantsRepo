@@ -102,7 +102,7 @@ public class ShowProdAnalysisDetails {
             //return result;
         }
         catch(Exception e){
-        	System.out.println("SAP MII qry statement:: "+qry);
+        	System.out.println("SAP MII qry statement: "+qry);
              	
             //e.printStackTrace();
             result = "ERROR";
