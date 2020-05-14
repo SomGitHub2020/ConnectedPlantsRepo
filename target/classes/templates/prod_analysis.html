@@ -115,15 +115,15 @@
 			                    y: [[${barChartOrderQtyDataB.get("Target")}]],
 			                    color: colors[0],
 			                    drilldown: {
-			                        categories: ['MSIE 6.0', 'MSIE 7.0', 'MSIE 8.0', 'MSIE 9.0'],
+			                        categories: [[${eachOrderActualQtyBarChartB.keySet()}]], //['MSIE 6.0', 'MSIE 7.0', 'MSIE 8.0', 'MSIE 9.0'],
 			                        series: [{
 			                            type: 'column',
-			                            name: 'MSIE versions 2000',
-			                            data: [10.85, 7.35, 33.06, 2.81],
+			                            name: 'Target',
+			                            data: [[${eachOrderActualQtyBarChartB.values()}]], //[10.85, 7.35, 33.06, 2.81],
 			                            color: colors[0]
 			                        },{
 			                            type: 'column',
-			                            name: 'MSIE versions 2010',
+			                            name: 'Actual',
 			                            data: [1, 5, 10, 15],
 			                            color: colors[0]
 			                        }]

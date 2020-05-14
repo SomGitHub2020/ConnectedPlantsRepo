@@ -96,6 +96,7 @@ public class HomeController {
 		String orderQtyCSV_A = "";
 		String orderQtyCSV_B = "";
 		
+		
 		/*
 		 * String prefixShopOrderBO_A = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
 		 * String prefixShopOrderBO_B = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
@@ -133,14 +134,28 @@ public class HomeController {
         Map<String,Integer> barChartData_A = new HashMap<>();
 		Map<String,Integer> barChartData_B = new HashMap<>();
 		
+		Map<String,Integer> eachOrderActualBarData_A = new HashMap<>();
+		Map<String,Integer> eachOrderTargetBarData_A = new HashMap<>();
+		
+		Map<String,Integer> eachOrderActualBarData_B = new HashMap<>();
+		Map<String,Integer> eachOrderTargetBarData_B = new HashMap<>();
+		
 		barChartData_A.put("Target",Integer.parseInt(arrA[0].split("\\.")[0]));
 		barChartData_A.put("Actual",Integer.parseInt(arrA[1].split("\\.")[0]));
 	
 		barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
 		barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
+		
+		for(int i=0; i<listSiteOrderBs.size(); i++)
+		{
+			eachOrderActualBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getBuildqty().split("\\.")[0]));
+		}
+		
 		  
         model.addAttribute("barChartOrderQtyDataA",barChartData_A);
         model.addAttribute("barChartOrderQtyDataB",barChartData_B);
+        
+        model.addAttribute("eachOrderActualQtyBarChartB",eachOrderActualBarData_B);
 		
 		model.addAttribute("siteorder_as", listSiteOrderAs);
 		model.addAttribute("siteorder_bs", listSiteOrderBs);
