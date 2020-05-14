@@ -11,6 +11,7 @@
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 		
 		<style>
 				#SiteOrderTableA, #SiteOrderTableB, #OrderSFCTableA, #OrderSFCTableB {
@@ -128,7 +129,7 @@
                         }
                     },
                     title: {
-                        text: 'Actual Vs. Target'
+                        text: ''
                     },
                     xAxis: {
                         categories: [[${barChartOrderQtyDataA.keySet()}]],
@@ -136,11 +137,11 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'pcs'
+                            text: 'Quantity'
                         }
                     },
                     tooltip: {
-                      	pointFormat: "${point.y:,.0f}"
+                      	pointFormat: "{point.y:,.0f}"
                     },
                     plotOptions: {
                     	column: {
@@ -151,7 +152,7 @@
                         }
                     },
                     series: [{
-                        name: 'Order Quantity',
+                        name: 'Target Vs. Actual',
                         data: [[${barChartOrderQtyDataA.values()}]]
                     }]
                 });
@@ -170,7 +171,7 @@
                         }
                     },
                     title: {
-                        text: 'Actual Vs. Target'
+                        text: ''
                     },
                     xAxis: {
                         categories: [[${barChartOrderQtyDataB.keySet()}]],
@@ -178,11 +179,11 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'pcs'
+                            text: 'Quantity'
                         }
                     },
                     tooltip: {
-                      	pointFormat: "${point.y:,.0f}"
+                      	pointFormat: "{point.y:,.0f}"
                     },
                     plotOptions: {
                     	column: {
@@ -192,8 +193,8 @@
                       		groupZPadding: 10
                         }
                     },
-                    series: [{
-                        name: 'Order Quantity',
+					series: [{
+                        name: 'Target Vs. Actual',
                         data: [[${barChartOrderQtyDataB.values()}]]
                     }]
                 });
@@ -218,7 +219,7 @@
                      <td>
 
                      <div class="" align="center" style="background-color:#66ffff">SITE A : PPME</div>
-                                                 <div class="" style="margin-top:20px">
+                         <div class="" style="margin-top:20px">
                             <div id="orderQtyChartA" style="width:100%; height:400px;">test2</div>
                             </div>
                             
@@ -286,7 +287,7 @@
 
                     <td>
                      <div class="" align="center" style="background-color:#99ff99">SITE B : EXID</div>
-                     
+                     	<div class="" style="margin-top:20px">
                             <div id="orderQtyChartB" style="width:100%; height:400px;">test2</div>
                             </div>
                      
