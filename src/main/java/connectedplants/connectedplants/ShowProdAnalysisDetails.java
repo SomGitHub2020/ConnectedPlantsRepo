@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -75,11 +76,12 @@ public class ShowProdAnalysisDetails {
 		
 	}
 
-	public String displayOrderQtyData(String siteInput, String fromDateTime) {
+	public String displayOrderQtyData(String siteInput, String fromDateTime) throws IOException {
 		
 		String result="";
 		String orderTargetActualQty = "";
 		String qry = "";
+		ResultSet rs= null;
         try{  
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection( "jdbc:mysql://connplantservice:3306/connplantsdb?user=root&password=VySU8WBweuVYNx3T&useSSL=false");  
@@ -87,15 +89,11 @@ public class ShowProdAnalysisDetails {
              qry = "SELECT SUM(QTY_TO_BUILD), SUM(QTY_DONE) FROM `SHOP_ORDER` "
             		+ "WHERE SITE ='"+siteInput+"' "
             		+ "AND MODIFIED_DATE_TIME > '"+fromDateTime+"' ";
-            ResultSet rs=stmt.executeQuery(
+             rs=stmt.executeQuery(
             		qry
             		);  
             
-               
-                String target_qty = rs.getString(1);
-                String actual_qty = rs.getString(2);
-
-                orderTargetActualQty = target_qty + "," + actual_qty;
+            orderTargetActualQty = rs.getString(1) + "," + rs.getString(2);
                 
            
             result = "SUCCESS";
@@ -103,8 +101,13 @@ public class ShowProdAnalysisDetails {
             //return result;
         }
         catch(Exception e){
-        	System.out.println("SAP MII "+qry);
-        	//System.out.println("SAP MII "+rs.to);
+        	System.out.println("SAP MII qry statement:: "+qry);
+        	try {
+				System.out.println("SAP MII result:: "+rs.getString(1) + "," + rs.getString(2));
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         	
             //e.printStackTrace();
             result = "ERROR";
