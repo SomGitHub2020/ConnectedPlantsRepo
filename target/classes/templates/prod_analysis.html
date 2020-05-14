@@ -105,7 +105,7 @@
         /*<![CDATA[*/
         	
         	$(function () {
-			    var chart;
+			    var chartB;
 			    $(document).ready(function() {
 			    
 			        var colors = Highcharts.getOptions().colors,
@@ -149,16 +149,16 @@
 			                }];
 			    
 			        function setChart(name, categories, data, color, type) {
-			            var len = chart.series.length;
-			            chart.xAxis[0].setCategories(categories);
+			            var len = chartB.series.length;
+			            chartB.xAxis[0].setCategories(categories);
 			            for(var i = 0; i < len; i++){
-			                console.log(chart.series.length);
-			                chart.series[0].remove();
+			                console.log(chartB.series.length);
+			                chartB.series[0].remove();
 			            }
 			            console.log('a');
 			            if(data.series){
 			                for(var i = 0; i < data.series.length; i ++ ){
-			                    chart.addSeries({
+			                	chartB.addSeries({
 			                        name: data.series[i].name,
 			                        data: data.series[i].data,
 			                        type: data.series[i].type,
@@ -166,7 +166,7 @@
 			                    });
 			                }
 			            } else {
-			                    chart.addSeries({
+			            		chartB.addSeries({
 			                        name: name,
 			                        data: data,
 			                        type: type,
@@ -175,9 +175,9 @@
 			            }
 			        }
 			    
-			        chart = new Highcharts.Chart({
+			        chartB = new Highcharts.Chart({
 			            chart: {
-			                renderTo: 'container',
+			                renderTo: 'orderQtyChartB',
 			                type: 'column'
 			            },
 			            title: {
@@ -315,7 +315,7 @@
             }
             
             function drawOrderQtyChartB() {
-                var orderQtyChartB = Highcharts.chart('orderQtyChartB', {
+                var orderQtyChartB = Highcharts.chart('container', {
                     chart: {
                         type: 'column',
                         margin: 75,
