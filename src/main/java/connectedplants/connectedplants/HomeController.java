@@ -204,7 +204,7 @@ public class HomeController {
         Map<String,Integer> barChartData = new HashMap<>();
    		
 		  for(int i=0; i<arr.length; i++) {
-		  barChartData.put("Resource_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+		  barChartData.put("ReasonCode_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
 		  }
 		       
         model.addAttribute("barChartData",barChartData);
