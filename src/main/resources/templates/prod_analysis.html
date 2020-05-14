@@ -40,8 +40,8 @@
 		  text-align: center;
 		}
 		
-		#London {background-color:#ccff99;}
-		#Paris {background-color:#99ccff;}
+		#orderqtycontainerA {background-color:#ccff99;}
+		#orderqtycontainerB {background-color:#99ccff;}
 		
 		</style>
 		
@@ -225,7 +225,7 @@
 			    
 			        chartB = new Highcharts.Chart({
 			            chart: {
-			                renderTo: 'container',
+			                renderTo: 'orderqtycontainerB',
 			                type: 'column'
 			            },
 			            title: {
@@ -412,20 +412,18 @@
  <div class="" align="center">
 	<div class="" align="center" style="background-color:#ffffcc"><h4 style="color:blue;">Global Manufacturing Production Performance</h4></div>
 	
-		<div id="London" class="tabcontent">
-			<h1>London</h1>
-			<p>London is the capital city of England.</p>
+		<div id="orderqtycontainerA" class="tabcontent" style="min-width: 400px; height: 400px; margin: 0 auto">
+
 		</div>
 
-		<div id="Paris" class="tabcontent">
-			<h1>Paris</h1>
-			<p>Paris is the capital of France.</p>
+		<div id="orderqtycontainerB" class="tabcontent" style="min-width: 400px; height: 400px; margin: 0 auto">
+			
 		</div>
 
 
-		<button class="tablink" onclick="openCity('London', this, '#ccff99')"
-			id="defaultOpen">London</button>
-		<button class="tablink" onclick="openCity('Paris', this, '#99ccff')">Paris</button>
+		<button class="tablink" onclick="openCity('orderqtycontainerA', this, '#ccff99')"
+			id="defaultOpen">PPME</button>
+		<button class="tablink" onclick="openCity('orderqtycontainerB', this, '#99ccff')">EXID</button>
 	
 		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 	
