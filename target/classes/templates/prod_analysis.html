@@ -104,7 +104,7 @@
 		       <script th:inline="javascript">
         /*<![CDATA[*/
         	
-        				 $(function () {
+        	$(function () {
 			    var chart;
 			    $(document).ready(function() {
 			    
@@ -119,31 +119,31 @@
 			                        series: [{
 			                            type: 'column',
 			                            name: 'Target',
-			                            data: [[${eachOrderActualQtyBarChartB.values()}]], //[10.85, 7.35, 33.06, 2.81],
+			                            data: [[${eachOrderTargetQtyBarChartB.values()}]], //[10.85, 7.35, 33.06, 2.81],
 			                            color: colors[0]
 			                        },{
 			                            type: 'column',
 			                            name: 'Actual',
-			                            data: [1, 5, 10, 15],
-			                            color: colors[0]
+			                            data: [[${eachOrderActualQtyBarChartB.values()}]], //[1, 5, 10, 15],
+			                            color: colors[1]
 			                        }]
 			                    }
 			                }, {
-			                    y: 21.63,
+			                    y: [[${barChartOrderQtyDataB.get("Actual")}]],
 			                    color: colors[1],
 			                    drilldown: {
 			                        
-			                        categories: ['Firefox 2.0', 'Firefox 3.0', 'Firefox 3.5', 'Firefox 3.6', 'Firefox 4.0'],
+			                        categories: [[${eachOrderActualQtyBarChartB.keySet()}]], //['Firefox 2.0', 'Firefox 3.0', 'Firefox 3.5', 'Firefox 3.6', 'Firefox 4.0'],
 			                        series: [{
 			                            type: 'column',
-			                            name: 'FF versions 2000',
-			                            data: [20.85, 17.35, 13.06, 25.81],
+			                            name: 'Target',
+			                            data: [[${eachOrderTargetQtyBarChartB.values()}]],
 			                            color: colors[0]
 			                        },{
 			                            type: 'column',
-			                            name: 'FF versions 2010',
-			                            data: [11, 52, 14, 35],
-			                            color: colors[0]
+			                            name: 'Actual',
+			                            data: [[${eachOrderActualQtyBarChartB.values()}]],
+			                            color: colors[1]
 			                        }]
 			                    }
 			                }];
@@ -181,17 +181,17 @@
 			                type: 'column'
 			            },
 			            title: {
-			                text: 'Browser market share, April, 2011'
+			                text: ''
 			            },
 			            subtitle: {
-			                text: 'Click the columns to view versions. Click again to view brands.'
+			                text: 'Click any column to view order level. Click again to back.'
 			            },
 			            xAxis: {
 			                categories: categories
 			            },
 			            yAxis: {
 			                title: {
-			                    text: 'Total percent market share'
+			                    text: 'Quantity'
 			                }
 			            },
 			            plotOptions: {
@@ -233,11 +233,11 @@
 			            tooltip: {
 			                formatter: function() {
 			                    var point = this.point,
-			                        s = this.x +':<b>'+ this.y +'% market share</b><br/>';
+			                        //s = this.x +':<b>'+ this.y +'% market share</b><br/>';
 			                    if (point.drilldown) {
-			                        s += 'Click to view '+ point.category +' versions';
+			                        s = 'Click to view Order level';
 			                    } else {
-			                        s += 'Click to return to browser brands';
+			                        s = 'Click to return back';
 			                    }
 			                    return s;
 			                }
