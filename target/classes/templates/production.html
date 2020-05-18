@@ -108,6 +108,11 @@
 	 <div id='TextBoxesGroup'>
 		<div id="TextBoxDiv1">
 			<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
+			<select id="siteDrop" name="siteDrop" onChange="myFunction();">
+						<option value="0">Select Site</option>
+						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
+							th:text="${sitelist.site}"></option>
+			</select>
 		</div>
 	</div>
 	<input type='button' value='Add Button' id='addButton'>
