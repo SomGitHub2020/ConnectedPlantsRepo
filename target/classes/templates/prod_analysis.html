@@ -40,69 +40,14 @@
 		  text-align: center;
 		}
 		
-		#orderqtycontainerA {background-color:#66ffff;}
+		#orderqtycontainerA {background-color:#66ffff; display: block}
 		#orderqtycontainerB {background-color:#99ff99;}
 		
 		</style>
-		
-		<style>
-				#SiteOrderTableA, #SiteOrderTableB {
-					font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-					border-collapse: collapse;
-					width: 100%;
-				}
-				
-				#SiteOrderTableA td, #SiteOrderTableA th, #SiteOrderTableB td, #SiteOrderTableB th{
-					border: 1px solid #ddd;
-					padding: 8px;
-				}
-				
-				#SiteOrderTableA tr:nth-child(even), #SiteOrderTableB tr:nth-child(odd){
-					background-color: #f2f2f2;
-				}
-				
-				#SiteOrderTableA tr:hover, #SiteOrderTableB tr:hover{
-					background-color: #ddd;
-				}
-				
-				#SiteOrderTableA th {
-					padding-top: 12px;
-					padding-bottom: 12px;
-					text-align: Center;
-					background-color: #4CAF50;
-					color: white;
-				}
-								
-				#SiteOrderTableB th {
-					padding-top: 12px;
-					padding-bottom: 12px;
-					text-align: Center;
-					background-color: #3366ff;
-					color: white;
-				}
-				
-				th {
-					background: white;
-					position: sticky;
-					top: 0;
-				}
-				
-				.siteorderlist {
-					margin: auto;
-					height: 250px;
-					overflow-y: auto; /* This changed */
-				}
-				
-		</style>
+
 		
 		<script type="text/javascript">
 		
-			function selectOrder(r){
-		        
-			    var selectedOrder = r.cells[1].innerHTML;
-			    alert(selectedOrder);
-			    
-			}
 
 			function openCity(cityName,elmnt,color) {
 				  var i, tabcontent, tablinks;
