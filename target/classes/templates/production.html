@@ -40,22 +40,20 @@
         	    	select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
         	    }
         	    
-        	    alert(options);
+        	    //alert(options);
 
         	    $("#addButton").click(function () {
 
-        		if(counter>10){
-        	            alert("Only 10 textboxes allow");
+        		if(counter>4){
+        	            alert("Max. 4 sites are allowed");
         	            return false;
         		}
 
         		var newTextBoxDiv = $(document.createElement('div'))
-        		     .attr("id", 'TextBoxDiv' + counter);
+        		     .attr("id", 'siteDropDiv' + counter);
 
-        		newTextBoxDiv.after().html('<label>Textbox #'+ counter + ' : </label>' +
-        		      '<input type="text" name="textbox' + counter +
-        		      '" id="textbox' + counter + '" value="" ><br>' +
-        		
+        		newTextBoxDiv.after().html('<label>SITE #'+ counter + ' : </label>' +
+        		            		
         		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
 				'<option value="0">Select Site</option>' +
 				options +
@@ -63,21 +61,21 @@
 				
 				);
 
-        		newTextBoxDiv.appendTo("#TextBoxesGroup");
+        		newTextBoxDiv.appendTo("#siteDropGroup");
 
 
         		counter++;
         	     });
 
         	     $("#removeButton").click(function () {
-        		if(counter==1){
-        	          alert("No more textbox to remove");
+        		if(counter==2){
+        	          alert("At least one Site should be selected!");
         	          return false;
         	       }
 
         		counter--;
 
-        	        $("#TextBoxDiv" + counter).remove();
+        	        $("#siteDropDiv" + counter).remove();
 
         	     });
 
@@ -85,7 +83,7 @@
 
         		var msg = '';
         		for(i=1; i<counter; i++){
-        	   	  msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+        	   	  msg += "\n SITE #" + i + " : " + $('#siteDrop' + i).val();
         		}
         	    	  alert(msg);
         	     });
@@ -117,26 +115,22 @@
 
         <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
     </form>
-   </div>
     
-	 <div id='TextBoxesGroup'>
-		<div id="TextBoxDiv1">
-			<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
-<!-- 			<select id="siteDrop" name="siteDrop" onChange="myFunction();">
-						<option value="0">Select Site</option>
-						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
-							th:text="${sitelist.site}"></option>
-			</select> -->
-			
-			<select id="testsiteDrop" name="siteDrop" onChange="myFunction();">
+    <input type='button' value=' + ' id='addButton'>
+	<input type='button' value=' - ' id='removeButton'>
+	<input type='button' value='Get Site Value' id='getButtonValue'>
+	 <div id='siteDropGroup'>
+		<div id="siteDropDiv1">
+			<label>SITE #1 : </label>			
+			<select id="siteDrop1" name="siteDrop" onChange="myFunction();">
 						<option value="0">Select Site</option>
 						
 			</select>
 		</div>
 	</div>
-	<input type='button' value='Add Button' id='addButton'>
-	<input type='button' value='Remove Button' id='removeButton'>
-	<input type='button' value='Get TextBox Value' id='getButtonValue'>
+   </div>
+
+
 
 </body>
 </html>
