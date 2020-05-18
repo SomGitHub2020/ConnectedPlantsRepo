@@ -68,7 +68,19 @@ public class HomeController {
 		production.setFromSS("00");
 		
 		model.addAttribute("production", production);
+		
+		List<SiteList> lstSiteLists = new ArrayList<SiteList>();
 
+		SiteDetails sitedetails = new SiteDetails();
+		try {
+			sitedetails.getSiteList(lstSiteLists);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("sitelists", lstSiteLists);
+		
 		return "production"; 
 	}
 

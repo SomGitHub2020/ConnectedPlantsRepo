@@ -43,9 +43,9 @@
         		      '<input type="text" name="textbox' + counter +
         		      '" id="textbox' + counter + '" value="" ><br>' +
         		
-        		'<select id="orderDrop' + counter + '" name="orderDrop' + counter + '" onChange="">' +
-				'<option value="0">Select Order</option>' +
-				'<option th:each="prodorderlist : ${prodorderlists}" th:value="${prodorderlist.order}" th:text="${prodorderlist.order}"></option>' +
+        		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
+				'<option value="0">Select Site</option>' +
+				'<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}" th:text="${sitelist.site}"></option>' +
 				'</select>'
 				
 				);
