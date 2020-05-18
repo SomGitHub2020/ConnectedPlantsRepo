@@ -35,12 +35,12 @@
         	    var select = document.getElementById("testsiteDrop");
         	    
         	    for (i = 0; i < sitelist.length; i++) {
-        	        alert(sitelist[i]);
+        	        alert(sitelist[i].site);
         	        
-        	    	select.options[select.options.length] = new Option(sitelist[i], sitelist[i]);
+        	    	select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
         	    }
         	    
-        	    //var site = /*[[${sitelist.site}]]*/ 'default';
+        	 
 
         	    $("#addButton").click(function () {
 
@@ -122,11 +122,11 @@
 	 <div id='TextBoxesGroup'>
 		<div id="TextBoxDiv1">
 			<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
-			<select id="siteDrop" name="siteDrop" onChange="myFunction();">
+<!-- 			<select id="siteDrop" name="siteDrop" onChange="myFunction();">
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
 							th:text="${sitelist.site}"></option>
-			</select>
+			</select> -->
 			
 			<select id="testsiteDrop" name="siteDrop" onChange="myFunction();">
 						<option value="0">Select Site</option>
