@@ -30,9 +30,15 @@
 
         	    var counter = 2;
         	    
-        	    var sitelist = /*[[${sitelists}]]*/ 'default';
+        	    var sitelist = [[${sitelists}]] ;
         	    
+        	    var select = document.getElementById("testsiteDrop");
         	    
+        	    for (i = 0; i < sitelist.length; i++) {
+        	        alert(sitelist[i]);
+        	        
+        	    	select.options[select.options.length] = new Option(sitelist[i], sitelist[i]);
+        	    }
         	    
         	    //var site = /*[[${sitelist.site}]]*/ 'default';
 
@@ -52,7 +58,7 @@
         		
         		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
 				'<option value="0">Select Site</option>' +
-				'<option th:each="sitelist : '+sitelist+'" th:value="'+sitelist.site+'" th:text="'+site+'"></option>' +
+			
 				'</select>'
 				
 				);
@@ -120,6 +126,11 @@
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
 							th:text="${sitelist.site}"></option>
+			</select>
+			
+			<select id="testsiteDrop" name="siteDrop" onChange="myFunction();">
+						<option value="0">Select Site</option>
+						
 			</select>
 		</div>
 	</div>
