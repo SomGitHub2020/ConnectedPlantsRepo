@@ -18,7 +18,7 @@ public class SiteDetails {
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery(
             		"SELECT distinct SITE, DESCRIPION FROM `SITE_MASTER` "
-            		+ "WHERE SITE ='*' "
+            		+ "WHERE SITE != '*' "
             		);  
             while(rs.next()){  
                

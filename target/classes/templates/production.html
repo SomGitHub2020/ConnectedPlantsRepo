@@ -17,8 +17,9 @@
 	}
 </style>
 	  <!-- Javascript -->  
-      <script>  
-         
+      <script th:inline="javascript">  
+      /*<![CDATA[*/
+    	  
          $(function() {  
              $( "#fromdateID" ).datepicker({  
                 dateFormat:"yy-mm-dd",  
@@ -28,6 +29,9 @@
          $(document).ready(function(){
 
         	    var counter = 2;
+        	    
+        	    var sitelist = /*[[${sitelists}]]*/ 'default';
+        	    var site = /*[[${sitelist.site}]]*/ 'default';
 
         	    $("#addButton").click(function () {
 
@@ -45,7 +49,7 @@
         		
         		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
 				'<option value="0">Select Site</option>' +
-				'<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}" th:text="${sitelist.site}"></option>' +
+				'<option th:each="sitelist : '+sitelist+'" th:value="'+site+'" th:text="'+site+'"></option>' +
 				'</select>'
 				
 				);
@@ -77,7 +81,8 @@
         	    	  alert(msg);
         	     });
         	  });
-
+	
+      /*]]>*/   
       </script> 
 	
 	<!-- Changes for Calendar Input Date - END -->
