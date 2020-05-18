@@ -33,14 +33,14 @@
         	    var sitelist = [[${sitelists}]] ;
         	    
         	    var select = document.getElementById("testsiteDrop");
-        	    
+        	    var options = "";
         	    for (i = 0; i < sitelist.length; i++) {
-        	        alert(sitelist[i].site);
+        	        options += "'<option value="+sitelist[i].site+">"+sitelist[i].site+"</option>'");
         	        
         	    	select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
         	    }
         	    
-        	 
+        	    alert(options);
 
         	    $("#addButton").click(function () {
 
@@ -58,7 +58,7 @@
         		
         		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
 				'<option value="0">Select Site</option>' +
-			
+				options
 				'</select>'
 				
 				);
