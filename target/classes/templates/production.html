@@ -31,7 +31,10 @@
         	    var counter = 2;
         	    
         	    var sitelist = /*[[${sitelists}]]*/ 'default';
-        	    var site = /*[[${sitelist.site}]]*/ 'default';
+        	    
+        	    
+        	    
+        	    //var site = /*[[${sitelist.site}]]*/ 'default';
 
         	    $("#addButton").click(function () {
 
@@ -49,7 +52,7 @@
         		
         		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
 				'<option value="0">Select Site</option>' +
-				'<option th:each="sitelist : '+sitelist+'" th:value="'+site+'" th:text="'+site+'"></option>' +
+				'<option th:each="sitelist : '+sitelist+'" th:value="'+sitelist.site+'" th:text="'+site+'"></option>' +
 				'</select>'
 				
 				);
