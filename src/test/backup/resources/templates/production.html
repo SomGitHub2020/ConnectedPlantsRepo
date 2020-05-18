@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Production Analysis - Give Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!-- Changes for Calendar Input Date - START -->
+    
+	  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+	
+	  <!-- Javascript -->  
+      <script>  
+         
+         $(function() {  
+             $( "#datepicker-1" ).datepicker({  
+                dateFormat:"yy-mm-dd",  
+             });  
+          }); 
+ 
+         $(function() {  
+             $( "#fromdateID" ).datepicker({  
+                dateFormat:"yy-mm-dd",  
+             });  
+          }); 
+      </script> 
+	
+	<!-- Changes for Calendar Input Date - END -->
+    
+</head>
+<body align="center" bgcolor="#00bfff">
+	<!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
+
+    <div class="" style="width:100%" align="center"> 
+	<h1>Enter your details</h1>
+    <form action="#" th:action="@{/production}" th:object="${production}" method="post">
+	  
+	    <p>From Date (yyyy-MM-dd): <input type="text" id="fromdateID" th:field="*{fromdate}" size="10"/>
+	    
+	    <input type="text" id="time-HH" th:field="*{fromHH}" maxlength="2" size="2">
+	    :
+	    <input type="text" id="time-mm" th:field="*{fromMM}" maxlength="2" size="2">
+	    :
+	    <input type="text" id="time-ss" th:field="*{fromSS}" maxlength="2" size="2">
+	    
+	    </p>
+	    	    
+
+        <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
+    </form>
+   </div>
+    
+   
+
+</body>
+</html>

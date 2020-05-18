@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Resource Analysis - View</title>
+        <meta content="This demo shows how to use HighCharts with Spring Boot" name="description" />
+			        <!-- <object th:include="fragments/head :: head" th:remove="tag"></object> -->
+			
+			
+			<!-- <link rel="stylesheet"
+				href="/connectedplants/src/main/resources/static/assets/pages/css/profile.min.css" /> -->
+			
+			<link rel="stylesheet"
+				href="https://code.highcharts.com/css/highcharts.css" />
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			
+			<link rel="stylesheet"
+				href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+			
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			
+			<script src="https://code.highcharts.com/highcharts.js"></script>
+			
+			<script src="http://code.highcharts.com/modules/exporting.js"></script>
+			<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+			
+			<style>
+			
+			#ResLogTableID {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+			
+			#ResLogTableID td, #ResLogTableID th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+			
+			#ResLogTableID tr:nth-child(odd) {
+				background-color: #f2f2f2;
+			}
+			
+			#ResLogTableID tr:hover{
+				background-color: #ddd;
+			}
+			
+			#ResLogTableID th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: Center;
+				background-color: #4CAF50;
+				color: white;
+			}
+						
+			
+			th {
+				background: white;
+				position: sticky;
+				top: 0;
+			}
+			
+        	.resLoglist {
+				margin: auto;
+				height: 350px;
+				overflow-y: auto; /* This changed */
+			}
+			</style>
+			
+</head>
+    
+ <body>
+ 	<div class="" align="center">
+
+		<div class="" align="center" style="background-color:#ffffcc"><h4 style="color:blue;">Global Resource Predictive Analysis</h4></div>
+		
+		 <div class="" align="center">
+         <div class="" align="center">
+		     <div class="" align="center" style="background-color:#ffe680">
+			
+				
+			</div>
+			<table>
+				<tr>
+					<td>
+                           
+                            <div class="" style="margin-top:20px">
+                                <div id="resReasonCodesChartID" style="width:100%; height:400px;">test2</div>
+                            </div>
+					</td>
+					<td>	
+							<div class="resLoglist">
+								<font size="2">
+									<table id="ResLogTableID" class="" style="width: 100%">
+										<thead>
+											<tr>
+												<th align="center">Site</th>
+												<th align="center">Resource</th>
+												<th align="center">Description</th>
+												<th align="center">Start Date</th>
+												<th align="center">End Date</th>
+												<th align="center">Status</th>
+	
+	
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="reslog, rowStat: ${reslogs}" 
+												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+	
+												<td th:text="${reslog.site}">Jack</td>
+												<td th:text="${reslog.resource}">23</td>
+												<td th:text="${reslog.desc}">Jack</td>
+												<td th:text="${reslog.startdt}">23</td>
+												<td th:text="${reslog.enddt}">Jack</td>
+												<td th:text="${reslog.status}">23</td>
+											</tr>
+										</tbody>
+									</table>
+								</font>
+							</div>
+						</td>
+					</tr>
+				</table>	
+              </div>                        
+           </div>
+     </div>
+
+        <!-- <div th:include="fragments/homefooter :: footer"></div> -->
+       <script th:inline="javascript">
+        /*<![CDATA[*/
+        	
+ 	
+        	
+            $(function () { 
+                Highcharts.setOptions({
+                    lang: {
+                        decimalPoint: '.',
+                        thousandsSep: ','
+                    }
+                });
+
+             	drawResReasonCodesChart();
+             	//drawSalesByTypeChart();
+            });
+            
+            
+            
+            function drawResReasonCodesChart() {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'DownTime By Duration (Dynamic)'
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} Hours"
+                    },
+                    xAxis: {
+                    	categories: [[${barChartData.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Reason Codes',
+                        colorByPoint:true,
+                        data: [[${barChartData.values()}]]
+                	}]
+                });
+            }
+            
+            function drawSalesByTypeChart() {
+                var salesByTypeChart = Highcharts.chart('salesByType', {
+                    chart: {
+                        type: 'column',
+                        margin: 75,
+                        options3d: {
+   							enabled: true,
+                        	alpha: 15,
+                        	beta: 15,
+                        	depth: 110
+                        }
+                    },
+                    title: {
+                        text: 'Sales by Lure Type'
+                    },
+                    xAxis: {
+                        categories: [[${barChartData.keySet()}]],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Sales (US $)'
+                        }
+                    },
+                    tooltip: {
+                      	pointFormat: "${point.y:,.0f}"
+                    },
+                    plotOptions: {
+                    	column: {
+                    		depth: 60,
+                      		stacking: true,
+                       		grouping: false,
+                      		groupZPadding: 10
+                        }
+                    },
+                    series: [{
+                        name: 'Nepal',
+                        data: [[${barChartData.values()}]]
+                    }]
+                });
+            }
+            /*]]>*/
+        </script>        
+    </body>
+</html>
