@@ -11,11 +11,33 @@
       <!-- <script src="https://code.jquery.com/jquery-1.3.2.min.js"></script>   -->
       <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
       
- <style type="text/css">
-	div{
-		padding:8px;
-	}
-</style>
+	 <style type="text/css">
+		div {
+			padding: 8px;
+		}
+		
+		.button {
+			border: none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		
+		.button1 {
+			background-color: green;
+			border-radius: 8px;
+		}
+		
+		.button2 {
+			background-color: red;
+			border-radius: 8px;
+		}
+	</style>
 	  <!-- Javascript -->  
       <script th:inline="javascript">  
       /*<![CDATA[*/
@@ -29,14 +51,15 @@
          $(document).ready(function(){
 
         	    var counter = 2;
-        	    var sitelist = [[${sitelists}]] ;
-        	    
+	       	    var sitelist = [[${sitelists}]] ;
+        	    var select = document.getElementById("siteDrop1");
         	    var options = "";
+        	    
         	    for (i = 0; i < sitelist.length; i++) {
         	        options += "'<option value="+sitelist[i].site+">"+sitelist[i].site+"</option>'";
+           
+        	    	select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
         	    }
-        	    
-        	    //alert(options);
 
         	    $("#addButton").click(function () {
 
@@ -75,14 +98,15 @@
 
         	     });
 
-        	     $("#getButtonValue").click(function () {
+/*         	     $("#getButtonValue").click(function () {
 
         		var msg = '';
         		for(i=1; i<counter; i++){
         	   	  msg += "\n SITE #" + i + " : " + $('#siteDrop' + i).val();
         		}
         	    	  alert(msg);
-        	     });
+        	     }); */
+        	     
         	  });
 	
       /*]]>*/   
@@ -112,9 +136,9 @@
         <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
     </form>
     
-    <input type='button' value=' + ' id='addButton'>
-	<input type='button' value=' - ' id='removeButton'>
-	<input type='button' value='Get Site Value' id='getButtonValue'>
+    <input type='button' class='button button1' value='+' id='addButton'>
+	<input type='button' class='button button2' value='-' id='removeButton'>
+	
 	 <div id='siteDropGroup'>
 		<div id="siteDropDiv1">
 			<label>SITE #1 : </label>			
