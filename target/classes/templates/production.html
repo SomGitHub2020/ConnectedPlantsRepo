@@ -9,6 +9,8 @@
 	  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
       <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	
 	  <!-- Javascript -->  
       <script>  
@@ -24,6 +26,15 @@
                 dateFormat:"yy-mm-dd",  
              });  
           }); 
+         
+         $(document).ready(function() {  
+             $("#Add").on("click", function() {  
+                 $("#textboxDiv").append("<div><br><input type='text'/><br></div>");  
+             });  
+             $("#Remove").on("click", function() {  
+                 $("#textboxDiv").children().last().remove();  
+             });  
+         });  
       </script> 
 	
 	<!-- Changes for Calendar Input Date - END -->
@@ -51,7 +62,8 @@
     </form>
    </div>
     
-   
+   <button id="Add">Click to add textbox</button> <button id="Remove">Click to remove textbox</button>  
+    <div id="textboxDiv"></div>
 
 </body>
 </html>
