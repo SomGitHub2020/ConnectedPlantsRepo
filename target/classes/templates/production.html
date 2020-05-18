@@ -41,7 +41,14 @@
 
         		newTextBoxDiv.after().html('<label>Textbox #'+ counter + ' : </label>' +
         		      '<input type="text" name="textbox' + counter +
-        		      '" id="textbox' + counter + '" value="" >');
+        		      '" id="textbox' + counter + '" value="" ><br>' +
+        		
+        		'<select id="orderDrop' + counter + '" name="orderDrop' + counter + '" onChange="">' +
+				'<option value="0">Select Order</option>' +
+				'<option th:each="prodorderlist : ${prodorderlists}" th:value="${prodorderlist.order}" th:text="${prodorderlist.order}"></option>' +
+				'</select>'
+				
+				);
 
         		newTextBoxDiv.appendTo("#TextBoxesGroup");
 
