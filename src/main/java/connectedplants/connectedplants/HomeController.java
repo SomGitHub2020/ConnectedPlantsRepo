@@ -211,19 +211,22 @@ public class HomeController {
 	@PostMapping("/welcomeRes")
 	public String resSubmit(Model model) {
 
-		String resource = "ResourceBO:EXID,RES1-1";
+		String resourceA = "ResourceBO:EXID,RES1-1";
+		String resourceB = "ResourceBO:PPME,R1";
 		
 		List<ResourceLog> listResLogs = new ArrayList<ResourceLog>();
 		
-		String reasonCodeCSV = "";
+		String reasonCodeCSV_A = "";
+		String reasonCodeCSV_B = "";
 		
 		String siteInput = "EXID";
 		
 		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
 
 		try {
-			reasonCodeCSV = showresanalysisdata.getReasonCodesDuration(resource);
-			showresanalysisdata.displayResourceLogData(listResLogs,siteInput,resource);
+			reasonCodeCSV_A = showresanalysisdata.getReasonCodesDuration(resourceA);
+			reasonCodeCSV_B = showresanalysisdata.getReasonCodesDuration(resourceB);
+			//showresanalysisdata.displayResourceLogData(listResLogs,siteInput,resource);
 
 						
 		} catch (IOException e) {
@@ -232,16 +235,23 @@ public class HomeController {
 		}
 		
 		
-		  String arr[] = reasonCodeCSV.split(","); 
+		  String arrA[] = reasonCodeCSV_A.split(",");
+		  String arrB[] = reasonCodeCSV_B.split(",");
 	
-        Map<String,Integer> barChartData = new HashMap<>();
+        Map<String,Integer> barChartData_A = new HashMap<>();
+        Map<String,Integer> barChartData_B = new HashMap<>();
    		
-		  for(int i=0; i<arr.length; i++) {
-		  barChartData.put("ReasonCode_"+(i+1),Integer.parseInt(arr[i].split("\\.")[0]));
+		  for(int i=0; i<arrA.length; i++) {
+		  barChartData_A.put("ReasonCode_"+(i+1),Integer.parseInt(arrA[i].split("\\.")[0]));
 		  }
+		  
+		  for(int i=0; i<arrB.length; i++) {
+			  barChartData_B.put("ReasonCode_"+(i+1),Integer.parseInt(arrB[i].split("\\.")[0]));
+		}
 		       
-        model.addAttribute("barChartData",barChartData);
-        model.addAttribute("reslogs", listResLogs);
+        model.addAttribute("barChartData_A",barChartData_A);
+        model.addAttribute("barChartData_B",barChartData_B);
+        //model.addAttribute("reslogs", listResLogs);
 		
 		return "res_analysis";
 	}

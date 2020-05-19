@@ -172,7 +172,7 @@
                       	pointFormat: "{point.y:,.0f} Hours"
                     },
                     xAxis: {
-                    	categories: [[${barChartData.keySet()}]],
+                    	categories: [[${barChartData_A.keySet()}]],
                       },
                     plotOptions: {
                     	pie: {
@@ -191,7 +191,7 @@
                     series: [{
                         name: 'Reason Codes',
                         colorByPoint:true,
-                        data: [[${barChartData.values()}]]
+                        data: [[${barChartData_A.values()}]]
                 	}]
                 });
             }
@@ -214,7 +214,7 @@
                       	pointFormat: "{point.y:,.0f} Hours"
                     },
                     xAxis: {
-                    	categories: [[${barChartData.keySet()}]],
+                    	categories: [[${barChartData_B.keySet()}]],
                       },
                     plotOptions: {
                     	pie: {
@@ -233,7 +233,7 @@
                     series: [{
                         name: 'Reason Codes',
                         colorByPoint:true,
-                        data: [[${barChartData.values()}]]
+                        data: [[${barChartData_B.values()}]]
                 	}]
                 });
             }
