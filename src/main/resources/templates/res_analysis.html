@@ -89,11 +89,11 @@
 					<td>
                            
                             <div class="" style="margin-top:20px">
-                                <div id="resReasonCodesChartID" style="width:100%; height:400px;">test2</div>
+                                <div id="resReasonCodesChartID_A" style="width:100%; height:400px;">test2</div>
                             </div>
 					</td>
 					<td>	
-							<div class="resLoglist">
+<!-- 							<div class="resLoglist">
 								<font size="2">
 									<table id="ResLogTableID" class="" style="width: 100%">
 										<thead>
@@ -122,7 +122,12 @@
 										</tbody>
 									</table>
 								</font>
-							</div>
+							</div> -->
+							
+							<div class="" style="margin-top:20px">
+                                <div id="resReasonCodesChartID_B" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
 						</td>
 					</tr>
 				</table>	
@@ -144,14 +149,13 @@
                     }
                 });
 
-             	drawResReasonCodesChart();
+             	drawResReasonCodesChartA();
+             	drawResReasonCodesChartB();
              	//drawSalesByTypeChart();
             });
-            
-            
-            
-            function drawResReasonCodesChart() {
-                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID', {
+                      
+            function drawResReasonCodesChartA() {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_A', {
                     chart: {
                         type: 'pie',
                         margin: 40,
@@ -192,47 +196,48 @@
                 });
             }
             
-            function drawSalesByTypeChart() {
-                var salesByTypeChart = Highcharts.chart('salesByType', {
+            function drawResReasonCodesChartB() {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_B', {
                     chart: {
-                        type: 'column',
-                        margin: 75,
+                        type: 'pie',
+                        margin: 40,
                         options3d: {
-   							enabled: true,
-                        	alpha: 15,
-                        	beta: 15,
-                        	depth: 110
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
                         }
                     },
                     title: {
-                        text: 'Sales by Lure Type'
-                    },
-                    xAxis: {
-                        categories: [[${barChartData.keySet()}]],
-                        crosshair: true
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Sales (US $)'
-                        }
+                        text: 'DownTime By Duration (Dynamic)'
                     },
                     tooltip: {
-                      	pointFormat: "${point.y:,.0f}"
+                      	pointFormat: "{point.y:,.0f} Hours"
                     },
+                    xAxis: {
+                    	categories: [[${barChartData.keySet()}]],
+                      },
                     plotOptions: {
-                    	column: {
-                    		depth: 60,
-                      		stacking: true,
-                       		grouping: false,
-                      		groupZPadding: 10
-                        }
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
                     },
                     series: [{
-                        name: 'Nepal',
+                        name: 'Reason Codes',
+                        colorByPoint:true,
                         data: [[${barChartData.values()}]]
-                    }]
+                	}]
                 });
             }
+  
             /*]]>*/
         </script>        
     </body>
