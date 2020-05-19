@@ -26,10 +26,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -87,6 +89,24 @@ public class HomeController {
 	 */
 
 	/* @PostMapping("/production") */
+	
+	@PostMapping("/api/search/{sitelist}")
+    public ResponseEntity<?> getSearchResultViaAjax(@PathVariable("sitelist") String sitelist) {
+
+      
+        
+        
+        
+        String jsonStringResult = "["
+                +"{\"y\": 40,\"color\": \"red\",\"drilldown\": {\"categories\": [\"order 1\",\"order 2\",\"order 3\",\"order 4\"], \"series\": [{\"type\": \"column\",\"name\": \"Target\",\"data\": [10.85, 7.35, 33.06, 2.81], \"color\": \"blue\"},{\"type\": \"column\",\"name\": \"Actual\",\"data\": [1, 5, 10, 15], \"color\": \"green\"}]}}"
+                + ",{\"y\": 50,\"color\": \"red\",\"drilldown\": {\"categories\": [\"order 5\",\"order 6\",\"order 7\"], \"series\": [{\"type\": \"column\",\"name\": \"Target\",\"data\": [20.85, 17.35, 36.06], \"color\": \"blue\"},{\"type\": \"column\",\"name\": \"Actual\",\"data\": [1, 5, 10], \"color\": \"green\"}]}}"
+                + "]";
+        
+      
+                
+        return ResponseEntity.ok(jsonStringResult);
+
+   }
 	
 	@PostMapping("/welcomeProd")
 	public String prodSubmit(Model model, @ModelAttribute Production production) {
@@ -182,7 +202,8 @@ public class HomeController {
 		model.addAttribute("ordersfc_as", listOrderSfcAs);
 		model.addAttribute("ordersfc_bs", listOrderSfcBs);
 
-		return "prod_analysis";
+		//return "prod_analysis";
+		return "prod_analysis_new";
 	}
 
 	/* @PostMapping("/resource") */

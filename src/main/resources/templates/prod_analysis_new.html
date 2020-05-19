@@ -1,0 +1,191 @@
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+ <html xmlns:th="https://www.thymeleaf.org">
+ <head>
+     <title>Production Analysis - View</title>
+   <meta charset="utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <link rel="stylesheet"
+ href="https://code.highcharts.com/css/highcharts.css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+ <script src="http://code.highcharts.com/modules/exporting.js"></script>
+ <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+<script th:inline="javascript">
+     /*<![CDATA[*/
+
+$(function () {
+     var chart;
+     $(document).ready(function() {
+     var chart;
+     
+    
+    var myObj, text;
+    
+    var str = 'a';
+    var search = {}
+                 search["sitelist"] = str;
+     $.ajax({
+                     type: "POST",
+                     contentType: "application/json",
+                     url: "/api/search/"+str,
+                     data: JSON.stringify(search),
+                     dataType: 'json',
+                     success: function (data) {
+                         text = JSON.stringify(data, null, 4);
+                    
+                    
+                   // var text1 = '[{"y": 50,"color": "red","drilldown": {"categories": ["cat1","cat2","cat3","cat4"], "series": [{"type": "column","name": "Target","data": [10.85, 7.35, 33.06, 2.81], "color": "blue"},{"type": "column","name": "Actual","data": [1, 5, 10, 15], "color": "green"}]}}]';
+     
+     var myObj = JSON.parse(text);
+    
+    
+         var colors = Highcharts.getOptions().colors,
+             categories = ['PPME','EXID','9997'],
+             name = ['Site1','Site2','Site3'],
+             data = myObj;
+    
+         function setChart(name, categories, data, color, type) {
+             var len = chart.series.length;
+             chart.xAxis[0].setCategories(categories);
+             for(var i = 0; i < len; i++){
+                 console.log(chart.series.length);
+                 chart.series[0].remove();
+             }
+             console.log('a');
+             if(data.series){
+                 for(var i = 0; i < data.series.length; i ++ ){
+                     chart.addSeries({
+                         name: data.series[i].name,
+                         data: data.series[i].data,
+                         type: data.series[i].type,
+                         color: data.series[i].color || 'white'
+                     });
+                 }
+             } else {
+                     chart.addSeries({
+                         name: name,
+                         data: data,
+                         type: type,
+                         color: color || 'white'
+                     });
+             }
+         }
+    
+         chart = new Highcharts.Chart({
+             chart: {
+                 renderTo: 'container',
+                 type: 'column'
+             },
+             title: {
+                 text: 'Sites Performance'
+             },
+             subtitle: {
+                 text: 'Click the columns to view orders. Click again to view sites.'
+             },
+             xAxis: {
+                 categories: categories
+             },
+             yAxis: {
+                 title: {
+                     text: 'Total percentage production'
+                 }
+             },
+             plotOptions: {
+                 column: {
+                     cursor: 'pointer',
+                     point: {
+                         events: {
+                             click: function() {
+                                 var drilldown = this.drilldown;
+                                 if (drilldown) { // drill down
+                                     setChart(null, drilldown.categories, drilldown, drilldown.type);
+                                 } else { // restore
+                                     setChart(name, categories, data, 'column');
+                                 }
+                             }
+                         }
+                     },
+                     dataLabels: {
+                         enabled: true
+                  
+                     }
+                 },
+                 spline: {
+                     cursor: 'pointer',
+                     point: {
+                         events: {
+                             click: function() {
+                                 var drilldown = this.drilldown;
+                                 if (drilldown) { // drill down
+                                     setChart(null, drilldown.categories, drilldown, drilldown.type);
+                                 } else { // restore
+                                     setChart(name, categories, data, 'column');
+                                 }
+                             }
+                         }
+                     },
+                     dataLabels: {
+                         enabled: false
+                     }
+                 }
+             },
+             tooltip: {
+                 formatter: function() {
+                     var point = this.point,
+                         s = this.x +':<b>'+ this.y +'% market share</b><br/>';
+                     if (point.drilldown) {
+                         s += 'Click to view '+ point.category +' versions';
+                     } else {
+                         s += 'Click to return to browser brands';
+                     }
+                     return s;
+                 }
+             },
+             series: [{
+                 name: name,
+                 data: data,
+                 color: 'white'
+             }],
+             exporting: {
+                 enabled: true
+             }
+         });
+                    
+                    
+                         }
+                     
+                 });
+    
+     
+     
+    
+    
+ });
+
+});
+        
+     /*]]>*/
+     </script>
+
+
+ </head>
+ <body>
+
+ 
+
+ <div id="feedback"></div>
+ <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+</body>
+ </html>
