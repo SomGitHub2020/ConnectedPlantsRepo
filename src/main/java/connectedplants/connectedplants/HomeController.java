@@ -221,6 +221,8 @@ public class HomeController {
 		
 		String siteInput = "EXID";
 		
+		String selectedSiteResList = "EXID - RES1-1, PPME - R1";
+		
 		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
 
 		try {
@@ -237,6 +239,11 @@ public class HomeController {
 		
 		  String arrA[] = reasonCodeCSV_A.split(",");
 		  String arrB[] = reasonCodeCSV_B.split(",");
+		  
+		  String siteResList[] = selectedSiteResList.split(",");
+		  
+		  model.addAttribute("selectedSiteResA", siteResList[0]);
+		  model.addAttribute("selectedSiteResB", siteResList[1]);
 	
         Map<String,Integer> barChartData_A = new HashMap<>();
         Map<String,Integer> barChartData_B = new HashMap<>();
