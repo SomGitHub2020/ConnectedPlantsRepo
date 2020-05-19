@@ -52,45 +52,43 @@ public class HomeController {
 		return "welcome";
 	}
 
-	@PostMapping("/welcomeProd") 
-	public String prodWelcomeForm(Model model) {
+	/*
+	 * @PostMapping("/welcomeProd") public String prodWelcomeForm(Model model) {
+	 * 
+	 * Calendar c = Calendar.getInstance(); c.setTime(date);
+	 * 
+	 * c.add(Calendar.DATE, -1);
+	 * 
+	 * Date prevdate = c.getTime();
+	 * 
+	 * production.setFromdate(sdf.format(prevdate)); production.setFromHH("00");
+	 * production.setFromMM("00"); production.setFromSS("00");
+	 * 
+	 * model.addAttribute("production", production);
+	 * 
+	 * List<SiteList> lstSiteLists = new ArrayList<SiteList>();
+	 * 
+	 * SiteDetails sitedetails = new SiteDetails(); try {
+	 * sitedetails.getSiteList(lstSiteLists); } catch (IOException e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); }
+	 * 
+	 * model.addAttribute("sitelists", lstSiteLists);
+	 * 
+	 * return "production";
+	 * 
+	 * }
+	 */
 	
-		Calendar c = Calendar.getInstance();
-		c.setTime(date);
-	    
-	    c.add(Calendar.DATE, -1);
-	    
-	    Date prevdate = c.getTime();
-		
-		production.setFromdate(sdf.format(prevdate));
-		production.setFromHH("00");
-		production.setFromMM("00");
-		production.setFromSS("00");
-		
-		model.addAttribute("production", production);
-		
-		List<SiteList> lstSiteLists = new ArrayList<SiteList>();
+	
+	/*
+	 * @PostMapping("/welcomeRes") public String resWelcomeForm() {
+	 * 
+	 * return "resource"; }
+	 */
 
-		SiteDetails sitedetails = new SiteDetails();
-		try {
-			sitedetails.getSiteList(lstSiteLists);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("sitelists", lstSiteLists);
-		
-		return "production"; 
-	}
-
-	@PostMapping("/welcomeRes")
-	public String resWelcomeForm() {
-
-		return "resource";
-	}
-
-	@PostMapping("/production")
+	/* @PostMapping("/production") */
+	
+	@PostMapping("/welcomeProd")
 	public String prodSubmit(Model model, @ModelAttribute Production production) {
 
 		List<SiteOrder> listSiteOrderAs = new ArrayList<SiteOrder>();
@@ -119,9 +117,9 @@ public class HomeController {
 		String fromMins = production.getFromMM();
 		String fromSeconds = production.getFromSS();
 		
-		String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
+		//String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
 		
-		//String fromDateTime = "2019-04-26T07:00:00";
+		String fromDateTime = "2019-05-05T00:00:00";
 
 		ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
 
@@ -187,7 +185,9 @@ public class HomeController {
 		return "prod_analysis";
 	}
 
-	@PostMapping("/resource")
+	/* @PostMapping("/resource") */
+	
+	@PostMapping("/welcomeRes")
 	public String resSubmit(Model model) {
 
 		String resource = "ResourceBO:EXID,RES1-1";
