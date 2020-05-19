@@ -51,8 +51,8 @@ $(function () {
     
     
          var colors = Highcharts.getOptions().colors,
-             categories = ['PPME','EXID','9997'],
-             name = ['Site1','Site2','Site3'],
+             categories = ['PPME','EXID'],
+             name = ['Site1','Site2'],
              data = myObj;
     
          function setChart(name, categories, data, color, type) {
@@ -88,7 +88,7 @@ $(function () {
                  type: 'column'
              },
              title: {
-                 text: 'Sites Performance'
+                 text: 'Plants Performance'
              },
              subtitle: {
                  text: 'Click the columns to view orders. Click again to view sites.'
@@ -98,7 +98,7 @@ $(function () {
              },
              yAxis: {
                  title: {
-                     text: 'Total percentage production'
+                     text: 'Production Rate (%)'
                  }
              },
              plotOptions: {
@@ -143,11 +143,11 @@ $(function () {
              tooltip: {
                  formatter: function() {
                      var point = this.point,
-                         s = this.x +':<b>'+ this.y +'% market share</b><br/>';
+                         s = this.x +':<b>'+ this.y +'% </b><br/>';
                      if (point.drilldown) {
-                         s += 'Click to view '+ point.category +' versions';
+                         s += 'Click to view '+ point.category +' Order level';
                      } else {
-                         s += 'Click to return to browser brands';
+                         s += 'Click to return back';
                      }
                      return s;
                  }
