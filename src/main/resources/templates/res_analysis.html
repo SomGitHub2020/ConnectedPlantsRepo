@@ -194,7 +194,9 @@
                         point: {
                             events: {
                                 click: function () {
-                                    console.log('Category: ' + this.category + ', value: ' + this.y);
+                                	var sliceIndex = this.point.index;
+                  		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                  		          alert(sliceName);
                                 }
                             }
                         },
