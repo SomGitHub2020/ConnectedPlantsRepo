@@ -194,13 +194,11 @@
                         point: {
                             events: {
                                 click: function () {
-                                	var sliceIndex = this.point.index;
-                  		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
-                  		          alert(sliceName);
+                                	alert(this.name);
                                 }
                             }
                         },
-                        data: [[${pieChartWCData_A.values()}]]
+                        data: [[${pieChartWCData_A}]]
                 	}]
                 });
             }
