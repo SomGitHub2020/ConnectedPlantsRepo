@@ -191,6 +191,13 @@
                     series: [{
                         name: 'Line Performance',
                         colorByPoint:true,
+                        point: {
+                            events: {
+                                click: function () {
+                                    console.log('Category: ' + this.category + ', value: ' + this.y);
+                                }
+                            }
+                        },
                         data: [[${pieChartWCData_A.values()}]]
                 	}]
                 });
