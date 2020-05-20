@@ -136,7 +136,9 @@
        <script th:inline="javascript">
         /*<![CDATA[*/
         	
- 	
+ 			function getWCName(name){
+        		alert("from outside : " + name);
+        	}
         	
             $(function () { 
                 Highcharts.setOptions({
@@ -194,11 +196,14 @@
                         point: {
                             events: {
                                 click: function () {
-                                	alert(this.name);
+                                	//alert(this.name);
+                                	alert(this.y);
+                                	alert("inside");
+                                	getWCName("WC-1");
                                 }
                             }
                         },
-                        data: [[${pieChartWCData_A}]]
+                        data: [[${pieChartWCData_A.values()}]]
                 	}]
                 });
             }
