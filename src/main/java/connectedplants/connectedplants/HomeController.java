@@ -211,54 +211,79 @@ public class HomeController {
 	@PostMapping("/welcomeRes")
 	public String resSubmit(Model model) {
 
+		
+		String siteInputA = "EXID";
+		String siteInputB = "PPME";
+		
+		List<WCPerformance> listWCPerfAs = new ArrayList<WCPerformance>();
+		List<WCPerformance> listWCPerfBs = new ArrayList<WCPerformance>();
+		
 		String resourceA = "ResourceBO:EXID,RES1-1";
 		String resourceB = "ResourceBO:PPME,R1";
-		
-		List<ResourceLog> listResLogs = new ArrayList<ResourceLog>();
 		
 		String reasonCodeCSV_A = "";
 		String reasonCodeCSV_B = "";
 		
-		String siteInput = "EXID";
 		
 		String selectedSiteResList = "EXID - RES1-1, PPME - R1";
 		
 		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
 
 		try {
+			showresanalysisdata.getLinePerformance(listWCPerfAs,siteInputA);
+			showresanalysisdata.getLinePerformance(listWCPerfBs,siteInputA);
+			
 			reasonCodeCSV_A = showresanalysisdata.getReasonCodesDuration(resourceA);
 			reasonCodeCSV_B = showresanalysisdata.getReasonCodesDuration(resourceB);
-			//showresanalysisdata.displayResourceLogData(listResLogs,siteInput,resource);
-
-						
+									
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+
+		String resarrA[] = reasonCodeCSV_A.split(",");
+		String resarrB[] = reasonCodeCSV_B.split(",");
+
+		String siteResList[] = selectedSiteResList.split(",");
+
+		model.addAttribute("selectedSiteResA", siteResList[0]);
+		model.addAttribute("selectedSiteResB", siteResList[1]);
+
+		Map<String,Integer> pieChartWCData_A = new HashMap<>();
+		Map<String,Integer> pieChartWCData_B = new HashMap<>();
 		
-		
-		  String arrA[] = reasonCodeCSV_A.split(",");
-		  String arrB[] = reasonCodeCSV_B.split(",");
-		  
-		  String siteResList[] = selectedSiteResList.split(",");
-		  
-		  model.addAttribute("selectedSiteResA", siteResList[0]);
-		  model.addAttribute("selectedSiteResB", siteResList[1]);
-	
-        Map<String,Integer> barChartData_A = new HashMap<>();
-        Map<String,Integer> barChartData_B = new HashMap<>();
-   		
-		  for(int i=0; i<arrA.length; i++) {
-		  barChartData_A.put("ReasonCode_"+(i+1),Integer.parseInt(arrA[i].split("\\.")[0]));
-		  }
-		  
-		  for(int i=0; i<arrB.length; i++) {
-			  barChartData_B.put("ReasonCode_"+(i+1),Integer.parseInt(arrB[i].split("\\.")[0]));
+		for(int i=0; i<listWCPerfAs.size(); i++)
+		{
+			pieChartWCData_A.put(listWCPerfAs.get(i).getWc(), Integer.parseInt(listWCPerfAs.get(i).getPerf().split("\\.")[0]));
 		}
-		       
-        model.addAttribute("barChartData_A",barChartData_A);
-        model.addAttribute("barChartData_B",barChartData_B);
-        //model.addAttribute("reslogs", listResLogs);
+
+		for(int i=0; i<listWCPerfBs.size(); i++)
+		{
+			pieChartWCData_B.put(listWCPerfBs.get(i).getWc(), Integer.parseInt(listWCPerfBs.get(i).getPerf().split("\\.")[0]));
+		}
+
+
+		Map<String,Integer> pieChartResData_A = new HashMap<>();
+		Map<String,Integer> pieChartResData_B = new HashMap<>();
+		
+		for(int i=0; i<resarrA.length; i++) {
+			pieChartResData_A.put("ReasonCode_"+(i+1),Integer.parseInt(resarrA[i].split("\\.")[0]));
+		}
+
+		for(int i=0; i<resarrB.length; i++) {
+			pieChartResData_B.put("ReasonCode_"+(i+1),Integer.parseInt(resarrB[i].split("\\.")[0]));
+		}
+		
+		model.addAttribute("selectedSite_A",siteInputA);
+		model.addAttribute("selectedSite_B",siteInputB);
+		
+		model.addAttribute("pieChartWCData_A",pieChartWCData_A);
+		model.addAttribute("pieChartWCData_B",pieChartWCData_B);
+
+		model.addAttribute("pieChartResData_A",pieChartResData_A);
+		model.addAttribute("pieChartResData_B",pieChartResData_B);
+    
 		
 		return "res_analysis";
 	}

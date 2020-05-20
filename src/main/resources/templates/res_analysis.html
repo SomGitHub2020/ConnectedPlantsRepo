@@ -89,41 +89,26 @@
 					<td>
                            
                             <div class="" style="margin-top:20px">
+                                <div id="wcPerfChartID_A" style="width:100%; height:400px;">test2</div>
+                            </div>
+					</td>
+					<td>	
+				
+							<div class="" style="margin-top:20px">
+                                <div id="wcPerfChartID_B" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
+						</td>
+				</tr>
+				<tr>
+					<td>
+                           
+                            <div class="" style="margin-top:20px">
                                 <div id="resReasonCodesChartID_A" style="width:100%; height:400px;">test2</div>
                             </div>
 					</td>
 					<td>	
-<!-- 							<div class="resLoglist">
-								<font size="2">
-									<table id="ResLogTableID" class="" style="width: 100%">
-										<thead>
-											<tr>
-												<th align="center">Site</th>
-												<th align="center">Resource</th>
-												<th align="center">Description</th>
-												<th align="center">Start Date</th>
-												<th align="center">End Date</th>
-												<th align="center">Status</th>
-	
-	
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="reslog, rowStat: ${reslogs}" 
-												th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-	
-												<td th:text="${reslog.site}">Jack</td>
-												<td th:text="${reslog.resource}">23</td>
-												<td th:text="${reslog.desc}">Jack</td>
-												<td th:text="${reslog.startdt}">23</td>
-												<td th:text="${reslog.enddt}">Jack</td>
-												<td th:text="${reslog.status}">23</td>
-											</tr>
-										</tbody>
-									</table>
-								</font>
-							</div> -->
-							
+				
 							<div class="" style="margin-top:20px">
                                 <div id="resReasonCodesChartID_B" style="width:100%; height:400px;">test2</div>
                             </div>
@@ -149,11 +134,98 @@
                     }
                 });
 
+              	drawWCPerfChartA();
+              	drawWCPerfChartB();
+             	                
              	drawResReasonCodesChartA();
              	drawResReasonCodesChartB();
-             	//drawSalesByTypeChart();
+             	
             });
-                      
+                 
+            function drawWCPerfChartA() {
+                var wcPerfChart = Highcharts.chart('wcPerfChartID_A', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Performance analysis for ' + [[${selectedSite_A}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} %"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartWCData_A.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Line Performance',
+                        colorByPoint:true,
+                        data: [[${pieChartWCData_A.values()}]]
+                	}]
+                });
+            }
+ 
+            function drawWCPerfChartB() {
+                var wcPerfChart = Highcharts.chart('wcPerfChartID_B', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Performance analysis for ' + [[${selectedSite_B}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} %"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartWCData_B.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Line Performance',
+                        colorByPoint:true,
+                        data: [[${pieChartWCData_B.values()}]]
+                	}]
+                });
+            }
+            
             function drawResReasonCodesChartA() {
                 var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_A', {
                     chart: {
@@ -172,7 +244,7 @@
                       	pointFormat: "{point.y:,.0f} Hours"
                     },
                     xAxis: {
-                    	categories: [[${barChartData_A.keySet()}]],
+                    	categories: [[${pieChartResData_A.keySet()}]],
                       },
                     plotOptions: {
                     	pie: {
@@ -191,7 +263,7 @@
                     series: [{
                         name: 'Reason Codes',
                         colorByPoint:true,
-                        data: [[${barChartData_A.values()}]]
+                        data: [[${pieChartResData_A.values()}]]
                 	}]
                 });
             }
@@ -214,7 +286,7 @@
                       	pointFormat: "{point.y:,.0f} Hours"
                     },
                     xAxis: {
-                    	categories: [[${barChartData_B.keySet()}]],
+                    	categories: [[${pieChartResData_B.keySet()}]],
                       },
                     plotOptions: {
                     	pie: {
@@ -233,7 +305,7 @@
                     series: [{
                         name: 'Reason Codes',
                         colorByPoint:true,
-                        data: [[${barChartData_B.values()}]]
+                        data: [[${pieChartResData_B.values()}]]
                 	}]
                 });
             }
