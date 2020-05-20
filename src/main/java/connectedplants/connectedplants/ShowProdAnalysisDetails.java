@@ -21,7 +21,7 @@ public class ShowProdAnalysisDetails {
                
                 String site = rs.getString(1);
                 String shoporder = rs.getString(2);
-                String item = rs.getString(3).replaceAll("ItemBO:"+siteInput+",", "").replaceAll(",A", "");
+                String item = rs.getString(3).split(",")[1];
                 String qty_to_build = rs.getString(4);
                 String qty_done = rs.getString(5);
                 String qty_scrapped = rs.getString(6);

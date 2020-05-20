@@ -26,7 +26,7 @@ public class ShowResAnalysisDetails {
             		);  
             while(rs.next()){  
                
-                String wc = rs.getString(1);
+                String wc = rs.getString(1).split(",")[1] ;
             	String perf = rs.getString(2);
       
             	listWCPerf.add(new WCPerformance(wc, perf));
