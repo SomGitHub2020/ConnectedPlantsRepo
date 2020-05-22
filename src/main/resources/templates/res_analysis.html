@@ -104,6 +104,10 @@
 					</tr>
 				</table>	
               </div>  
+              
+              <div id="resDropDown" align="center" style="width:100%;">
+	
+              </div>
        
          <div class="" align="center">
 		     <div class="" align="center" style="background-color:#ffe680">
@@ -140,6 +144,15 @@
         	        		
         		drawResReasonCodesChartA(name);
         		drawResReasonCodesChartB(name);
+        		
+        		var sitelist = [[${sitelists}]] ;
+        		
+              	var select = document.getElementById("resDropDown");
+        	    //var options = "";
+        	    
+        	    for (i = 0; i < sitelist.length; i++) {
+        	        select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
+        	    }
         	}
         
  			function getWCNameB(name){
@@ -159,6 +172,7 @@
               	drawWCPerfChartA();
               	drawWCPerfChartB();
              	                
+              	
              	//drawResReasonCodesChartA();
              	//drawResReasonCodesChartB();
              	

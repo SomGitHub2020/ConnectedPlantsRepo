@@ -241,6 +241,18 @@ public class HomeController {
 			e.printStackTrace();
 		}
 
+		List<SiteList> lstSiteLists = new ArrayList<SiteList>();
+		 
+		 SiteDetails sitedetails = new SiteDetails(); 
+		 try {
+			 sitedetails.getSiteList(lstSiteLists); 
+		 } 
+		 catch (IOException e) 
+		 {
+			 e.printStackTrace(); 
+		 }
+		 
+		
 
 		String resarrA[] = reasonCodeCSV_A.split(",");
 		String resarrB[] = reasonCodeCSV_B.split(",");
@@ -280,12 +292,14 @@ public class HomeController {
 		
 		model.addAttribute("pieChartWCData_A",pieChartWCData_A);
 		model.addAttribute("pieChartWCData_B",pieChartWCData_B);
+		
+		model.addAttribute("sitelists", lstSiteLists);
 
 		model.addAttribute("pieChartResData_A",pieChartResData_A);
 		model.addAttribute("pieChartResData_B",pieChartResData_B);
     
 		
-		return "res_analysis_demo";
-		//return "res_analysis";
+		//return "res_analysis_demo";
+		return "res_analysis";
 	}
 }
