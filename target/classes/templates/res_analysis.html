@@ -136,10 +136,14 @@
        <script th:inline="javascript">
         /*<![CDATA[*/
         	
- 			function getWCName(name){
-        		alert("from outside : " + name);
+ 			function getWCNameA(name){
+        	        		
+        		drawResReasonCodesChartA(name);
+        	}
+        
+ 			function getWCNameB(name){
         		
-        		drawResReasonCodesChartA();
+        		drawResReasonCodesChartA(name);
         	}
         	
             $(function () { 
@@ -154,7 +158,7 @@
               	drawWCPerfChartB();
              	                
              	//drawResReasonCodesChartA();
-             	drawResReasonCodesChartB();
+             	//drawResReasonCodesChartB();
              	
             });
                  
@@ -199,9 +203,9 @@
                             events: {
                                 click: function () {
                                 	//alert(this.name);
-                                	alert(this.y);
-                                	alert("inside");
-                                	getWCName("WC-1");
+                                	//alert(this.y);
+                                	//alert("inside");
+                                	getWCNameA("AASSLY4-I");
                                 }
                             }
                         },
@@ -247,12 +251,22 @@
                     series: [{
                         name: 'Line Performance',
                         colorByPoint:true,
+                        point: {
+                            events: {
+                                click: function () {
+                                	//alert(this.name);
+                                	//alert(this.y);
+                                	//alert("inside");
+                                	getWCNameB("ACALCP-2");
+                                }
+                            }
+                        },
                         data: [[${pieChartWCData_B.values()}]]
                 	}]
                 });
             }
             
-            function drawResReasonCodesChartA() {
+            function drawResReasonCodesChartA(wcName) {
                 var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_A', {
                     chart: {
                         type: 'pie',
@@ -264,7 +278,7 @@
                         }
                     },
                     title: {
-                        text: 'Downtime analysis for ' + [[${selectedSiteResA}]]
+                        text: 'Downtime analysis for ' + wcName + ' : ' + [[${selectedSiteResA}]]
                     },
                     tooltip: {
                       	pointFormat: "{point.y:,.0f} Hours"
@@ -294,7 +308,7 @@
                 });
             }
             
-            function drawResReasonCodesChartB() {
+            function drawResReasonCodesChartB(wcName) {
                 var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_B', {
                     chart: {
                         type: 'pie',
@@ -306,7 +320,7 @@
                         }
                     },
                     title: {
-                        text: 'Downtime analysis for ' + [[${selectedSiteResB}]]
+                        text: 'Downtime analysis for ' + wcName + ' : ' + [[${selectedSiteResB}]]
                     },
                     tooltip: {
                       	pointFormat: "{point.y:,.0f} Hours"
