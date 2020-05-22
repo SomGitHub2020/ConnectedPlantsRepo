@@ -144,13 +144,7 @@
        <script th:inline="javascript">
         /*<![CDATA[*/
         	
-        	
-        	
- 			function getWCNameA(name){
-        		
-        		var sitelist = [[${sitelists}]] ;
-        		
-        		var resPairList = {"R1 : RES1-1",                
+        	var resPairList = ["R1 : RES1-1",                
 						"TP_RESOURCE_02 : EX_QA_03",
 						"TP_RESOURCE_01 : EX_AG_04",
 						"TEST_WC_01 : Z_AGE_OV02",
@@ -158,7 +152,11 @@
 						"R2 : RESOURCE4",
 						"OCP_RES2 : RESC_MELTING_1",
 						"OCP_RES1 : RESC_MELTING_2",
-						"TRAIN_RES_SS : EX_RES_VBM_02"};
+						"TRAIN_RES_SS : EX_RES_VBM_02"];
+        	
+ 			function getWCNameA(name){
+        		
+        		var sitelist = [[${sitelists}]] ;
         		
               	var select = document.getElementById("resDropDown");
         	    //var options = "";
@@ -173,15 +171,6 @@
         		
         		var sitelist = [[${sitelists}]] ;
         		
-        		var resPairList = {"R1 : RES1-1",                
-						"TP_RESOURCE_02 : EX_QA_03",
-						"TP_RESOURCE_01 : EX_AG_04",
-						"TEST_WC_01 : Z_AGE_OV02",
-						"R1 : RESOURCE2",
-						"R2 : RESOURCE4",
-						"OCP_RES2 : RESC_MELTING_1",
-						"OCP_RES1 : RESC_MELTING_2",
-						"TRAIN_RES_SS : EX_RES_VBM_02"};
         		
               	var select = document.getElementById("resDropDown");
         	    //var options = "";
