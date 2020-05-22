@@ -106,8 +106,8 @@
               </div>  
               
               <div id="resDropDownDiv" align="center" style="width:100%;">
-              <select id="resDropDown" name="resDropDown" onChange="myFunction();">
-						<option value="0">Select Site</option>
+              <select id="resDropDown" name="resDropDown" onChange="getResourcePair();">
+						<option value="0">Select Any Pair</option>
 						
 				</select>
 
@@ -155,7 +155,7 @@
         	    //var options = "";
         	    
         	    for (i = 0; i < sitelist.length; i++) {
-        	        select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
+        	        select.options[select.options.length] = new Option(sitelist[i].site +" : "+sitelist[i].desc, sitelist[i].site +" : "+sitelist[i].desc);
         	    }
         	}
         
@@ -165,6 +165,18 @@
         		drawResReasonCodesChartB(name);
         	}
         	
+ 			function getResourcePair(){
+ 				
+ 				var resPair = document.getElementById("resDropDown").value;
+ 				
+ 				var res = resPair.split(" : ");
+ 				
+ 				alert(res[0]);
+ 				alert(res[1]);
+ 				alert(res[2]);
+ 				
+ 			}
+ 			
             $(function () { 
                 Highcharts.setOptions({
                     lang: {
