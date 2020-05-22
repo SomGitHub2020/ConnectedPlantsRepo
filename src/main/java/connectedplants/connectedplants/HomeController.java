@@ -212,26 +212,26 @@ public class HomeController {
 	public String resSubmit(Model model) {
 
 		
-		String siteInputA = "EXID";
-		String siteInputB = "PPME";
+		String siteInputA = "PPME";
+		String siteInputB = "EXID";
 		
 		List<WCPerformance> listWCPerfAs = new ArrayList<WCPerformance>();
 		List<WCPerformance> listWCPerfBs = new ArrayList<WCPerformance>();
 		
-		String resourceA = "ResourceBO:EXID,RES1-1";
-		String resourceB = "ResourceBO:PPME,R1";
+		String resourceA = "ResourceBO:PPME,R1";
+		String resourceB = "ResourceBO:EXID,RES1-1";
 		
 		String reasonCodeCSV_A = "";
 		String reasonCodeCSV_B = "";
 		
 		
-		String selectedSiteResList = "EXID - RES1-1, PPME - R1";
+		String selectedSiteResList = "PPME - R1,EXID - RES1-1";
 		
 		ShowResAnalysisDetails showresanalysisdata = new ShowResAnalysisDetails();
 
 		try {
 			showresanalysisdata.getLinePerformance(listWCPerfAs,siteInputA);
-			showresanalysisdata.getLinePerformance(listWCPerfBs,siteInputA);
+			showresanalysisdata.getLinePerformance(listWCPerfBs,siteInputB);
 			
 			reasonCodeCSV_A = showresanalysisdata.getReasonCodesDuration(resourceA);
 			reasonCodeCSV_B = showresanalysisdata.getReasonCodesDuration(resourceB);

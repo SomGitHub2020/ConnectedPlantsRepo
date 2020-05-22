@@ -144,25 +144,39 @@
        <script th:inline="javascript">
         /*<![CDATA[*/
         	
+        	var resPairList = {"R1 : RES1-1",                
+									"TP_RESOURCE_02 : EX_QA_03",
+									"TP_RESOURCE_01 : EX_AG_04",
+									"TEST_WC_01 : Z_AGE_OV02",
+									"R1 : RESOURCE2",
+									"R2 : RESOURCE4",
+									"OCP_RES2 : RESC_MELTING_1",
+									"OCP_RES1 : RESC_MELTING_2",
+									"TRAIN_RES_SS : EX_RES_VBM_02"};
+        	
  			function getWCNameA(name){
-        	        		
-        		drawResReasonCodesChartA(name);
-        		drawResReasonCodesChartB(name);
+        		
+        		var sitelist = [[${sitelists}]] ;
+        		
+              	var select = document.getElementById("resDropDown");
+        	    //var options = "";
+				
+        	    
+        	    for (i = 0; i < resPairList.length; i++) {
+        	        select.options[select.options.length] = new Option(resPairList[i], resPairList[i]);
+        	    }
+        	}
+        
+ 			function getWCNameB(name){
         		
         		var sitelist = [[${sitelists}]] ;
         		
               	var select = document.getElementById("resDropDown");
         	    //var options = "";
         	    
-        	    for (i = 0; i < sitelist.length; i++) {
-        	        select.options[select.options.length] = new Option(sitelist[i].site +" : "+sitelist[i].desc, sitelist[i].site +" : "+sitelist[i].desc);
+        	    for (i = 0; i < resPairList.length; i++) {
+        	        select.options[select.options.length] = new Option(resPairList[i], resPairList[i]);
         	    }
-        	}
-        
- 			function getWCNameB(name){
-        		
- 				drawResReasonCodesChartA(name);
-        		drawResReasonCodesChartB(name);
         	}
         	
  			function getResourcePair(){
@@ -173,7 +187,9 @@
  				
  				alert(res[0]);
  				alert(res[1]);
- 				alert(res[2]);
+ 				
+ 				drawResReasonCodesChartA(res[0]);
+        		drawResReasonCodesChartB(res[1]);
  				
  			}
  			
