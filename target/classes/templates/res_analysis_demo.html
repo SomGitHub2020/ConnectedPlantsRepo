@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Resource Analysis - View</title>
+        <meta content="This demo shows how to use HighCharts with Spring Boot" name="description" />
+			        <!-- <object th:include="fragments/head :: head" th:remove="tag"></object> -->
+			
+			
+			<!-- <link rel="stylesheet"
+				href="/connectedplants/src/main/resources/static/assets/pages/css/profile.min.css" /> -->
+			
+			<link rel="stylesheet"
+				href="https://code.highcharts.com/css/highcharts.css" />
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			
+			<link rel="stylesheet"
+				href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+			
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+			<script
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			
+			<script src="https://code.highcharts.com/highcharts.js"></script>
+			
+			<script src="http://code.highcharts.com/modules/exporting.js"></script>
+			<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+			
+			<style>
+			
+			#ResLogTableID {
+				font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+			
+			#ResLogTableID td, #ResLogTableID th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+			
+			#ResLogTableID tr:nth-child(odd) {
+				background-color: #f2f2f2;
+			}
+			
+			#ResLogTableID tr:hover{
+				background-color: #ddd;
+			}
+			
+			#ResLogTableID th {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: Center;
+				background-color: #4CAF50;
+				color: white;
+			}
+						
+			
+			th {
+				background: white;
+				position: sticky;
+				top: 0;
+			}
+			
+        	.resLoglist {
+				margin: auto;
+				height: 350px;
+				overflow-y: auto; /* This changed */
+			}
+			</style>
+			
+</head>
+    
+ <body>
+ 	<div class="" align="center">
+
+		<div class="" align="center" style="background-color:#ffffcc"><h4 style="color:blue;">Global Resource Predictive Analysis</h4></div>
+		
+		 <div class="" align="center">
+       
+         <div class="" align="center">
+		     <div class="" align="center" style="background-color:#ffe680">
+			
+				
+			</div>
+			<table>
+
+				<tr>
+					<td>
+                           
+                            <div class="" style="margin-top:20px">
+                                <div id="wcPerfChartID_A" style="width:100%; height:400px;">test2</div>
+                            </div>
+					</td>
+					<td>	
+				
+							<div class="" style="margin-top:20px">
+                                <div id="wcPerfChartID_B" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
+						</td>
+					</tr>
+				</table>	
+              </div>  
+       
+         <div class="" align="center">
+		     <div class="" align="center" style="background-color:#ffe680">
+			
+				
+			</div>
+			<table>
+
+				<tr>
+					<td>
+                           
+                            <div class="" style="margin-top:20px">
+                                <div id="resReasonCodesChartID_A" style="width:100%; height:400px;">test2</div>
+                            </div>
+					</td>
+					<td>	
+				
+							<div class="" style="margin-top:20px">
+                                <div id="resReasonCodesChartID_B" style="width:100%; height:400px;">test2</div>
+                            </div>
+                            
+						</td>
+					</tr>
+				</table>	
+              </div>                        
+           </div>
+     </div>
+
+        <!-- <div th:include="fragments/homefooter :: footer"></div> -->
+       <script th:inline="javascript">
+        /*<![CDATA[*/
+        	
+ 			function getWCNameA(name){
+        	        		
+        		drawResReasonCodesChartA(name);
+        		drawResReasonCodesChartB(name);
+        	}
+        
+ 			function getWCNameB(name){
+        		
+ 				drawResReasonCodesChartA(name);
+        		drawResReasonCodesChartB(name);
+        	}
+        	
+            $(function () { 
+                Highcharts.setOptions({
+                    lang: {
+                        decimalPoint: '.',
+                        thousandsSep: ','
+                    }
+                });
+
+              	drawWCPerfChartA();
+              	drawWCPerfChartB();
+             	                
+             	//drawResReasonCodesChartA();
+             	//drawResReasonCodesChartB();
+             	
+            });
+                 
+            function drawWCPerfChartA() {
+                var wcPerfChart = Highcharts.chart('wcPerfChartID_A', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Performance analysis for ' + [[${selectedSite_A}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} %"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartWCData_A.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Line Performance',
+                        colorByPoint:true,
+                        point: {
+                            events: {
+                                click: function () {
+                                	//alert(this.name);
+                                	//alert(this.y);
+                                	//alert("inside");
+                                	getWCNameA("AASSLY4-I");
+                                }
+                            }
+                        },
+                        data: [[${pieChartWCData_A.values()}]]
+                	}]
+                });
+            }
+ 
+            function drawWCPerfChartB() {
+                var wcPerfChart = Highcharts.chart('wcPerfChartID_B', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Performance analysis for ' + [[${selectedSite_B}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} %"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartWCData_B.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Line Performance',
+                        colorByPoint:true,
+                        point: {
+                            events: {
+                                click: function () {
+                                	//alert(this.name);
+                                	//alert(this.y);
+                                	//alert("inside");
+                                	getWCNameB("ACALCP-2");
+                                }
+                            }
+                        },
+                        data: [[${pieChartWCData_B.values()}]]
+                	}]
+                });
+            }
+            
+            function drawResReasonCodesChartA(wcName) {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_A', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Downtime analysis for ' + wcName + ' : ' + [[${selectedSiteResA}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} Hours"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartResData_A.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Reason Codes',
+                        colorByPoint:true,
+                        data: [[${pieChartResData_A.values()}]]
+                	}]
+                });
+            }
+            
+            function drawResReasonCodesChartB(wcName) {
+                var resReasonCodesChart = Highcharts.chart('resReasonCodesChartID_B', {
+                    chart: {
+                        type: 'pie',
+                        margin: 40,
+                        options3d: {
+                    		enabled: true,
+                            alpha: 45,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: 'Downtime analysis for ' + wcName + ' : ' + [[${selectedSiteResB}]]
+                    },
+                    tooltip: {
+                      	pointFormat: "{point.y:,.0f} Hours"
+                    },
+                    xAxis: {
+                    	categories: [[${pieChartResData_B.keySet()}]],
+                      },
+                    plotOptions: {
+                    	pie: {
+                    		allowPointSelect: true,
+                    		depth: 35,
+                    		dataLabels: {
+                    			 formatter: function() {
+                    		          var sliceIndex = this.point.index;
+                    		          var sliceName = this.series.chart.axes[0].categories[sliceIndex];
+                    		          return sliceName
+                    		        }
+                            },
+                            showInLegend: false
+                    	}
+                    },
+                    series: [{
+                        name: 'Reason Codes',
+                        colorByPoint:true,
+                        data: [[${pieChartResData_B.values()}]]
+                	}]
+                });
+            }
+  
+            /*]]>*/
+        </script>        
+    </body>
+</html>

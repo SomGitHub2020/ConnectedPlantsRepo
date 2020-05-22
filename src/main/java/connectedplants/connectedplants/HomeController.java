@@ -285,6 +285,7 @@ public class HomeController {
 		model.addAttribute("pieChartResData_B",pieChartResData_B);
     
 		
-		return "res_analysis";
+		return "res_analysis_demo";
+		//return "res_analysis";
 	}
 }
