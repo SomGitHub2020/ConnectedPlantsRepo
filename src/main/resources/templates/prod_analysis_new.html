@@ -185,6 +185,15 @@ $(function () {
 		<div class="" align="center" style="background-color: #ffffcc">
 			<h4 style="color: blue;">Global Manufacturing Production Performance</h4>
 		</div>
+		 <div class="" align="center" style="background-color:#66ffff" 
+		 th:text="'From DateTime: ' + ${production.fromdate} + ' ' + ${production.fromHH} + ':' + ${production.fromMM} + ':' + ${production.fromSS}">
+		 </div>
+		  <div class="" align="center" style="background-color:#66ffff" 
+		 th:text="'Sites to be compared: ' + ${production.sitelist}">
+		 </div>
+		 <div>
+		 <p><a href="/connectedplants/src/main/resources/templates/welcome.html">Change</a></p>
+		 </div>
 		<div id="container"
 			style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 	</div>
