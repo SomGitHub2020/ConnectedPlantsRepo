@@ -83,9 +83,31 @@ public class HomeController {
 	
 	
 	  @PostMapping("/welcomeSel") 
-	  public String selectionForm() {
+	  public String selectionForm(Model model) {
 	  
-	  return "selection"; 
+		 Calendar c = Calendar.getInstance(); c.setTime(date);
+		 c.add(Calendar.DATE, -1);
+		 
+		 Date prevdate = c.getTime();
+		 
+		 production.setFromdate(sdf.format(prevdate)); production.setFromHH("00");
+		 production.setFromMM("00"); production.setFromSS("00");
+		 
+		 model.addAttribute("production", production);
+		 
+		 List<SiteList> lstSiteLists = new ArrayList<SiteList>();
+		 
+		 SiteDetails sitedetails = new SiteDetails(); 
+		 try {
+		 sitedetails.getSiteList(lstSiteLists); 
+		 } catch (IOException e) 
+		 { 
+			 e.printStackTrace(); 
+		 }
+		 
+		 model.addAttribute("sitelists", lstSiteLists);
+		  
+		 return "selection"; 
 	  
 	  }
 	 
