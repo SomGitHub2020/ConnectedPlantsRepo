@@ -185,9 +185,12 @@ public class HomeController {
 		String fromMins = production.getFromMM();
 		String fromSeconds = production.getFromSS();
 		
-		//String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
+		String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
 		
-		String fromDateTime = "2019-05-05T00:00:00";
+		//String fromDateTime = "2019-05-05T00:00:00";
+		
+		model.addAttribute("fromDateObj",fromDateTime);
+		model.addAttribute("siteListObj",production.getSitelist());
 
 		ShowProdAnalysisDetails showprodanalysisdata = new ShowProdAnalysisDetails();
 

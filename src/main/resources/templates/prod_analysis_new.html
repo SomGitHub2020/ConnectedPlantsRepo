@@ -29,6 +29,8 @@ $(function () {
      $(document).ready(function() {
      var chart;
      
+     var selectedSiteList = [[${siteListObj}]];
+     document.getElementById("testDiv").innerHTML = selectedSiteList;
     
     var myObj, text;
     
@@ -185,6 +187,7 @@ $(function () {
 		<div class="" align="center" style="background-color: #ffffcc">
 			<h4 style="color: blue;">Global Manufacturing Production Performance</h4>
 		</div>
+		<div id="testdiv"></div>
 		 <div class="" align="center" style="background-color:#66ffff" 
 		 th:text="'From DateTime: ' + ${production.fromdate} + ' ' + ${production.fromHH} + ':' + ${production.fromMM} + ':' + ${production.fromSS}">
 		 </div>
