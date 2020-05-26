@@ -104,14 +104,7 @@
 
         	     });
 
-/*         	     $("#getButtonValue").click(function () {
 
-        		var msg = '';
-        		for(i=1; i<counter; i++){
-        	   	  msg += "\n SITE #" + i + " : " + $('#siteDrop' + i).val();
-        		}
-        	    	  alert(msg);
-        	     }); */
         	     
         	  });
 	
@@ -125,21 +118,26 @@
 	<!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
 
     <div class="" style="width:100%" align="center"> 
-	<h1>Enter your details</h1>
+	<div class="" align="center" style="background-color: #ffffcc">
+			<h4 style="color: blue;">Please Enter Details</h4>
+	</div>
     <form action="#" th:action="@{/selection}" th:object="${production}" method="post">
 	  
 	    <p>From Date (yyyy-MM-dd): <input type="text" id="fromdateID" th:field="*{fromdate}" size="10"/>
-	    
+	    HH:
 	    <input type="text" id="time-HH" th:field="*{fromHH}" maxlength="2" size="2">
-	    :
+	    mm:
 	    <input type="text" id="time-mm" th:field="*{fromMM}" maxlength="2" size="2">
-	    :
+	    ss:
 	    <input type="text" id="time-ss" th:field="*{fromSS}" maxlength="2" size="2">
 	    
 	    </p>
-	    	    
-	   	<input type='button' class='button button1' value='+' id='addButton'>
-		<input type='button' class='button button2' value='-' id='removeButton'>
+	   <div class="" align="center" style="background-color: #ffffcc">
+			<h4 style="color: black;">Site List</h4>
+			<input type='button' class='button button1' value='+' id='addButton'>
+			<input type='button' class='button button2' value='-' id='removeButton'>
+		</div>  
+	   
 	
 	 	<div id='siteDropGroup'>
 			<div id="siteDropDiv1">
