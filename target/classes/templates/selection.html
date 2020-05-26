@@ -83,7 +83,7 @@
 
         		newTextBoxDiv.after().html('<label>SITE #'+ counter + ' : </label>' +
         		            		
-        		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
+        		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="getSelectedItem(this);">' +
 				'<option value="0">Select Site</option>' +
 				options +
 				'</select>'
