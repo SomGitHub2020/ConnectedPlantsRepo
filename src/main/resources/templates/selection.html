@@ -41,15 +41,19 @@
 	  <!-- Javascript -->  
       <script th:inline="javascript">  
       /*<![CDATA[*/
+    	 
+    	 var selectedSiteList = ""; 
     	  
     	 function goBack() 
     	 {
-    	  	window.location.href = "/connectedplants/src/main/resources/templates/welcome.html";
+    	  	alert(document.getElementById("sitelistID").value);
+    		 window.location.href = "/connectedplants/src/main/resources/templates/welcome.html";
     	 }
     	  
       	function getSelectedItem(selected){
-      		var x = selected.value;
-      		alert(x);
+      		selectedSiteList += "," + selected.value;
+      		
+      		document.getElementById("sitelistID").value = selectedSiteList;
       	}
       
          $(function() {  
@@ -156,7 +160,9 @@
         <p><input type="Submit" value="Save" /> 
         <input type='button' class='button button1' value='Add' id='addButton'>
 		<input type='button' class='button button2' value='Remove' id='removeButton'>
-        <input type="reset" value="OK" onclick="goBack();"/></p>
+        <input type="reset" value="OK" onclick="goBack();"/>
+        <input type="text" id="sitelistID" th:field="*{sitelist}"/>
+        </p>
     </form>
     </div>
 

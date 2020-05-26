@@ -5,6 +5,7 @@ public class Production {
 	public String fromHH;
 	public String fromMM;
 	public String fromSS;
+	public String sitelist;
 
 	public String getFromdate() {
 		return fromdate;
@@ -36,6 +37,14 @@ public class Production {
 
 	public void setFromSS(String fromSS) {
 		this.fromSS = fromSS;
+	}
+
+	public String getSitelist() {
+		return sitelist;
+	}
+
+	public void setSitelist(String sitelist) {
+		this.sitelist = sitelist;
 	}
 	
 }
