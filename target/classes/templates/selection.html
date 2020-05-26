@@ -44,10 +44,14 @@
     	  
     	 function goBack() 
     	 {
-    	  	alert("Going Back");
     	  	window.location.href = "/connectedplants/src/main/resources/templates/welcome.html";
     	 }
     	  
+      	function getSelectedItem(selected){
+      		var x = selected.value;
+      		alert(x);
+      	}
+      
          $(function() {  
              $( "#fromdateID" ).datepicker({  
                 dateFormat:"yy-mm-dd",  
@@ -117,10 +121,11 @@
 <body align="center" bgcolor="#00bfff">
 	<!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
 
-    <div class="" style="width:100%" align="center"> 
+<div class="" align="center">
 	<div class="" align="center" style="background-color: #ffffcc">
 			<h4 style="color: blue;">Please Enter Details</h4>
 	</div>
+	<div class="" align="center">
     <form action="#" th:action="@{/selection}" th:object="${production}" method="post">
 	  
 	    <p>From Date (yyyy-MM-dd): <input type="text" id="fromdateID" th:field="*{fromdate}" size="10"/>
@@ -133,27 +138,29 @@
 	    
 	    </p>
 	   <div class="" align="center" style="background-color: #ffffcc">
-			<h4 style="color: black;">Site List</h4>
-			<input type='button' class='button button1' value='+' id='addButton'>
-			<input type='button' class='button button2' value='-' id='removeButton'>
+			<h4 style="color: blue;">Site List</h4>
+			
 		</div>  
 	   
 	
 	 	<div id='siteDropGroup'>
 			<div id="siteDropDiv1">
 				<label>SITE #1 : </label>			
-				<select id="siteDrop1" name="siteDrop" onChange="myFunction();">
+				<select id="siteDrop1" name="siteDrop" onChange="getSelectedItem(this);">
 							<option value="0">Select Site</option>
 							
 				</select>
 			</div>
 		</div>
 
-        <p><input type="Submit" value="Save" /> <input type="reset" value="OK" onclick="goBack();"/></p>
+        <p><input type="Submit" value="Save" /> 
+        <input type='button' class='button button1' value='Add' id='addButton'>
+		<input type='button' class='button button2' value='Remove' id='removeButton'>
+        <input type="reset" value="OK" onclick="goBack();"/></p>
     </form>
-    
+    </div>
 
-   </div>
+</div>
 
 
 
