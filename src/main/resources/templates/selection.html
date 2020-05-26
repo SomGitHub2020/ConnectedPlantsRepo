@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Production Analysis - Give Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!-- Changes for Calendar Input Date - START -->
+    
+	  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+      <!-- <script src="https://code.jquery.com/jquery-1.3.2.min.js"></script>   -->
+      <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+      
+	 <style type="text/css">
+		div {
+			padding: 8px;
+		}
+		
+		.button {
+			border: none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		
+		.button1 {
+			background-color: green;
+			border-radius: 8px;
+		}
+		
+		.button2 {
+			background-color: red;
+			border-radius: 8px;
+		}
+	</style>
+	  <!-- Javascript -->  
+      <script th:inline="javascript">  
+      /*<![CDATA[*/
+    	  
+         $(function() {  
+             $( "#fromdateID" ).datepicker({  
+                dateFormat:"yy-mm-dd",  
+             });  
+          }); 
+         
+         $(document).ready(function(){
+
+        	    var counter = 2;
+	       	    var sitelist = [[${sitelists}]] ;
+        	    var select = document.getElementById("siteDrop1");
+        	    var options = "";
+        	    
+        	    for (i = 0; i < sitelist.length; i++) {
+        	        options += "'<option value="+sitelist[i].site+">"+sitelist[i].site+"</option>'";
+           
+        	    	select.options[select.options.length] = new Option(sitelist[i].site, sitelist[i].site);
+        	    }
+
+        	    $("#addButton").click(function () {
+
+        		if(counter>4){
+        	            alert("Max. 4 sites are allowed");
+        	            return false;
+        		}
+
+        		var newTextBoxDiv = $(document.createElement('div'))
+        		     .attr("id", 'siteDropDiv' + counter);
+
+        		newTextBoxDiv.after().html('<label>SITE #'+ counter + ' : </label>' +
+        		            		
+        		'<select id="siteDrop' + counter + '" name="siteDrop' + counter + '" onChange="">' +
+				'<option value="0">Select Site</option>' +
+				options +
+				'</select>'
+				
+				);
+
+        		newTextBoxDiv.appendTo("#siteDropGroup");
+
+
+        		counter++;
+        	     });
+
+        	     $("#removeButton").click(function () {
+        		if(counter==2){
+        	          alert("At least one Site should be selected!");
+        	          return false;
+        	       }
+
+        		counter--;
+
+        	        $("#siteDropDiv" + counter).remove();
+
+        	     });
+
+/*         	     $("#getButtonValue").click(function () {
+
+        		var msg = '';
+        		for(i=1; i<counter; i++){
+        	   	  msg += "\n SITE #" + i + " : " + $('#siteDrop' + i).val();
+        		}
+        	    	  alert(msg);
+        	     }); */
+        	     
+        	  });
+	
+      /*]]>*/   
+      </script> 
+	
+	<!-- Changes for Calendar Input Date - END -->
+    
+</head>
+<body align="center" bgcolor="#00bfff">
+	<!-- <p th:text="'MII Server' + ${login.StringURL} + ' is configured successfully!'" /> -->
+
+    <div class="" style="width:100%" align="center"> 
+	<h1>Enter your details</h1>
+    <form action="#" th:action="@{/production}" th:object="${production}" method="post">
+	  
+	    <p>From Date (yyyy-MM-dd): <input type="text" id="fromdateID" th:field="*{fromdate}" size="10"/>
+	    
+	    <input type="text" id="time-HH" th:field="*{fromHH}" maxlength="2" size="2">
+	    :
+	    <input type="text" id="time-mm" th:field="*{fromMM}" maxlength="2" size="2">
+	    :
+	    <input type="text" id="time-ss" th:field="*{fromSS}" maxlength="2" size="2">
+	    
+	    </p>
+	    	    
+
+        <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
+    </form>
+    
+    <input type='button' class='button button1' value='+' id='addButton'>
+	<input type='button' class='button button2' value='-' id='removeButton'>
+	
+	 <div id='siteDropGroup'>
+		<div id="siteDropDiv1">
+			<label>SITE #1 : </label>			
+			<select id="siteDrop1" name="siteDrop" onChange="myFunction();">
+						<option value="0">Select Site</option>
+						
+			</select>
+		</div>
+	</div>
+   </div>
+
+
+
+</body>
+</html>

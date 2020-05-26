@@ -82,11 +82,13 @@ public class HomeController {
 	 */
 	
 	
-	/*
-	 * @PostMapping("/welcomeRes") public String resWelcomeForm() {
-	 * 
-	 * return "resource"; }
-	 */
+	  @PostMapping("/welcomeSel") 
+	  public String selectionForm() {
+	  
+	  return "selection"; 
+	  
+	  }
+	 
 
 	/* @PostMapping("/production") */
 	
