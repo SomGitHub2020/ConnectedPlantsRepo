@@ -112,7 +112,31 @@ public class HomeController {
 	  }
 	 
 
-	/* @PostMapping("/production") */
+	@PostMapping("/selection") 
+	public String selectSubmit(Model model, @ModelAttribute Production production) {
+
+		String siteAInput = "PPME";
+		String siteBInput = "EXID";
+
+		
+		/*
+		 * String prefixShopOrderBO_A = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
+		 * String prefixShopOrderBO_B = "ShopOrderBO:"+siteAInput+","+selectedOrderA;
+		 */
+
+		String fromDt = production.getFromdate();
+		String fromHours = production.getFromHH();
+		String fromMins = production.getFromMM();
+		String fromSeconds = production.getFromSS();
+		
+		String fromDateTime = fromDt + "T" + fromHours +":"+fromMins+":"+fromSeconds;
+		
+		//String fromDateTime = "2019-05-05T00:00:00";
+
+
+		return "welcome";
+	}
+	
 	
 	@PostMapping("/api/search/{sitelist}")
     public ResponseEntity<?> getSearchResultViaAjax(@PathVariable("sitelist") String sitelist) {

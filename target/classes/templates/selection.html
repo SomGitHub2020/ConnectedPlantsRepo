@@ -120,7 +120,7 @@
 
     <div class="" style="width:100%" align="center"> 
 	<h1>Enter your details</h1>
-    <form action="#" th:action="@{/production}" th:object="${production}" method="post">
+    <form action="#" th:action="@{/selection}" th:object="${production}" method="post">
 	  
 	    <p>From Date (yyyy-MM-dd): <input type="text" id="fromdateID" th:field="*{fromdate}" size="10"/>
 	    
@@ -132,22 +132,23 @@
 	    
 	    </p>
 	    	    
+	   	<input type='button' class='button button1' value='+' id='addButton'>
+		<input type='button' class='button button2' value='-' id='removeButton'>
+	
+	 	<div id='siteDropGroup'>
+			<div id="siteDropDiv1">
+				<label>SITE #1 : </label>			
+				<select id="siteDrop1" name="siteDrop" onChange="myFunction();">
+							<option value="0">Select Site</option>
+							
+				</select>
+			</div>
+		</div>
 
-        <p><input type="Submit" value="View" /> <input type="reset" value="Reset" /></p>
+        <p><input type="Submit" value="Save" /> <input type="reset" value="OK" /></p>
     </form>
     
-    <input type='button' class='button button1' value='+' id='addButton'>
-	<input type='button' class='button button2' value='-' id='removeButton'>
-	
-	 <div id='siteDropGroup'>
-		<div id="siteDropDiv1">
-			<label>SITE #1 : </label>			
-			<select id="siteDrop1" name="siteDrop" onChange="myFunction();">
-						<option value="0">Select Site</option>
-						
-			</select>
-		</div>
-	</div>
+
    </div>
 
 
