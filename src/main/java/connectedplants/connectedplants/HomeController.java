@@ -50,7 +50,8 @@ public class HomeController {
 	@GetMapping("/welcome")
 	public String welcomeForm(Model model) {
 
-
+		model.addAttribute("production", production);
+		
 		return "welcome";
 	}
 
@@ -209,49 +210,51 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
-		String arrA[] = orderQtyCSV_A.split(","); 
-		String arrB[] = orderQtyCSV_B.split(","); 
-
-        Map<String,Integer> barChartData_A = new HashMap<>();
-		Map<String,Integer> barChartData_B = new HashMap<>();
-		
-		Map<String,Integer> eachOrderActualBarData_A = new HashMap<>();
-		Map<String,Integer> eachOrderTargetBarData_A = new HashMap<>();
-		
-		Map<String,Integer> eachOrderActualBarData_B = new HashMap<>();
-		Map<String,Integer> eachOrderTargetBarData_B = new HashMap<>();
-		
-		barChartData_A.put("Target",Integer.parseInt(arrA[0].split("\\.")[0]));
-		barChartData_A.put("Actual",Integer.parseInt(arrA[1].split("\\.")[0]));
-	
-		barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
-		barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
-		
-		for(int i=0; i<listSiteOrderAs.size(); i++)
-		{
-			eachOrderActualBarData_A.put(listSiteOrderAs.get(i).getOrder(), Integer.parseInt(listSiteOrderAs.get(i).getYieldqty().split("\\.")[0]));
-			eachOrderTargetBarData_A.put(listSiteOrderAs.get(i).getOrder(), Integer.parseInt(listSiteOrderAs.get(i).getBuildqty().split("\\.")[0]));
-		}
-		
-		for(int i=0; i<listSiteOrderBs.size(); i++)
-		{
-			eachOrderActualBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getYieldqty().split("\\.")[0]));
-			eachOrderTargetBarData_B.put(listSiteOrderBs.get(i).getOrder(), Integer.parseInt(listSiteOrderBs.get(i).getBuildqty().split("\\.")[0]));
-		}
-				  
-        model.addAttribute("barChartOrderQtyDataA",barChartData_A);
-        model.addAttribute("barChartOrderQtyDataB",barChartData_B);
-         
-        model.addAttribute("eachOrderActualQtyBarChartA",eachOrderActualBarData_A);
-        model.addAttribute("eachOrderTargetQtyBarChartA",eachOrderTargetBarData_A);
-        model.addAttribute("eachOrderActualQtyBarChartB",eachOrderActualBarData_B);
-        model.addAttribute("eachOrderTargetQtyBarChartB",eachOrderTargetBarData_B);
-		
-		model.addAttribute("siteorder_as", listSiteOrderAs);
-		model.addAttribute("siteorder_bs", listSiteOrderBs);
-		
-		model.addAttribute("ordersfc_as", listOrderSfcAs);
-		model.addAttribute("ordersfc_bs", listOrderSfcBs);
+		/*
+		 * String arrA[] = orderQtyCSV_A.split(","); String arrB[] =
+		 * orderQtyCSV_B.split(",");
+		 * 
+		 * Map<String,Integer> barChartData_A = new HashMap<>(); Map<String,Integer>
+		 * barChartData_B = new HashMap<>();
+		 * 
+		 * Map<String,Integer> eachOrderActualBarData_A = new HashMap<>();
+		 * Map<String,Integer> eachOrderTargetBarData_A = new HashMap<>();
+		 * 
+		 * Map<String,Integer> eachOrderActualBarData_B = new HashMap<>();
+		 * Map<String,Integer> eachOrderTargetBarData_B = new HashMap<>();
+		 * 
+		 * barChartData_A.put("Target",Integer.parseInt(arrA[0].split("\\.")[0]));
+		 * barChartData_A.put("Actual",Integer.parseInt(arrA[1].split("\\.")[0]));
+		 * 
+		 * barChartData_B.put("Target",Integer.parseInt(arrB[0].split("\\.")[0]));
+		 * barChartData_B.put("Actual",Integer.parseInt(arrB[1].split("\\.")[0]));
+		 * 
+		 * for(int i=0; i<listSiteOrderAs.size(); i++) {
+		 * eachOrderActualBarData_A.put(listSiteOrderAs.get(i).getOrder(),
+		 * Integer.parseInt(listSiteOrderAs.get(i).getYieldqty().split("\\.")[0]));
+		 * eachOrderTargetBarData_A.put(listSiteOrderAs.get(i).getOrder(),
+		 * Integer.parseInt(listSiteOrderAs.get(i).getBuildqty().split("\\.")[0])); }
+		 * 
+		 * for(int i=0; i<listSiteOrderBs.size(); i++) {
+		 * eachOrderActualBarData_B.put(listSiteOrderBs.get(i).getOrder(),
+		 * Integer.parseInt(listSiteOrderBs.get(i).getYieldqty().split("\\.")[0]));
+		 * eachOrderTargetBarData_B.put(listSiteOrderBs.get(i).getOrder(),
+		 * Integer.parseInt(listSiteOrderBs.get(i).getBuildqty().split("\\.")[0])); }
+		 * 
+		 * model.addAttribute("barChartOrderQtyDataA",barChartData_A);
+		 * model.addAttribute("barChartOrderQtyDataB",barChartData_B);
+		 * 
+		 * model.addAttribute("eachOrderActualQtyBarChartA",eachOrderActualBarData_A);
+		 * model.addAttribute("eachOrderTargetQtyBarChartA",eachOrderTargetBarData_A);
+		 * model.addAttribute("eachOrderActualQtyBarChartB",eachOrderActualBarData_B);
+		 * model.addAttribute("eachOrderTargetQtyBarChartB",eachOrderTargetBarData_B);
+		 * 
+		 * model.addAttribute("siteorder_as", listSiteOrderAs);
+		 * model.addAttribute("siteorder_bs", listSiteOrderBs);
+		 * 
+		 * model.addAttribute("ordersfc_as", listOrderSfcAs);
+		 * model.addAttribute("ordersfc_bs", listOrderSfcBs);
+		 */
 
 		//return "prod_analysis";
 		return "prod_analysis_new";
